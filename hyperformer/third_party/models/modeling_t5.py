@@ -6,19 +6,29 @@ import warnings
 from torch import nn
 from torch.nn import CrossEntropyLoss
 from transformers.modeling_outputs import BaseModelOutput
+
 from transformers.modeling_t5 import (T5PreTrainedModel, T5LayerNorm, T5Block,
-                                      T5DenseReluDense, T5Attention, T5LayerCrossAttention)
+                                      T5DenseReluDense)
+
 from transformers.utils import logging
 
-from hyperformer.adapters import (AutoAdapterController, MetaAdapterConfig,
+from adapters import (AutoAdapterController, MetaAdapterConfig,
                               TaskEmbeddingController, LayerNormHyperNet,
                               AdapterLayersHyperNetController,
                               MetaLayersAdapterController,
                               AdapterLayersOneHyperNetController)
+
+from adapters.lora_modelling import MetaLinearLoraController, MetaLoRALayer
+
 from transformers.modeling_outputs import (
     BaseModelOutputWithPastAndCrossAttentions,
     Seq2SeqLMOutput
 )
+
+import torch.nn.functional as F
+from .configuration_t5 import T5Config
+from transformers.modeling_utils import find_pruneable_heads_and_indices, prune_linear_layer
+import math
 
 logger = logging.get_logger(__name__)
 
@@ -27,6 +37,7 @@ class T5LayerFF(nn.Module):
     def __init__(self, config, adapter_config=None):
         super().__init__()
         self.DenseReluDense = T5DenseReluDense(config)
+        
         self.train_adapters = config.train_adapters
         if self.train_adapters:
             self.unique_hyper_net = True if isinstance(adapter_config, MetaAdapterConfig) and \
@@ -38,6 +49,7 @@ class T5LayerFF(nn.Module):
                 self.is_meta_adapter = True if isinstance(adapter_config, MetaAdapterConfig) else False
             elif self.unique_hyper_net:
                 self.layer_hyper_net = MetaLayersAdapterController(adapter_config)
+        
         self.layer_norm = T5LayerNorm(config.d_model, eps=config.layer_norm_epsilon)
         self.dropout = nn.Dropout(config.dropout_rate)
 
@@ -52,6 +64,233 @@ class T5LayerFF(nn.Module):
         return layer_output
 
 
+class T5Attention(nn.Module):
+    def __init__(self, config: T5Config, has_relative_attention_bias=False, is_bidirectional=False, is_cross_attention=False):
+        super().__init__()
+        self.is_bidirectional = is_bidirectional
+        self.is_decoder = config.is_decoder
+        self.has_relative_attention_bias = has_relative_attention_bias
+        self.is_cross_attention = is_cross_attention
+                
+        self.relative_attention_num_buckets = config.relative_attention_num_buckets
+        self.d_model = config.d_model
+        self.d_kv = config.d_kv
+        self.n_heads = config.num_heads
+        self.dropout = config.dropout_rate
+        self.inner_dim = self.n_heads * self.d_kv
+
+        # Mesh TensorFlow initialization to avoid scaling before softmax
+        self.q = nn.Linear(self.d_model, self.inner_dim, bias=False)
+        self.k = nn.Linear(self.d_model, self.inner_dim, bias=False)
+        self.v = nn.Linear(self.d_model, self.inner_dim, bias=False)
+        self.o = nn.Linear(self.inner_dim, self.d_model, bias=False)
+
+        self.meta_lora = MetaLoRALayer()
+
+        if self.has_relative_attention_bias:
+            self.relative_attention_bias = nn.Embedding(self.relative_attention_num_buckets, self.n_heads)
+        self.pruned_heads = set()
+
+    def prune_heads(self, heads):
+        if len(heads) == 0:
+            return
+        heads, index = find_pruneable_heads_and_indices(heads, self.n_heads, self.d_kv, self.pruned_heads)
+        # Prune linear layers
+        self.q = prune_linear_layer(self.q, index)
+        self.k = prune_linear_layer(self.k, index)
+        self.v = prune_linear_layer(self.v, index)
+        self.o = prune_linear_layer(self.o, index, dim=1)
+        # Update hyper params
+        self.n_heads = self.n_heads - len(heads)
+        self.inner_dim = self.d_kv * self.n_heads
+        self.pruned_heads = self.pruned_heads.union(heads)
+
+    @staticmethod
+    def _relative_position_bucket(relative_position, bidirectional=True, num_buckets=32, max_distance=128):
+        """
+        Adapted from Mesh Tensorflow:
+        https://github.com/tensorflow/mesh/blob/0cb87fe07da627bf0b7e60475d59f95ed6b5be3d/mesh_tensorflow/transformer/transformer_layers.py#L593
+
+        Translate relative position to a bucket number for relative attention. The relative position is defined as
+        memory_position - query_position, i.e. the distance in tokens from the attending position to the attended-to
+        position. If bidirectional=False, then positive relative positions are invalid. We use smaller buckets for
+        small absolute relative_position and larger buckets for larger absolute relative_positions. All relative
+        positions >=max_distance map to the same bucket. All relative positions <=-max_distance map to the same bucket.
+        This should allow for more graceful generalization to longer sequences than the model has been trained on
+
+        Args:
+            relative_position: an int32 Tensor
+            bidirectional: a boolean - whether the attention is bidirectional
+            num_buckets: an integer
+            max_distance: an integer
+
+        Returns:
+            a Tensor with the same shape as relative_position, containing int32 values in the range [0, num_buckets)
+        """
+        ret = 0
+        n = -relative_position
+        if bidirectional:
+            num_buckets //= 2
+            ret += (n < 0).to(torch.long) * num_buckets  # mtf.to_int32(mtf.less(n, 0)) * num_buckets
+            n = torch.abs(n)
+        else:
+            n = torch.max(n, torch.zeros_like(n))
+        # now n is in the range [0, inf)
+
+        # half of the buckets are for exact increments in positions
+        max_exact = num_buckets // 2
+        is_small = n < max_exact
+
+        # The other half of the buckets are for logarithmically bigger bins in positions up to max_distance
+        val_if_large = max_exact + (
+            torch.log(n.float() / max_exact) / math.log(max_distance / max_exact) * (num_buckets - max_exact)
+        ).to(torch.long)
+        val_if_large = torch.min(val_if_large, torch.full_like(val_if_large, num_buckets - 1))
+
+        ret += torch.where(is_small, n, val_if_large)
+        return ret
+
+    def compute_bias(self, qlen, klen):
+        """ Compute binned relative position bias """
+        context_position = torch.arange(qlen, dtype=torch.long)[:, None]
+        memory_position = torch.arange(klen, dtype=torch.long)[None, :]
+        relative_position = memory_position - context_position  # shape (qlen, klen)
+        rp_bucket = self._relative_position_bucket(
+            relative_position,  # shape (qlen, klen)
+            bidirectional=self.is_bidirectional,
+            num_buckets=self.relative_attention_num_buckets,
+        )
+        rp_bucket = rp_bucket.to(self.relative_attention_bias.weight.device)
+        values = self.relative_attention_bias(rp_bucket)  # shape (qlen, klen, num_heads)
+        values = values.permute([2, 0, 1]).unsqueeze(0)  # shape (1, num_heads, qlen, klen)
+        return values
+
+    def forward(
+        self,
+        input,
+        mask=None,
+        kv=None,
+        position_bias=None,
+        past_key_value=None,
+        head_mask=None,
+        query_length=None,
+        use_cache=False,
+        output_attentions=False,
+        t5_block_adapters=None,
+    ):
+        """
+        Self-attention (if kv is None) or attention over source sentence (provided by kv).
+        """
+        # Input is (bs, qlen, dim)
+        # Mask is (bs, klen) (non-causal) or (bs, klen, klen)
+        # past_key_value[0] is (bs, n_heads, q_len - 1, dim_per_head)
+        bs, qlen, dim = input.size()
+
+        if past_key_value is not None:
+            assert self.is_decoder is True, "Encoder cannot cache past key value states"
+            assert (
+                len(past_key_value) == 2
+            ), "past_key_value should have 2 past states: keys and values. Got {} past states".format(
+                len(past_key_value)
+            )
+            real_qlen = qlen + past_key_value[0].shape[2] if query_length is None else query_length
+        else:
+            real_qlen = qlen
+
+        if kv is None:
+            klen = real_qlen
+        else:
+            klen = kv.size(1)
+
+        def shape(x):
+            """  projection """
+            return x.view(bs, -1, self.n_heads, self.d_kv).transpose(1, 2)
+
+        def unshape(x):
+            """  compute context """
+            return x.transpose(1, 2).contiguous().view(bs, -1, self.inner_dim)
+
+        
+        #q = shape(self.q(input, t5_block_adapters.lora_query.a, t5_block_adapters.lora_query.b))
+        #q = shape(self.q(input))  # (bs, n_heads, qlen, dim_per_head)
+        if self.is_cross_attention:
+            q = shape(self.q(input) + self.meta_lora(input, t5_block_adapters.lora_cross_query.a, t5_block_adapters.lora_cross_query.b))
+        else:
+            q = shape(self.q(input) + self.meta_lora(input, t5_block_adapters.lora_query.a, t5_block_adapters.lora_query.b))
+
+        if kv is None:
+            k = shape(self.k(input))  # (bs, n_heads, qlen, dim_per_head)
+            
+            #v = shape(self.v(input,  t5_block_adapters.lora_value.a, t5_block_adapters.lora_value.b))
+            #v = shape(self.v(input))  # (bs, n_heads, qlen, dim_per_head)
+            if self.is_cross_attention:
+                v = shape(self.v(input) + self.meta_lora(input,  t5_block_adapters.lora_cross_value.a, t5_block_adapters.lora_cross_value.b))
+            else:
+                v = shape(self.v(input) + self.meta_lora(input,  t5_block_adapters.lora_value.a, t5_block_adapters.lora_value.b))
+        elif past_key_value is None:
+            k = v = kv
+            k = shape(self.k(k))  # (bs, n_heads, qlen, dim_per_head)
+            
+            #v = shape(self.v(v, t5_block_adapters.lora_value.a, t5_block_adapters.lora_value.b)) 
+            #v = shape(self.v(v))  # (bs, n_heads, qlen, dim_per_head)
+            if self.is_cross_attention:
+                v = shape(self.v(v) + self.meta_lora(v,  t5_block_adapters.lora_cross_value.a, t5_block_adapters.lora_cross_value.b))
+            else:
+                v = shape(self.v(v) + self.meta_lora(v,  t5_block_adapters.lora_value.a, t5_block_adapters.lora_value.b))
+
+        if past_key_value is not None:
+            if kv is None:
+                k_, v_ = past_key_value
+                k = torch.cat([k_, k], dim=2)  # (bs, n_heads, klen, dim_per_head)
+                v = torch.cat([v_, v], dim=2)  # (bs, n_heads, klen, dim_per_head)
+            else:
+                k, v = past_key_value
+
+        if self.is_decoder and use_cache is True:
+            present_key_value_state = ((k, v),)
+        else:
+            present_key_value_state = (None,)
+
+        # (bs, n_heads, qlen, klen)
+        scores = torch.matmul(
+            q, k.transpose(3, 2)
+        )  # equivalent of torch.einsum("bnqd,bnkd->bnqk", q, k), compatible with onnx op>9
+
+        if position_bias is None:
+            if not self.has_relative_attention_bias:
+                raise ValueError("No position_bias provided and no weights to compute position_bias")
+            position_bias = self.compute_bias(real_qlen, klen)
+
+            # if key and values are already calculated
+            # we want only the last query position bias
+            if past_key_value is not None:
+                position_bias = position_bias[:, :, -qlen:, :]
+
+            if mask is not None:
+                position_bias = position_bias + mask  # (bs, n_heads, qlen, klen)
+
+        scores += position_bias
+        weights = F.softmax(scores.float(), dim=-1).type_as(scores)  # (bs, n_heads, qlen, klen)
+        weights = F.dropout(weights, p=self.dropout, training=self.training)  # (bs, n_heads, qlen, klen)
+
+        # Mask heads if we want to
+        if head_mask is not None:
+            weights = weights * head_mask
+
+        context = torch.matmul(weights, v)  # (bs, n_heads, qlen, dim_per_head)
+        context = unshape(context)  # (bs, qlen, dim)
+
+        context = self.o(context)
+
+        outputs = (context,) + present_key_value_state
+
+        if output_attentions:
+            outputs = outputs + (weights,)
+        if self.has_relative_attention_bias:
+            outputs = outputs + (position_bias,)
+        return outputs
+
+
 class T5LayerSelfAttention(nn.Module):
     def __init__(self, config, has_relative_attention_bias=False, adapter_config=None):
         super().__init__()
@@ -59,6 +298,7 @@ class T5LayerSelfAttention(nn.Module):
             config, has_relative_attention_bias=has_relative_attention_bias,
             is_bidirectional=not config.is_decoder
         )
+        
         self.train_adapters = config.train_adapters
         if self.train_adapters:
             self.unique_hyper_net = True if isinstance(adapter_config, MetaAdapterConfig) and \
@@ -70,6 +310,7 @@ class T5LayerSelfAttention(nn.Module):
                 self.is_meta_adapter = True if isinstance(adapter_config, MetaAdapterConfig) else False
             elif self.unique_hyper_net:
                 self.layer_hyper_net = MetaLayersAdapterController(adapter_config)
+        
         self.layer_norm = T5LayerNorm(config.d_model, eps=config.layer_norm_epsilon)
         self.dropout = nn.Dropout(config.dropout_rate)
 
@@ -95,12 +336,56 @@ class T5LayerSelfAttention(nn.Module):
             past_key_value=past_key_value,
             use_cache=use_cache,
             output_attentions=output_attentions,
+             t5_block_adapters =  t5_block_adapters
         )
         y = attention_output[0]
+        
         if self.train_adapters and self.train_adapter_blocks:
             y = self.adapter_controller(task if not self.is_meta_adapter else task_embedding, y)
         elif self.train_adapters and self.unique_hyper_net:
             y = self.layer_hyper_net(y, t5_block_adapters.self_attention)
+        
+        layer_output = hidden_states + self.dropout(y)
+        outputs = (layer_output,) + attention_output[1:]  # add attentions if we output them
+        return outputs
+
+
+class T5LayerCrossAttention(nn.Module):
+    def __init__(self, config, has_relative_attention_bias=False):
+        super().__init__()
+        self.EncDecAttention = T5Attention(
+            config, has_relative_attention_bias=has_relative_attention_bias, is_bidirectional=True, is_cross_attention=True
+        )
+        self.layer_norm = T5LayerNorm(config.d_model, eps=config.layer_norm_epsilon)
+        self.dropout = nn.Dropout(config.dropout_rate)
+
+    def forward(
+        self,
+        hidden_states,
+        kv,
+        attention_mask=None,
+        position_bias=None,
+        head_mask=None,
+        past_key_value=None,
+        use_cache=False,
+        query_length=None,
+        output_attentions=False,
+        t5_block_adapters=None
+    ):
+        norm_x = self.layer_norm(hidden_states)
+        attention_output = self.EncDecAttention(
+            norm_x,
+            mask=attention_mask,
+            kv=kv,
+            position_bias=position_bias,
+            head_mask=head_mask,
+            past_key_value=past_key_value,
+            use_cache=use_cache,
+            query_length=query_length,
+            output_attentions=output_attentions,
+            t5_block_adapters= t5_block_adapters
+        )
+        y = attention_output[0]
         layer_output = hidden_states + self.dropout(y)
         outputs = (layer_output,) + attention_output[1:]  # add attentions if we output them
         return outputs
@@ -110,6 +395,7 @@ class T5Block(nn.Module):
     def __init__(self, config, has_relative_attention_bias=False, adapter_config=None):
         super().__init__()
         self.adapter_config = adapter_config
+        
         self.is_decoder = config.is_decoder
         self.layer = nn.ModuleList()
         self.layer.append(T5LayerSelfAttention(config, \
@@ -189,7 +475,8 @@ class T5Block(nn.Module):
                 past_key_value=cross_attn_past_key_value,
                 query_length=query_length,
                 use_cache=use_cache,
-                output_attentions=output_attentions
+                output_attentions=output_attentions,
+                t5_block_adapters = t5_block_adapters
             )
             hidden_states = cross_attention_outputs[0]
             # Combine self attn and cross attn key value states
@@ -216,12 +503,15 @@ class T5Stack(T5PreTrainedModel):
     def __init__(self, config, embed_tokens=None, adapter_config=None):
         super().__init__(config)
         self.adapter_config = adapter_config
+        
         self.embed_tokens = embed_tokens
         self.is_decoder = config.is_decoder
         self.block = nn.ModuleList(
             [T5Block(config, has_relative_attention_bias=bool(i == 0), adapter_config=self.adapter_config)
              for i in range(config.num_layers)]
         )
+        
+        # Extra stuff for Hypernetworks
         self.train_adapters = config.train_adapters
         if self.train_adapters:
             self.unique_hyper_net = isinstance(adapter_config, MetaAdapterConfig) \
@@ -232,6 +522,7 @@ class T5Stack(T5PreTrainedModel):
                 self.adapter_layers_hyper_net = AdapterLayersHyperNetController(adapter_config, config.num_layers)
             if self.efficient_unique_hyper_net:
                 self.adapter_layers_hyper_net = AdapterLayersOneHyperNetController(adapter_config, config.num_layers)
+        
         self.final_layer_norm = T5LayerNorm(config.d_model, eps=config.layer_norm_epsilon)
         self.dropout = nn.Dropout(config.dropout_rate)
         self.init_weights()
@@ -411,19 +702,24 @@ class T5ForConditionalGeneration(T5PreTrainedModel):
         if config.train_adapters and isinstance(adapter_config, MetaAdapterConfig):
             self.task_embedding_controller = TaskEmbeddingController(adapter_config)
         self.adapter_config = adapter_config
+        
         self.model_dim = config.d_model
         self.shared = nn.Embedding(config.vocab_size, config.d_model)
         encoder_config = copy.deepcopy(config)
         encoder_config.use_cache = False
         encoder_config.is_encoder_decoder = False
+        
         if config.train_adapters:
             encoder_config.train_adapters = True
+        
         self.encoder = T5Stack(encoder_config, self.shared, adapter_config=adapter_config)
+        
         decoder_config = copy.deepcopy(config)
         decoder_config.is_decoder = True
         decoder_config.is_encoder_decoder = False
         decoder_config.num_layers = config.num_decoder_layers
         self.decoder = T5Stack(decoder_config, self.shared, adapter_config=adapter_config)
+        
         self.lm_head = nn.Linear(config.d_model, config.vocab_size, bias=False)
         self.init_weights()
 

@@ -11,6 +11,11 @@ class SamplerOutput:
 
 
 @dataclass
+class LoRASamplerOutput:
+    """Base class for the base and weights of each adapter."""
+    matrix: torch.FloatTensor = None
+
+@dataclass
 class LayerNormOutput:
     """Base class for the base and weights of the conditional
     layer norms."""
@@ -28,9 +33,23 @@ class AdapterOutput:
 
 
 @dataclass
+class LoRAOutput:
+    """Base class for each LoRA weights"""
+    a: torch.FloatTensor = None
+    b: torch.FloatTensor = None
+
+
+@dataclass
 class AdapterT5BlockOutput:
     """
     Base class for adapter layer's outputs.
     """
     feed_forward: AdapterOutput = None
     self_attention: AdapterOutput = None
+    lora_query: LoRAOutput = None
+    lora_value: LoRAOutput = None
+    lora_cross_query: LoRAOutput = None
+    lora_cross_value: LoRAOutput = None
+
+
+

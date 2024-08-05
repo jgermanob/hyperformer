@@ -1,0 +1,17 @@
+{
+    "movieTrivia_eval_loss": 1809.8712158203125,
+    "movieTrivia_eval_micro_f1_score": 0.681260945709282,
+    "movie_eval_loss": 1209.6925048828125,
+    "movie_eval_micro_f1_score": 0.8755244755244754,
+    "restaurant_eval_loss": 1096.8153076171875,
+    "restaurant_eval_micro_f1_score": 0.7953518398967075,
+    "atis_eval_loss": 1826.962158203125,
+    "atis_eval_micro_f1_score": 0.9723040659988215,
+    "snips_eval_loss": 1054.4676513671875,
+    "snips_eval_micro_f1_score": 0.9537604456824513,
+    "mtod_eval_loss": 761.6460571289062,
+    "mtod_eval_micro_f1_score": 0.9616144510302005,
+    "mtop_eval_loss": 1093.71728515625,
+    "mtop_eval_micro_f1_score": 0.8742674480554076,
+    "eval_average_metrics": 0.8734405245567637
+}

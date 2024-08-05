@@ -9,19 +9,22 @@ from pathlib import Path
 from transformers import AutoTokenizer, HfArgumentParser, set_seed
 from transformers.trainer_utils import EvaluationStrategy
 
-from hyperformer.third_party.models import T5Config, T5ForConditionalGeneration
-from hyperformer.third_party.trainers import T5Trainer
-from hyperformer.adapters import AdapterController, AutoAdapterConfig
-from hyperformer.data import AutoTask
-from hyperformer.third_party.utils import TaskCollator, check_output_dir
-from hyperformer.metrics import build_compute_metrics_fn
-from hyperformer.training_args import Seq2SeqTrainingArguments, ModelArguments, DataTrainingArguments, \
+from third_party.models import T5Config, T5ForConditionalGeneration
+from third_party.trainers import T5Trainer
+from adapters import AdapterController, AutoAdapterConfig
+from data import AutoTask
+from third_party.utils import TaskCollator, check_output_dir
+from metrics import build_compute_metrics_fn
+from training_args import Seq2SeqTrainingArguments, ModelArguments, DataTrainingArguments, \
     AdapterTrainingArguments
-from hyperformer.utils import freezing_params, get_last_checkpoint_path, create_dir,\
+from utils import freezing_params, get_last_checkpoint_path, create_dir,\
     handle_metrics, get_training_args
+
+from utils.lora_utils import add_lora
 
 logger = logging.getLogger(__name__)
 
+CUDA_LAUNCH_BLOCKING=1
 
 def remove_rank_info_from_argv(args):
     extra_parameters = {}
@@ -149,6 +152,8 @@ def main():
     # freezing the parameters.
     if training_args.do_train:
         freezing_params(model, training_args, model_args, adapter_args)
+        #model = add_lora(model)
+
 
     if training_args.print_num_parameters:
         logger.info(model)
@@ -251,6 +256,7 @@ def main():
                 cache_dir=model_args.cache_dir,
                 adapter_config=adapter_config
             )
+            #model = add_lora(model)
             # NOTE: if trainer is not re-defined, there is a bug in the codes, that making
             # huggingface codes does not using the best checkpoint.
             trainer = T5Trainer(
@@ -296,12 +302,6 @@ def main():
         )
         memory_usage = {"peak_memory": peak_memory}
     return all_metrics
-
-
-def _mp_fn(index):
-    # For xla_spawn (TPUs)
-    main()
-
 
 if __name__ == "__main__":
     main()

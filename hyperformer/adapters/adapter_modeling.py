@@ -3,9 +3,10 @@ import torch
 import torch.nn as nn
 
 from .adapter_outputs import (SamplerOutput, LayerNormOutput,
-                              AdapterT5BlockOutput, AdapterOutput)
+                              AdapterT5BlockOutput, AdapterOutput,
+                              LoRAOutput, LoRASamplerOutput)
 from .adapter_utils import Activations, linear_layer, LayerNormHyperNet, TaskHyperNet
-
+from .lora_utils import linear_lora_a_layer, linear_lora_b_layer
 
 class Adapter(nn.Module):
     """Conventional Adapter layer, in which the weights of up and down sampler modules
@@ -68,6 +69,26 @@ class AdapterLayersHyperNet(nn.Module):
         weight = self.weight_generator(embeddings).view(self.input_dim, self.output_dim)
         bias = self.bias_generator(embeddings).view(-1)
         return SamplerOutput(weight=weight, bias=bias)
+
+
+class LoRALayersHyperNet(nn.Module):
+    """This module generates the weights for all the meta LoRA layers
+    given the task embeddings and layer id."""
+
+    def __init__(self, config, input_dim, output_dim, lora_matrix='a'):
+        super(LoRALayersHyperNet, self).__init__()
+        self.input_dim = input_dim
+        self.output_dim = output_dim
+        if lora_matrix == 'a':
+            self.weight_generator = nn.Sequential(
+                linear_lora_a_layer(config.projected_task_embedding_dim, self.input_dim * self.output_dim))
+        else:
+            self.weight_generator = nn.Sequential(
+                linear_lora_b_layer(config.projected_task_embedding_dim, self.input_dim * self.output_dim))
+
+    def forward(self, embeddings):
+        weight = self.weight_generator(embeddings).view(self.input_dim, self.output_dim)
+        return weight
 
 
 class AdapterLayersHyperNetController(nn.Module):
@@ -166,8 +187,11 @@ class AdapterLayersOneHyperNetController(nn.Module):
         self.task_embedding_dim = config.task_embedding_dim
         self.layer_id_embeddings = nn.Embedding(self.num_layers,
                                                 self.task_embedding_dim).to(self.device)
+        
         # This is 2 types of adapters for feed-forward, and self-attention.
-        self.adapters_block_type = nn.Embedding(2, self.task_embedding_dim).to(self.device)
+        #self.adapters_block_type = nn.Embedding(2, self.task_embedding_dim).to(self.device)
+        # To add LoRA it is necessary to add 2 new types of adapter
+        self.adapters_block_type = nn.Embedding(6, self.task_embedding_dim).to(self.device)
 
         config.task_embedding_dim = self.task_embedding_dim * 3
         self.task_hypernet = TaskHyperNet(config)
@@ -175,12 +199,30 @@ class AdapterLayersOneHyperNetController(nn.Module):
         self.unique_hyper_net_layer_norm = config.unique_hyper_net_layer_norm
         if self.unique_hyper_net_layer_norm:
             self.LayerNorm = nn.LayerNorm(config.projected_task_embedding_dim, eps=self.layer_norm_epsilon)
+        
         self.input_dim = config.input_dim
         self.down_sample_size = self.input_dim // config.reduction_factor
+
+        #LoRA params
+        r = 8
 
         # Defines the adapters hyper-nets.
         self.up_sampler_hyper_net = AdapterLayersHyperNet(config, self.input_dim, self.down_sample_size)
         self.down_sampler_hyper_net = AdapterLayersHyperNet(config, self.down_sample_size, self.input_dim)
+
+        #Defines the LoRA hyper-nets.
+        self.lora_a_hyper_net = LoRALayersHyperNet(config, r, self.input_dim)
+        self.lora_b_hyper_net = LoRALayersHyperNet(config, self.input_dim, r, lora_matrix='b')
+        
+        #self.lora_value_a_hyper_net = LoRALayersHyperNet(config, r, self.input_dim)
+        #self.lora_value_b_hyper_net = LoRALayersHyperNet(config, self.input_dim, r, lora_matrix='b')
+
+        # Cross attention LoRA hyper-nets
+        #self.lora_cross_a_hyper_net = LoRALayersHyperNet(config, r, self.input_dim)
+        #self.lora_cross_b_hyper_net = LoRALayersHyperNet(config, self.input_dim, r, lora_matrix='b')
+
+        #self.lora_cross_value_a_hyper_net = LoRALayersHyperNet(config, r, self.input_dim)
+        #self.lora_cross_value_b_hyper_net = LoRALayersHyperNet(config, self.input_dim, r, lora_matrix='b')
 
         # Defines the layer norms' hyper net.
         self.add_layer_norm_before_adapter = config.add_layer_norm_before_adapter
@@ -212,6 +254,29 @@ class AdapterLayersOneHyperNetController(nn.Module):
     def forward(self, task_embedding, layer_id):
         feed_forward_embeddings = self.get_embedding(task_embedding, layer_id, 0)
         self_attention_embeddings = self.get_embedding(task_embedding, layer_id, 1)
+        # LoRA embeddings (block_type = 2 corresponds to LoRA )
+        lora_q_embeddings = self.get_embedding(task_embedding, layer_id, 2)
+        lora_v_embeddings = self.get_embedding(task_embedding, layer_id, 3)
+
+        lora_cross_q_embeddings = self.get_embedding(task_embedding, layer_id, 4)
+        lora_cross_v_embeddings = self.get_embedding(task_embedding, layer_id, 5)
+
+        # Generates de LoRA weights in self-attention
+        query_a = self.lora_a_hyper_net(lora_q_embeddings)
+        query_b = self.lora_b_hyper_net(lora_q_embeddings)
+        value_a = self.lora_a_hyper_net(lora_v_embeddings)
+        value_b = self.lora_b_hyper_net(lora_v_embeddings)
+
+        cross_query_a =self.lora_a_hyper_net(lora_cross_q_embeddings)
+        cross_query_b = self.lora_b_hyper_net(lora_cross_q_embeddings)
+
+        cross_value_a = self.lora_a_hyper_net(lora_cross_v_embeddings)
+        cross_value_b = self.lora_b_hyper_net(lora_cross_v_embeddings)
+
+        query_output = LoRAOutput(a=query_a, b=query_b)
+        value_output = LoRAOutput(a= value_a, b=value_b)
+        cross_query_output = LoRAOutput(a=cross_query_a, b=cross_query_b)
+        cross_value_output = LoRAOutput(a=cross_value_a, b=cross_value_b)
 
         # Generates the adapters weights in feed-forward.
         feed_forward_down = self.down_sampler_hyper_net(feed_forward_embeddings)
@@ -238,4 +303,8 @@ class AdapterLayersOneHyperNetController(nn.Module):
             self_attention_output.post_norm = LayerNormOutput(weight=weight, bias=bias)
 
         return AdapterT5BlockOutput(feed_forward=feed_forward_output,
-                                    self_attention=self_attention_output)
+                                    self_attention=self_attention_output,
+                                    lora_query= query_output,
+                                    lora_value= value_output,
+                                    lora_cross_query=cross_query_output,
+                                    lora_cross_value=cross_value_output)

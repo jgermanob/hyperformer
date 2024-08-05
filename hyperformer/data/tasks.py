@@ -8,10 +8,10 @@ import functools
 import logging
 import numpy as np
 import torch
-from hyperformer.metrics import metrics
+from metrics import metrics
 from typing import Callable, Dict, Mapping, List
-
 from .utils import round_stsb_target, compute_task_max_decoding_length
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -142,7 +142,7 @@ class AbstractTaskDataset(abc.ABC):
         else:
             # TODO: later we can join these as one.
             if n_obs == -1:
-                split = self.get_sampled_split(split, n_obs)
+                #split = self.get_sampled_split(split, n_obs)
                 dataset = self.load_dataset(split=split)
             else:
                 # shuffles the data and samples it.
@@ -158,7 +158,6 @@ class AbstractTaskDataset(abc.ABC):
                 "tgt_texts": ' '.join(tgt_strs),
                 "task": self.name}
 
-
 class IMDBTaskDataset(AbstractTaskDataset):
     name = "imdb"
     split_to_data_split = {"train": "train",
@@ -172,7 +171,6 @@ class IMDBTaskDataset(AbstractTaskDataset):
         src_texts = [example["text"]]
         tgt_texts = [str(example["label"])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class SickTaskDataset(AbstractTaskDataset):
     name = "sick"
@@ -192,7 +190,6 @@ class SickTaskDataset(AbstractTaskDataset):
         tgt_texts = [str(self.label_to_target[example["label"]])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
-
 class PawsTaskDataset(AbstractTaskDataset):
     name = "paws"
     label_list = ["0", "1"]
@@ -210,7 +207,6 @@ class PawsTaskDataset(AbstractTaskDataset):
         tgt_texts = [str(example["label"])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
-
 class SuperGLUEBoolQTaskDataset(AbstractTaskDataset):
     name = "superglue-boolq"
     label_list = ['0', '1']
@@ -227,7 +223,6 @@ class SuperGLUEBoolQTaskDataset(AbstractTaskDataset):
         src_texts = ["question:", example["question"], "passage:", example["passage"]]
         tgt_texts = [str(example["label"])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class SuperGLUERTETaskDataset(AbstractTaskDataset):
     name = "superglue-rte"
@@ -247,7 +242,6 @@ class SuperGLUERTETaskDataset(AbstractTaskDataset):
         tgt_texts = [str(example["label"])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
-
 class SuperGLUECBTaskDataset(AbstractTaskDataset):
     name = "superglue-cb"
     label_list = ['0', '1', '2']
@@ -265,7 +259,6 @@ class SuperGLUECBTaskDataset(AbstractTaskDataset):
         tgt_texts = [str(example["label"])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
-
 class SNLITaskDataset(AbstractTaskDataset):
     name = "snli"
     label_list = ["0", "1", "2"]
@@ -276,7 +269,6 @@ class SNLITaskDataset(AbstractTaskDataset):
         src_texts = ["premise:", example["premise"], "hypothesis:", example["hypothesis"]]
         tgt_texts = [str(example["label"])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class IWSLT2017RONL(AbstractTaskDataset):
     name = "iwslt2017-ro-nl"
@@ -294,7 +286,6 @@ class IWSLT2017RONL(AbstractTaskDataset):
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix,
                                    prefix="Translate Romanian to Dutch")
 
-
 class IWSLT2017ENNL(AbstractTaskDataset):
     name = "iwslt2017-en-nl"
     task_specific_config = {'max_length': 300, 'num_beams': 4}
@@ -310,7 +301,6 @@ class IWSLT2017ENNL(AbstractTaskDataset):
         tgt_texts = [example['translation']["nl"]]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix,
                                    prefix="Translate English to Dutch")
-
 
 class WMT16ENROTaskDataset(AbstractTaskDataset):
     name = "wmt16-en-ro"
@@ -328,7 +318,6 @@ class WMT16ENROTaskDataset(AbstractTaskDataset):
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix,
                                    prefix="Translate English to Romanian")
 
-
 class WMT16ROENTaskDataset(AbstractTaskDataset):
     name = "wmt16-ro-en"
     task_specific_config = {'max_length': 300, 'num_beams': 4}
@@ -344,7 +333,6 @@ class WMT16ROENTaskDataset(AbstractTaskDataset):
         tgt_texts = [example['translation']["en"]]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix,
                                    prefix="Translate Romanian to English")
-
 
 class WMT16ENCSTaskDataset(AbstractTaskDataset):
     name = "wmt16-en-cs"
@@ -362,7 +350,6 @@ class WMT16ENCSTaskDataset(AbstractTaskDataset):
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix,
                                    prefix="Translate English to Czech")
 
-
 class WMT16ENFITaskDataset(AbstractTaskDataset):
     name = "wmt16-en-fi"
     task_specific_config = {'max_length': 300, 'num_beams': 4}
@@ -379,7 +366,6 @@ class WMT16ENFITaskDataset(AbstractTaskDataset):
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix,
                                    prefix="Translate English to Finnish")
 
-
 class WMT14HIENTaskDataset(AbstractTaskDataset):
     name = "wmt14-hi-en"
     task_specific_config = {'max_length': 300, 'num_beams': 4}
@@ -395,7 +381,6 @@ class WMT14HIENTaskDataset(AbstractTaskDataset):
         tgt_texts = [example['translation']["hi"]]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix,
                                    prefix="Translate English to Hindi")
-
 
 class TRECTaskDataset(AbstractTaskDataset):
     name = "trec"
@@ -414,7 +399,6 @@ class TRECTaskDataset(AbstractTaskDataset):
         tgt_texts = [str(example['label-coarse'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
-
 class YelpPolarityTaskDataset(AbstractTaskDataset):
     name = "yelp_polarity"
     label_list = ["0", "1"]
@@ -432,7 +416,6 @@ class YelpPolarityTaskDataset(AbstractTaskDataset):
         src_texts = ["sentence:", example['text']]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class ScitailTaskDataset(AbstractTaskDataset):
     name = "scitail"
@@ -454,7 +437,6 @@ class ScitailTaskDataset(AbstractTaskDataset):
         tgt_texts = [str(self.map_label(example['gold_label']))]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
-
 class MRPCTaskDataset(AbstractTaskDataset):
     name = "mrpc"
     label_list = ["0", "1"]
@@ -465,15 +447,15 @@ class MRPCTaskDataset(AbstractTaskDataset):
                            "test": "validation"}
 
     def load_dataset(self, split):
+        print(split)
         return datasets.load_dataset('glue', 'mrpc',
-                                     split=split, script_version="master")
+                                     split=split)
 
     def preprocessor(self, example, add_prefix=True):
         src_texts = ["sentence1:", example['sentence1'],
                      "sentence2:", example["sentence2"]]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class COLATaskDataset(AbstractTaskDataset):
     name = "cola"
@@ -486,13 +468,12 @@ class COLATaskDataset(AbstractTaskDataset):
 
     def load_dataset(self, split):
         return datasets.load_dataset('glue', 'cola',
-                                     split=split, script_version="master")
+                                     split=split)
 
     def preprocessor(self, example, add_prefix=True):
         src_texts = ["sentence:", example['sentence']]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class SST2TaskDataset(AbstractTaskDataset):
     name = "sst2"
@@ -505,13 +486,12 @@ class SST2TaskDataset(AbstractTaskDataset):
 
     def load_dataset(self, split):
         return datasets.load_dataset('glue', 'sst2',
-                                     split=split, script_version="master")
+                                     split=split)
 
     def preprocessor(self, example, add_prefix=True):
         src_texts = ["sentence:", example['sentence']]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class STSBTaskDataset(AbstractTaskDataset):
     name = "stsb"
@@ -524,14 +504,13 @@ class STSBTaskDataset(AbstractTaskDataset):
 
     def load_dataset(self, split):
         return datasets.load_dataset('glue', 'stsb',
-                                     split=split, script_version="master")
+                                     split=split)
 
     def preprocessor(self, example, add_prefix=True):
         src_texts = ["sentence1:", example['sentence1'],
                      "sentence2:", example["sentence2"]]
         tgt_texts = [str(round_stsb_target(example['label']))]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class QQPTaskDataset(AbstractTaskDataset):
     name = "qqp"
@@ -544,14 +523,13 @@ class QQPTaskDataset(AbstractTaskDataset):
 
     def load_dataset(self, split):
         return datasets.load_dataset('glue', 'qqp',
-                                     split=split, script_version="master")
+                                     split=split)
 
     def preprocessor(self, example, add_prefix=True):
         src_texts = ["question1:", example['question1'],
                      "question2:", example["question2"]]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class MNLITaskDataset(AbstractTaskDataset):
     name = "mnli"
@@ -563,14 +541,13 @@ class MNLITaskDataset(AbstractTaskDataset):
     metrics = [metrics.accuracy]
 
     def load_dataset(self, split):
-        return datasets.load_dataset('glue', 'mnli', split=split, script_version="master")
+        return datasets.load_dataset('glue', 'mnli', split=split)
 
     def preprocessor(self, example, add_prefix=True):
         src_texts = ["premise:", example['premise'],
                      "hypothesis", example["hypothesis"]]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class QNLITaskDataset(AbstractTaskDataset):
     name = "qnli"
@@ -582,14 +559,13 @@ class QNLITaskDataset(AbstractTaskDataset):
                            "test": "validation"}
 
     def load_dataset(self, split):
-        return datasets.load_dataset('glue', 'qnli', split=split, script_version="master")
+        return datasets.load_dataset('glue', 'qnli', split=split)
 
     def preprocessor(self, example, add_prefix=True):
         src_texts = ["question:", example['question'],
                      "sentence:", example["sentence"]]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class RTETaskDataset(AbstractTaskDataset):
     name = "rte"
@@ -602,14 +578,13 @@ class RTETaskDataset(AbstractTaskDataset):
 
     def load_dataset(self, split):
         return datasets.load_dataset('glue', 'rte',
-                                     split=split, script_version="master")
+                                     split=split)
 
     def preprocessor(self, example, add_prefix=True):
         src_texts = ["sentence1:", example['sentence1'],
                      "sentence2:", example["sentence2"]]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class WNLITaskDataset(AbstractTaskDataset):
     name = "wnli"
@@ -621,14 +596,13 @@ class WNLITaskDataset(AbstractTaskDataset):
                            "test": "validation"}
 
     def load_dataset(self, split):
-        return datasets.load_dataset('glue', 'wnli', split=split, script_version="master")
+        return datasets.load_dataset('glue', 'wnli', split=split)
 
     def preprocessor(self, example, add_prefix=True):
         src_texts = ["sentence1:", example['sentence1'],
                      "sentence2:", example["sentence2"]]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class SocialIQaTaskDataset(AbstractTaskDataset):
     name = "social_i_qa"
@@ -649,7 +623,6 @@ class SocialIQaTaskDataset(AbstractTaskDataset):
         tgt_texts = [self.label_map[example['label'].rstrip()]]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
-
 class CosmosQaTaskDataset(AbstractTaskDataset):
     name = "cosmos_qa"
     label_list = ["0", "1", "2", "3"]
@@ -668,7 +641,6 @@ class CosmosQaTaskDataset(AbstractTaskDataset):
                      "answer3:", example["answer3"]]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class WinograndeTaskDataset(AbstractTaskDataset):
     name = "winogrande"
@@ -690,7 +662,6 @@ class WinograndeTaskDataset(AbstractTaskDataset):
         tgt_texts = [str(example['answer'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
-
 class HellaSwagTaskDataset(AbstractTaskDataset):
     name = "hellaswag"
     label_list = ["0", "1", "2", "3"]
@@ -708,7 +679,6 @@ class HellaSwagTaskDataset(AbstractTaskDataset):
                      "ending3:", example["endings"][3]]
         tgt_texts = [str(example['label'])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
-
 
 class CommonsenseQaTaskDataset(AbstractTaskDataset):
     name = "commonsense_qa"
@@ -730,7 +700,195 @@ class CommonsenseQaTaskDataset(AbstractTaskDataset):
         tgt_texts = [str(self.label_map[example['answerKey']])]
         return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
+class MovieTriviaTaskDataset(AbstractTaskDataset):
+    name = 'movieTrivia'
+    metrics = [metrics.micro_f1_score]
+    split_to_data_split = {'train': 'train',
+                           'validation': 'validation',
+                           'test':'test'}
+    task_specific_config = {'max_length': 128}
+    
+    def load_dataset(self, split):
+        temp = split
+        if split == 'validation':
+            temp = 'val'
+            path = f'/l/users/jesus.ortizbarajas/Corpora/movieTrivia/downsampling/{temp}_10_1.csv'
+        elif split == 'train':
+            path = f'/l/users/jesus.ortizbarajas/Corpora/movieTrivia/downsampling/{temp}_10_1.csv'
+        else:
+            path = f'/l/users/jesus.ortizbarajas/Corpora/movieTrivia/{temp}.csv'
+        
+        df = pd.read_csv(path, encoding='utf8')
+        return datasets.Dataset.from_pandas(df)
+        
+    def preprocessor(self, example, add_prefix=True):
+        src_texts = [example['sentT_text']]
+        tgt_texts = [example['sentT_labels']]
+        return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
 
+class MovieTaskDataset(AbstractTaskDataset):
+    name = 'movie'
+    metrics = [metrics.micro_f1_score]
+    split_to_data_split = {'train': 'train',
+                           'validation': 'validation',
+                           'test':'test'}
+    task_specific_config = {'max_length': 128}
+    
+    def load_dataset(self, split):
+        temp = split
+        if split == 'validation':
+            temp = 'val'
+            path = f'/l/users/jesus.ortizbarajas/Corpora/movie/downsampling/{temp}_10_1.csv'
+        elif split == 'train':
+            path = f'/l/users/jesus.ortizbarajas/Corpora/movie/downsampling/{temp}_10_1.csv'
+        else:
+            path = f'/l/users/jesus.ortizbarajas/Corpora/movie/{temp}.csv'
+        
+        #path = f'/l/users/jesus.ortizbarajas/Corpora/movie/{temp}.csv'
+        df = pd.read_csv(path, encoding='utf8')
+        return datasets.Dataset.from_pandas(df)
+    
+    def preprocessor(self, example, add_prefix=True):
+        src_texts = [example['sentT_text']]
+        tgt_texts = [example['sentT_labels']]
+        return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
+
+class RestaurantTaskDataset(AbstractTaskDataset):
+    name = 'restaurant'
+    metrics = [metrics.micro_f1_score]
+    split_to_data_split = {'train': 'train',
+                           'validation': 'validation',
+                           'test':'test'}
+    task_specific_config = {'max_length': 128}
+    
+    def load_dataset(self, split):
+        temp = split
+        if split == 'validation':
+            temp = 'val'
+            path = f'/l/users/jesus.ortizbarajas/Corpora/restaurant/downsampling/{temp}_10_1.csv'
+        elif split == 'train':
+            path = f'/l/users/jesus.ortizbarajas/Corpora/restaurant/downsampling/{temp}_10_1.csv'
+        else:
+            path = f'/l/users/jesus.ortizbarajas/Corpora/restaurant/{temp}.csv'
+        
+        #path = f'/l/users/jesus.ortizbarajas/Corpora/restaurant/{temp}.csv'
+        df = pd.read_csv(path, encoding='utf8')
+        return datasets.Dataset.from_pandas(df)
+    
+    def preprocessor(self, example, add_prefix=True):
+        src_texts = [example['sentT_text']]
+        tgt_texts = [example['sentT_labels']]
+        return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
+
+class ATISTaskDataset(AbstractTaskDataset):
+    name = 'atis'
+    metrics = [metrics.micro_f1_score]
+    split_to_data_split = {'train': 'train',
+                           'validation': 'validation',
+                           'test':'test'}
+    task_specific_config = {'max_length': 128}
+    
+    def load_dataset(self, split):
+        temp = split
+        if split == 'validation':
+            temp = 'val'
+            path = f'/l/users/jesus.ortizbarajas/Corpora/atis/downsampling/{temp}_10_1.csv'
+        elif split == 'train':
+            path = f'/l/users/jesus.ortizbarajas/Corpora/atis/downsampling/{temp}_10_1.csv'
+        else:
+            path = f'/l/users/jesus.ortizbarajas/Corpora/atis/{temp}.csv'
+        
+        #path = f'/l/users/jesus.ortizbarajas/Corpora/atis/{temp}.csv'
+        df = pd.read_csv(path, encoding='utf8')
+        return datasets.Dataset.from_pandas(df)
+    
+    def preprocessor(self, example, add_prefix=True):
+        src_texts = [example['sentT_text']]
+        tgt_texts = [example['sentT_labels']]
+        return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
+
+class SNIPSTaskDataset(AbstractTaskDataset):
+    name = 'snips'
+    metrics = [metrics.micro_f1_score]
+    split_to_data_split = {'train': 'train',
+                           'validation': 'validation',
+                           'test':'test'}
+    task_specific_config = {'max_length': 128}
+    
+    def load_dataset(self, split):
+        temp = split
+        if split == 'validation':
+            temp = 'val'
+            path = f'/l/users/jesus.ortizbarajas/Corpora/snips/downsampling/{temp}_10_1.csv'
+        elif split == 'train':
+            path = f'/l/users/jesus.ortizbarajas/Corpora/snips/downsampling/{temp}_10_1.csv'
+        else:
+            path = f'/l/users/jesus.ortizbarajas/Corpora/snips/{temp}.csv'
+        
+        #path = f'/l/users/jesus.ortizbarajas/Corpora/snips/{temp}.csv'
+        df = pd.read_csv(path, encoding='utf8')
+        return datasets.Dataset.from_pandas(df)
+    
+    def preprocessor(self, example, add_prefix=True):
+        src_texts = [example['sentT_text']]
+        tgt_texts = [example['sentT_labels']]
+        return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
+
+class MTodTaskDataset(AbstractTaskDataset):
+    name = 'mtod'
+    metrics = [metrics.micro_f1_score]
+    split_to_data_split = {'train': 'train',
+                           'validation': 'validation',
+                           'test':'test'}
+    task_specific_config = {'max_length': 128}
+    
+    def load_dataset(self, split):
+        temp = split
+        if split == 'validation':
+            temp = 'val'
+            path = f'/l/users/jesus.ortizbarajas/Corpora/mTod/downsampling/{temp}_10_1.csv'
+        elif split == 'train':
+            path = f'/l/users/jesus.ortizbarajas/Corpora/mTod/downsampling/{temp}_10_1.csv'
+        else:
+            path = f'/l/users/jesus.ortizbarajas/Corpora/mTod/{temp}.csv'
+        
+        #path = f'/l/users/jesus.ortizbarajas/Corpora/mTod/{temp}.csv'
+        df = pd.read_csv(path, encoding='utf8')
+        return datasets.Dataset.from_pandas(df)
+
+    def preprocessor(self, example, add_prefix=True):
+        src_texts = [example['sentT_text']]
+        tgt_texts = [example['sentT_labels']]
+        return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
+
+class MTopTaskDataset(AbstractTaskDataset):
+    name = 'mtop'
+    metrics = [metrics.micro_f1_score]
+    split_to_data_split = {'train': 'train',
+                           'validation': 'validation',
+                           'test':'test'}
+    task_specific_config = {'max_length': 128}
+    
+    def load_dataset(self, split):
+        temp = split
+        if split == 'validation':
+            temp = 'val'
+            path = f'/l/users/jesus.ortizbarajas/Corpora/mTop/downsampling/{temp}_10_1.csv'
+        elif split == 'train':
+            path = f'/l/users/jesus.ortizbarajas/Corpora/mTop/downsampling/{temp}_10_1.csv'
+        else:
+            path = f'/l/users/jesus.ortizbarajas/Corpora/mTop/{temp}.csv'
+        
+        #path = f'/l/users/jesus.ortizbarajas/Corpora/mTop/{temp}.csv'
+        df = pd.read_csv(path, encoding='utf8')
+        return datasets.Dataset.from_pandas(df)
+    
+    def preprocessor(self, example, add_prefix=True):
+        src_texts = [example['sentT_text']]
+        tgt_texts = [example['sentT_labels']]
+        return self.seq2seq_format(src_texts, tgt_texts, add_prefix)
+
+    
 TASK_MAPPING = OrderedDict([
     ('superglue-boolq', SuperGLUEBoolQTaskDataset),
     ('superglue-cb', SuperGLUECBTaskDataset),
@@ -763,9 +921,15 @@ TASK_MAPPING = OrderedDict([
     ('winogrande', WinograndeTaskDataset),
     ('hellaswag', HellaSwagTaskDataset),
     ('commonsense_qa', CommonsenseQaTaskDataset),
-    ('sick', SickTaskDataset)]
+    ('sick', SickTaskDataset),
+    ('movieTrivia', MovieTriviaTaskDataset),
+    ('movie', MovieTaskDataset),
+    ('restaurant', RestaurantTaskDataset),
+    ('atis', ATISTaskDataset),
+    ('snips', SNIPSTaskDataset),
+    ('mtod', MTodTaskDataset),
+    ('mtop', MTopTaskDataset)]
 )
-
 
 class AutoTask:
     @classmethod

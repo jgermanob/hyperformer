@@ -1,0 +1,1648 @@
+05/31/2024 12:26:43 - WARNING - __main__ -   Process rank: 2, device: cuda:2, n_gpu: 1, distributed training: True, 16-bits training: False
+05/31/2024 12:26:43 - WARNING - __main__ -   Process rank: 3, device: cuda:3, n_gpu: 1, distributed training: True, 16-bits training: False
+05/31/2024 12:26:43 - WARNING - __main__ -   Process rank: 1, device: cuda:1, n_gpu: 1, distributed training: True, 16-bits training: False
+05/31/2024 12:26:43 - WARNING - __main__ -   Process rank: 0, device: cuda:0, n_gpu: 1, distributed training: True, 16-bits training: False
+05/31/2024 12:26:43 - INFO - __main__ -   Training/evaluation parameters Seq2SeqTrainingArguments(output_dir='outputs/hyperformer_alqvca_v2++/', overwrite_output_dir=True, do_train=True, do_eval=True, do_predict=False, evaluate_during_training=False, evaluation_strategy=<EvaluationStrategy.NO: 'no'>, prediction_loss_only=False, per_device_train_batch_size=32, per_device_eval_batch_size=32, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=0.0003, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100, max_steps=65536, warmup_steps=500, logging_dir='runs/May31_12-26-36_gpu-15', logging_first_step=True, logging_steps=200, save_steps=1000, save_total_limit=1, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=0, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=1000, dataloader_num_workers=0, past_index=-1, run_name='outputs/hyperformer_alqvca_v2++/', disable_tqdm=True, remove_unused_columns=True, label_names=None, load_best_model_at_end=True, metric_for_best_model='loss', greater_is_better=True, label_smoothing=0.1, predict_with_generate=True, adafactor=False, encoder_layerdrop=None, decoder_layerdrop=None, dropout=None, attention_dropout=None, lr_scheduler='linear', temperature=10, train_adapters=True, do_test=True, eval_output_dir=None, generate_classifier_weights=False, optimize_from_scratch=False, optimize_from_scratch_with_loading_model=False, split_validation_test=True, print_num_parameters=True, compute_memory=False, compute_time=False)
+05/31/2024 12:26:44 - WARNING - __main__ -   model path loaded from : t5-base
+05/31/2024 12:26:44 - WARNING - __main__ -   model path loaded from : t5-base
+05/31/2024 12:26:44 - WARNING - __main__ -   model path loaded from : t5-base
+05/31/2024 12:26:44 - WARNING - __main__ -   model path loaded from : t5-base
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+Some weights of T5ForConditionalGeneration were not initialized from the model checkpoint at t5-base and are newly initialized: ['task_embedding_controller.task_to_embeddings.movieTrivia', 'task_embedding_controller.task_to_embeddings.movie', 'task_embedding_controller.task_to_embeddings.restaurant', 'task_embedding_controller.task_to_embeddings.atis', 'task_embedding_controller.task_to_embeddings.snips', 'task_embedding_controller.task_to_embeddings.mtod', 'task_embedding_controller.task_to_embeddings.mtop', 'encoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'encoder.adapter_layers_hyper_net.adapters_block_type.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'encoder.adapter_layers_hyper_net.LayerNorm.weight', 'encoder.adapter_layers_hyper_net.LayerNorm.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias', 'decoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'decoder.adapter_layers_hyper_net.adapters_block_type.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'decoder.adapter_layers_hyper_net.LayerNorm.weight', 'decoder.adapter_layers_hyper_net.LayerNorm.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of T5ForConditionalGeneration were not initialized from the model checkpoint at t5-base and are newly initialized: ['task_embedding_controller.task_to_embeddings.movieTrivia', 'task_embedding_controller.task_to_embeddings.movie', 'task_embedding_controller.task_to_embeddings.restaurant', 'task_embedding_controller.task_to_embeddings.atis', 'task_embedding_controller.task_to_embeddings.snips', 'task_embedding_controller.task_to_embeddings.mtod', 'task_embedding_controller.task_to_embeddings.mtop', 'encoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'encoder.adapter_layers_hyper_net.adapters_block_type.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'encoder.adapter_layers_hyper_net.LayerNorm.weight', 'encoder.adapter_layers_hyper_net.LayerNorm.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias', 'decoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'decoder.adapter_layers_hyper_net.adapters_block_type.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'decoder.adapter_layers_hyper_net.LayerNorm.weight', 'decoder.adapter_layers_hyper_net.LayerNorm.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+train
+Some weights of T5ForConditionalGeneration were not initialized from the model checkpoint at t5-base and are newly initialized: ['task_embedding_controller.task_to_embeddings.movieTrivia', 'task_embedding_controller.task_to_embeddings.movie', 'task_embedding_controller.task_to_embeddings.restaurant', 'task_embedding_controller.task_to_embeddings.atis', 'task_embedding_controller.task_to_embeddings.snips', 'task_embedding_controller.task_to_embeddings.mtod', 'task_embedding_controller.task_to_embeddings.mtop', 'encoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'encoder.adapter_layers_hyper_net.adapters_block_type.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'encoder.adapter_layers_hyper_net.LayerNorm.weight', 'encoder.adapter_layers_hyper_net.LayerNorm.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias', 'decoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'decoder.adapter_layers_hyper_net.adapters_block_type.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'decoder.adapter_layers_hyper_net.LayerNorm.weight', 'decoder.adapter_layers_hyper_net.LayerNorm.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+Some weights of T5ForConditionalGeneration were not initialized from the model checkpoint at t5-base and are newly initialized: ['task_embedding_controller.task_to_embeddings.movieTrivia', 'task_embedding_controller.task_to_embeddings.movie', 'task_embedding_controller.task_to_embeddings.restaurant', 'task_embedding_controller.task_to_embeddings.atis', 'task_embedding_controller.task_to_embeddings.snips', 'task_embedding_controller.task_to_embeddings.mtod', 'task_embedding_controller.task_to_embeddings.mtop', 'encoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'encoder.adapter_layers_hyper_net.adapters_block_type.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'encoder.adapter_layers_hyper_net.LayerNorm.weight', 'encoder.adapter_layers_hyper_net.LayerNorm.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias', 'decoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'decoder.adapter_layers_hyper_net.adapters_block_type.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'decoder.adapter_layers_hyper_net.LayerNorm.weight', 'decoder.adapter_layers_hyper_net.LayerNorm.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+05/31/2024 12:26:50 - INFO - __main__ -   T5ForConditionalGeneration(
+  (task_embedding_controller): TaskEmbeddingController(
+    (task_to_embeddings): ParameterDict(
+        (movieTrivia): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (movie): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (restaurant): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (atis): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (snips): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (mtod): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (mtop): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+    )
+  )
+  (shared): Embedding(32128, 768)
+  (encoder): T5Stack(
+    (embed_tokens): Embedding(32128, 768)
+    (block): ModuleList(
+      (0): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (1): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (2): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (3): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (4): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (5): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (6): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (7): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (8): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (9): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (10): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (11): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (adapter_layers_hyper_net): AdapterLayersOneHyperNetController(
+      (layer_id_embeddings): Embedding(12, 64)
+      (adapters_block_type): Embedding(6, 64)
+      (task_hypernet): TaskHyperNet(
+        (task_embeding_generator): Sequential(
+          (0): Linear(in_features=192, out_features=128, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=128, out_features=64, bias=True)
+        )
+      )
+      (LayerNorm): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+      (up_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=768, bias=True)
+        )
+      )
+      (down_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=24, bias=True)
+        )
+      )
+      (lora_a_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (lora_b_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (post_layernorm_hypernet): LayerNormHyperNet(
+        (weight_generator): Linear(in_features=64, out_features=768, bias=True)
+        (bias_generator): Linear(in_features=64, out_features=768, bias=True)
+      )
+    )
+    (final_layer_norm): T5LayerNorm()
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (decoder): T5Stack(
+    (embed_tokens): Embedding(32128, 768)
+    (block): ModuleList(
+      (0): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (1): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (2): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (3): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (4): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (5): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (6): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (7): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (8): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (9): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (10): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (11): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (meta_lora): MetaLoRALayer()
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (adapter_layers_hyper_net): AdapterLayersOneHyperNetController(
+      (layer_id_embeddings): Embedding(12, 64)
+      (adapters_block_type): Embedding(6, 64)
+      (task_hypernet): TaskHyperNet(
+        (task_embeding_generator): Sequential(
+          (0): Linear(in_features=192, out_features=128, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=128, out_features=64, bias=True)
+        )
+      )
+      (LayerNorm): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+      (up_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=768, bias=True)
+        )
+      )
+      (down_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=24, bias=True)
+        )
+      )
+      (lora_a_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (lora_b_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (post_layernorm_hypernet): LayerNormHyperNet(
+        (weight_generator): Linear(in_features=64, out_features=768, bias=True)
+        (bias_generator): Linear(in_features=64, out_features=768, bias=True)
+      )
+    )
+    (final_layer_norm): T5LayerNorm()
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (lm_head): Linear(in_features=768, out_features=32128, bias=False)
+)
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.movieTrivia
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.movie
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.restaurant
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.atis
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.snips
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.mtod
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.mtop
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.0.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.0.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.1.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.1.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.2.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.2.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.3.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.3.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.4.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.4.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.5.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.5.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.6.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.6.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.7.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.7.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.8.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.8.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.9.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.9.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.10.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.10.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.11.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.block.11.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.layer_id_embeddings.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.adapters_block_type.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.LayerNorm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.LayerNorm.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name encoder.final_layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.0.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.0.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.0.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.1.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.1.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.1.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.2.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.2.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.2.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.3.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.3.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.3.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.4.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.4.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.4.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.5.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.5.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.5.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.6.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.6.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.6.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.7.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.7.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.7.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.8.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.8.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.8.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.9.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.9.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.9.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.10.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.10.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.10.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.11.layer.0.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.11.layer.1.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.block.11.layer.2.layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.layer_id_embeddings.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.adapters_block_type.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.LayerNorm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.LayerNorm.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.lora_a_hyper_net.weight_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.lora_b_hyper_net.weight_generator.0.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias
+05/31/2024 12:26:50 - INFO - __main__ -   Parameter name decoder.final_layer_norm.weight
+05/31/2024 12:26:50 - INFO - __main__ -   Total trainable parameters 6784368
+05/31/2024 12:26:50 - INFO - __main__ -   Total parameters 229640688
+train
+train
+train
+  0%|          | 0/7034 [00:00<?, ?ex/s]  0%|          | 0/7034 [00:00<?, ?ex/s]  0%|          | 0/7034 [00:00<?, ?ex/s]  0%|          | 0/7034 [00:00<?, ?ex/s] 34%|███▍      | 2391/7034 [00:00<00:00, 23909.45ex/s] 32%|███▏      | 2223/7034 [00:00<00:00, 22223.24ex/s] 35%|███▌      | 2492/7034 [00:00<00:00, 24908.62ex/s] 40%|████      | 2836/7034 [00:00<00:00, 28356.24ex/s] 78%|███████▊  | 5504/7034 [00:00<00:00, 25696.03ex/s] 75%|███████▍  | 5274/7034 [00:00<00:00, 24193.20ex/s] 74%|███████▍  | 5238/7034 [00:00<00:00, 25622.54ex/s] 84%|████████▍ | 5923/7034 [00:00<00:00, 29065.65ex/s]100%|██████████| 7034/7034 [00:00<00:00, 29577.74ex/s]
+100%|██████████| 7034/7034 [00:00<00:00, 28073.62ex/s]
+100%|██████████| 7034/7034 [00:00<00:00, 27098.60ex/s]
+100%|██████████| 7034/7034 [00:00<00:00, 27006.67ex/s]
+  0%|          | 0/8797 [00:00<?, ?ex/s]  0%|          | 0/8797 [00:00<?, ?ex/s]  0%|          | 0/8797 [00:00<?, ?ex/s]  0%|          | 0/8797 [00:00<?, ?ex/s] 36%|███▌      | 3129/8797 [00:00<00:00, 31283.91ex/s] 35%|███▍      | 3047/8797 [00:00<00:00, 30468.58ex/s] 36%|███▌      | 3159/8797 [00:00<00:00, 31587.54ex/s] 35%|███▍      | 3066/8797 [00:00<00:00, 30652.50ex/s] 71%|███████   | 6234/8797 [00:00<00:00, 31212.23ex/s] 69%|██████▉   | 6108/8797 [00:00<00:00, 30509.74ex/s] 72%|███████▏  | 6308/8797 [00:00<00:00, 31555.40ex/s] 70%|██████▉   | 6150/8797 [00:00<00:00, 30706.27ex/s]100%|██████████| 8797/8797 [00:00<00:00, 31550.39ex/s]
+100%|██████████| 8797/8797 [00:00<00:00, 31200.59ex/s]
+100%|██████████| 8797/8797 [00:00<00:00, 30595.20ex/s]
+100%|██████████| 8797/8797 [00:00<00:00, 30276.32ex/s]
+  0%|          | 0/6894 [00:00<?, ?ex/s]  0%|          | 0/6894 [00:00<?, ?ex/s]  0%|          | 0/6894 [00:00<?, ?ex/s]  0%|          | 0/6894 [00:00<?, ?ex/s] 10%|▉         | 660/6894 [00:00<00:00, 6596.75ex/s]  9%|▉         | 605/6894 [00:00<00:01, 6048.65ex/s] 12%|█▏        | 822/6894 [00:00<00:00, 8219.03ex/s] 10%|█         | 710/6894 [00:00<00:00, 7098.59ex/s] 51%|█████     | 3512/6894 [00:00<00:00, 8573.95ex/s] 48%|████▊     | 3337/6894 [00:00<00:00, 7891.83ex/s] 56%|█████▌    | 3877/6894 [00:00<00:00, 10527.32ex/s] 53%|█████▎    | 3680/6894 [00:00<00:00, 9198.54ex/s]100%|██████████| 6894/6894 [00:00<00:00, 23131.32ex/s]
+ 97%|█████████▋| 6665/6894 [00:00<00:00, 10969.82ex/s] 92%|█████████▏| 6350/6894 [00:00<00:00, 10136.09ex/s] 97%|█████████▋| 6705/6894 [00:00<00:00, 11625.52ex/s]100%|██████████| 6894/6894 [00:00<00:00, 22428.77ex/s]
+100%|██████████| 6894/6894 [00:00<00:00, 22505.20ex/s]
+100%|██████████| 6894/6894 [00:00<00:00, 21684.43ex/s]
+  0%|          | 0/4478 [00:00<?, ?ex/s]  0%|          | 0/4478 [00:00<?, ?ex/s]  0%|          | 0/4478 [00:00<?, ?ex/s]  0%|          | 0/4478 [00:00<?, ?ex/s] 68%|██████▊   | 3058/4478 [00:00<00:00, 30577.62ex/s] 69%|██████▊   | 3077/4478 [00:00<00:00, 30764.89ex/s] 69%|██████▉   | 3082/4478 [00:00<00:00, 30817.38ex/s]100%|██████████| 4478/4478 [00:00<00:00, 30711.62ex/s]
+ 62%|██████▏   | 2794/4478 [00:00<00:00, 27930.57ex/s]100%|██████████| 4478/4478 [00:00<00:00, 30439.22ex/s]
+100%|██████████| 4478/4478 [00:00<00:00, 30630.39ex/s]
+100%|██████████| 4478/4478 [00:00<00:00, 28988.16ex/s]
+  0%|          | 0/13084 [00:00<?, ?ex/s]  0%|          | 0/13084 [00:00<?, ?ex/s]  0%|          | 0/13084 [00:00<?, ?ex/s]  0%|          | 0/13084 [00:00<?, ?ex/s] 19%|█▉        | 2469/13084 [00:00<00:00, 24689.14ex/s] 23%|██▎       | 3024/13084 [00:00<00:00, 30237.15ex/s] 19%|█▉        | 2508/13084 [00:00<00:00, 25074.28ex/s] 24%|██▎       | 3099/13084 [00:00<00:00, 30987.89ex/s] 42%|████▏     | 5520/13084 [00:00<00:00, 26187.94ex/s] 46%|████▌     | 6020/13084 [00:00<00:00, 30152.56ex/s] 43%|████▎     | 5570/13084 [00:00<00:00, 26513.91ex/s] 47%|████▋     | 6192/13084 [00:00<00:00, 30969.22ex/s] 63%|██████▎   | 8295/13084 [00:00<00:00, 26636.68ex/s] 67%|██████▋   | 8708/13084 [00:00<00:00, 29087.13ex/s] 64%|██████▍   | 8344/13084 [00:00<00:00, 26866.08ex/s] 69%|██████▉   | 9065/13084 [00:00<00:00, 30257.93ex/s] 87%|████████▋ | 11347/13084 [00:00<00:00, 27693.01ex/s] 85%|████████▌ | 11135/13084 [00:00<00:00, 27168.59ex/s] 84%|████████▍ | 11000/13084 [00:00<00:00, 26882.76ex/s] 91%|█████████▏| 11945/13084 [00:00<00:00, 29804.10ex/s]100%|██████████| 13084/13084 [00:00<00:00, 29919.43ex/s]
+100%|██████████| 13084/13084 [00:00<00:00, 28604.62ex/s]
+100%|██████████| 13084/13084 [00:00<00:00, 28272.70ex/s]
+100%|██████████| 13084/13084 [00:00<00:00, 27874.01ex/s]
+  0%|          | 0/30521 [00:00<?, ?ex/s]  0%|          | 0/30521 [00:00<?, ?ex/s]  0%|          | 0/30521 [00:00<?, ?ex/s]  0%|          | 0/30521 [00:00<?, ?ex/s] 10%|█         | 3162/30521 [00:00<00:00, 31612.12ex/s] 10%|█         | 3117/30521 [00:00<00:00, 31167.95ex/s] 10%|█         | 3074/30521 [00:00<00:00, 30736.88ex/s] 10%|█         | 3082/30521 [00:00<00:00, 30818.05ex/s] 21%|██        | 6327/30521 [00:00<00:00, 31620.54ex/s] 20%|██        | 6227/30521 [00:00<00:00, 31145.13ex/s] 20%|██        | 6146/30521 [00:00<00:00, 30731.43ex/s] 20%|██        | 6138/30521 [00:00<00:00, 30738.64ex/s] 31%|███       | 9483/30521 [00:00<00:00, 31600.51ex/s] 31%|███       | 9354/30521 [00:00<00:00, 31180.78ex/s] 30%|██▉       | 9082/30521 [00:00<00:00, 30306.09ex/s] 30%|███       | 9191/30521 [00:00<00:00, 30672.89ex/s] 42%|████▏     | 12672/30521 [00:00<00:00, 31684.70ex/s] 41%|████      | 12497/30521 [00:00<00:00, 31252.85ex/s] 40%|███▉      | 12182/30521 [00:00<00:00, 30510.39ex/s] 40%|████      | 12269/30521 [00:00<00:00, 30702.30ex/s] 52%|█████▏    | 15808/30521 [00:00<00:00, 31586.11ex/s] 51%|█████     | 15639/30521 [00:00<00:00, 31302.06ex/s] 50%|████▉     | 15247/30521 [00:00<00:00, 30549.66ex/s] 50%|█████     | 15364/30521 [00:00<00:00, 30775.72ex/s] 62%|██████▏   | 18865/30521 [00:00<00:00, 31271.63ex/s] 62%|██████▏   | 18787/30521 [00:00<00:00, 31354.19ex/s] 60%|██████    | 18364/30521 [00:00<00:00, 30731.08ex/s] 60%|██████    | 18440/30521 [00:00<00:00, 30769.93ex/s] 72%|███████▏  | 22042/30521 [00:00<00:00, 31418.50ex/s] 72%|███████▏  | 21931/30521 [00:00<00:00, 31379.76ex/s] 70%|███████   | 21477/30521 [00:00<00:00, 30848.27ex/s] 71%|███████   | 21525/30521 [00:00<00:00, 30793.04ex/s] 83%|████████▎ | 25222/30521 [00:00<00:00, 31529.96ex/s] 82%|████████▏ | 25065/30521 [00:00<00:00, 31366.37ex/s] 81%|████████  | 24602/30521 [00:00<00:00, 30966.33ex/s] 81%|████████  | 24611/30521 [00:00<00:00, 30813.08ex/s] 93%|█████████▎| 28412/30521 [00:00<00:00, 31637.36ex/s] 92%|█████████▏| 28126/30521 [00:00<00:00, 31134.24ex/s] 91%|█████████ | 27722/30521 [00:00<00:00, 31034.57ex/s] 91%|█████████ | 27708/30521 [00:00<00:00, 30859.03ex/s]100%|██████████| 30521/30521 [00:00<00:00, 31582.41ex/s]
+100%|██████████| 30521/30521 [00:00<00:00, 30774.26ex/s]
+100%|██████████| 30521/30521 [00:00<00:00, 30831.21ex/s]
+100%|██████████| 30521/30521 [00:00<00:00, 30530.63ex/s]
+  0%|          | 0/15667 [00:00<?, ?ex/s]  0%|          | 0/15667 [00:00<?, ?ex/s]  0%|          | 0/15667 [00:00<?, ?ex/s]  0%|          | 0/15667 [00:00<?, ?ex/s] 20%|██        | 3139/15667 [00:00<00:00, 31388.38ex/s] 20%|██        | 3141/15667 [00:00<00:00, 31406.14ex/s] 20%|█▉        | 3075/15667 [00:00<00:00, 30742.19ex/s] 19%|█▉        | 2978/15667 [00:00<00:00, 29773.85ex/s] 40%|███▉      | 6244/15667 [00:00<00:00, 31285.25ex/s] 40%|████      | 6293/15667 [00:00<00:00, 31437.73ex/s] 39%|███▉      | 6169/15667 [00:00<00:00, 30799.74ex/s] 39%|███▊      | 6040/15667 [00:00<00:00, 30021.32ex/s] 60%|█████▉    | 9343/15667 [00:00<00:00, 31194.77ex/s] 60%|██████    | 9429/15667 [00:00<00:00, 31414.02ex/s] 59%|█████▉    | 9239/15667 [00:00<00:00, 30769.60ex/s] 58%|█████▊    | 9124/15667 [00:00<00:00, 30261.85ex/s] 80%|███████▉  | 12487/15667 [00:00<00:00, 31265.52ex/s] 80%|████████  | 12579/15667 [00:00<00:00, 31437.66ex/s] 78%|███████▊  | 12176/15667 [00:00<00:00, 30335.03ex/s] 78%|███████▊  | 12220/15667 [00:00<00:00, 30466.83ex/s]100%|█████████▉| 15591/15667 [00:00<00:00, 31195.40ex/s]100%|██████████| 15667/15667 [00:00<00:00, 31168.20ex/s]
+100%|██████████| 15667/15667 [00:00<00:00, 31459.39ex/s]
+validation
+validation
+ 97%|█████████▋| 15151/15667 [00:00<00:00, 30156.12ex/s]  0%|          | 0/782 [00:00<?, ?ex/s]100%|██████████| 15667/15667 [00:00<00:00, 30328.07ex/s]
+validation
+ 98%|█████████▊| 15308/15667 [00:00<00:00, 30588.93ex/s]  0%|          | 0/782 [00:00<?, ?ex/s]  0%|          | 0/782 [00:00<?, ?ex/s]100%|██████████| 15667/15667 [00:00<00:00, 30622.82ex/s]
+validation
+  0%|          | 0/782 [00:00<?, ?ex/s]100%|██████████| 782/782 [00:00<00:00, 21074.87ex/s]
+100%|██████████| 782/782 [00:00<00:00, 30853.53ex/s]
+100%|██████████| 782/782 [00:00<00:00, 16707.57ex/s]
+100%|██████████| 782/782 [00:00<00:00, 18210.39ex/s]
+  0%|          | 0/978 [00:00<?, ?ex/s]  0%|          | 0/978 [00:00<?, ?ex/s]  0%|          | 0/978 [00:00<?, ?ex/s]  0%|          | 0/978 [00:00<?, ?ex/s]100%|██████████| 978/978 [00:00<00:00, 31850.28ex/s]
+100%|██████████| 978/978 [00:00<00:00, 30838.85ex/s]
+100%|██████████| 978/978 [00:00<00:00, 32151.85ex/s]
+100%|██████████| 978/978 [00:00<00:00, 31031.08ex/s]
+  0%|          | 0/766 [00:00<?, ?ex/s]  0%|          | 0/766 [00:00<?, ?ex/s]  0%|          | 0/766 [00:00<?, ?ex/s]100%|██████████| 766/766 [00:00<00:00, 24024.44ex/s]
+100%|██████████| 766/766 [00:00<00:00, 25040.04ex/s]
+100%|██████████| 766/766 [00:00<00:00, 22430.22ex/s]
+  0%|          | 0/766 [00:00<?, ?ex/s]  0%|          | 0/500 [00:00<?, ?ex/s]  0%|          | 0/500 [00:00<?, ?ex/s]  0%|          | 0/500 [00:00<?, ?ex/s]100%|██████████| 766/766 [00:00<00:00, 22605.87ex/s]
+100%|██████████| 500/500 [00:00<00:00, 29703.02ex/s]
+100%|██████████| 500/500 [00:00<00:00, 31407.66ex/s]
+100%|██████████| 500/500 [00:00<00:00, 27099.54ex/s]
+  0%|          | 0/500 [00:00<?, ?ex/s]100%|██████████| 500/500 [00:00<00:00, 26474.51ex/s]
+  0%|          | 0/700 [00:00<?, ?ex/s]  0%|          | 0/700 [00:00<?, ?ex/s]  0%|          | 0/700 [00:00<?, ?ex/s]  0%|          | 0/700 [00:00<?, ?ex/s]100%|██████████| 700/700 [00:00<00:00, 18765.26ex/s]
+100%|██████████| 700/700 [00:00<00:00, 18251.52ex/s]
+100%|██████████| 700/700 [00:00<00:00, 18133.72ex/s]
+100%|██████████| 700/700 [00:00<00:00, 18455.51ex/s]
+  0%|          | 0/4181 [00:00<?, ?ex/s]  0%|          | 0/4181 [00:00<?, ?ex/s]  0%|          | 0/4181 [00:00<?, ?ex/s]  0%|          | 0/4181 [00:00<?, ?ex/s] 75%|███████▌  | 3153/4181 [00:00<00:00, 31527.70ex/s] 75%|███████▌  | 3138/4181 [00:00<00:00, 31376.81ex/s] 74%|███████▍  | 3106/4181 [00:00<00:00, 31056.03ex/s]100%|██████████| 4181/4181 [00:00<00:00, 31450.83ex/s]
+100%|██████████| 4181/4181 [00:00<00:00, 31376.10ex/s]
+100%|██████████| 4181/4181 [00:00<00:00, 30990.84ex/s]
+ 69%|██████▉   | 2876/4181 [00:00<00:00, 28757.56ex/s]  0%|          | 0/2235 [00:00<?, ?ex/s]  0%|          | 0/2235 [00:00<?, ?ex/s]  0%|          | 0/2235 [00:00<?, ?ex/s]100%|██████████| 4181/4181 [00:00<00:00, 29141.00ex/s]
+  0%|          | 0/2235 [00:00<?, ?ex/s]100%|██████████| 2235/2235 [00:00<00:00, 27574.87ex/s]
+test
+100%|██████████| 2235/2235 [00:00<00:00, 25759.43ex/s]
+test
+100%|██████████| 2235/2235 [00:00<00:00, 24538.88ex/s]
+test
+  0%|          | 0/1953 [00:00<?, ?ex/s]  0%|          | 0/1953 [00:00<?, ?ex/s]  0%|          | 0/1953 [00:00<?, ?ex/s]100%|██████████| 2235/2235 [00:00<00:00, 30303.71ex/s]
+test
+  0%|          | 0/1953 [00:00<?, ?ex/s]100%|██████████| 1953/1953 [00:00<00:00, 31130.67ex/s]
+100%|██████████| 1953/1953 [00:00<00:00, 31265.65ex/s]
+100%|██████████| 1953/1953 [00:00<00:00, 30507.95ex/s]
+  0%|          | 0/2443 [00:00<?, ?ex/s]  0%|          | 0/2443 [00:00<?, ?ex/s]  0%|          | 0/2443 [00:00<?, ?ex/s]100%|██████████| 1953/1953 [00:00<00:00, 30468.46ex/s]
+  0%|          | 0/2443 [00:00<?, ?ex/s]100%|██████████| 2443/2443 [00:00<00:00, 31627.82ex/s]
+100%|██████████| 2443/2443 [00:00<00:00, 30782.56ex/s]
+100%|██████████| 2443/2443 [00:00<00:00, 31356.62ex/s]
+  0%|          | 0/1521 [00:00<?, ?ex/s]  0%|          | 0/1521 [00:00<?, ?ex/s]  0%|          | 0/1521 [00:00<?, ?ex/s]100%|██████████| 2443/2443 [00:00<00:00, 30821.08ex/s]
+  0%|          | 0/1521 [00:00<?, ?ex/s]100%|██████████| 1521/1521 [00:00<00:00, 30907.41ex/s]
+100%|██████████| 1521/1521 [00:00<00:00, 30292.63ex/s]
+100%|██████████| 1521/1521 [00:00<00:00, 31685.70ex/s]
+100%|██████████| 1521/1521 [00:00<00:00, 30420.61ex/s]
+  0%|          | 0/893 [00:00<?, ?ex/s]  0%|          | 0/893 [00:00<?, ?ex/s]  0%|          | 0/893 [00:00<?, ?ex/s]  0%|          | 0/893 [00:00<?, ?ex/s]100%|██████████| 893/893 [00:00<00:00, 24549.48ex/s]
+100%|██████████| 893/893 [00:00<00:00, 18441.99ex/s]
+100%|██████████| 893/893 [00:00<00:00, 18387.04ex/s]
+100%|██████████| 893/893 [00:00<00:00, 18199.24ex/s]
+  0%|          | 0/700 [00:00<?, ?ex/s]  0%|          | 0/700 [00:00<?, ?ex/s]  0%|          | 0/700 [00:00<?, ?ex/s]  0%|          | 0/700 [00:00<?, ?ex/s]100%|██████████| 700/700 [00:00<00:00, 27049.56ex/s]
+100%|██████████| 700/700 [00:00<00:00, 28199.44ex/s]
+100%|██████████| 700/700 [00:00<00:00, 16728.94ex/s]
+100%|██████████| 700/700 [00:00<00:00, 16828.86ex/s]
+  0%|          | 0/8621 [00:00<?, ?ex/s]  0%|          | 0/8621 [00:00<?, ?ex/s]  0%|          | 0/8621 [00:00<?, ?ex/s]  0%|          | 0/8621 [00:00<?, ?ex/s] 36%|███▋      | 3133/8621 [00:00<00:00, 31322.71ex/s] 37%|███▋      | 3181/8621 [00:00<00:00, 31801.61ex/s] 36%|███▌      | 3093/8621 [00:00<00:00, 30926.05ex/s] 30%|██▉       | 2563/8621 [00:00<00:00, 25626.73ex/s] 73%|███████▎  | 6268/8621 [00:00<00:00, 31329.07ex/s] 74%|███████▎  | 6352/8621 [00:00<00:00, 31773.17ex/s] 72%|███████▏  | 6191/8621 [00:00<00:00, 30940.94ex/s] 65%|██████▌   | 5631/8621 [00:00<00:00, 26958.18ex/s]100%|██████████| 8621/8621 [00:00<00:00, 31277.44ex/s]
+100%|██████████| 8621/8621 [00:00<00:00, 31794.95ex/s]
+100%|██████████| 8621/8621 [00:00<00:00, 30887.81ex/s]
+100%|█████████▉| 8605/8621 [00:00<00:00, 27735.99ex/s]100%|██████████| 8621/8621 [00:00<00:00, 28654.83ex/s]
+  0%|          | 0/4386 [00:00<?, ?ex/s]  0%|          | 0/4386 [00:00<?, ?ex/s]  0%|          | 0/4386 [00:00<?, ?ex/s]  0%|          | 0/4386 [00:00<?, ?ex/s] 71%|███████   | 3112/4386 [00:00<00:00, 31118.99ex/s] 70%|██████▉   | 3049/4386 [00:00<00:00, 30483.05ex/s] 71%|███████   | 3099/4386 [00:00<00:00, 30989.88ex/s] 70%|███████   | 3073/4386 [00:00<00:00, 30728.27ex/s]100%|██████████| 4386/4386 [00:00<00:00, 31082.30ex/s]
+100%|██████████| 4386/4386 [00:00<00:00, 31175.54ex/s]
+100%|██████████| 4386/4386 [00:00<00:00, 30717.29ex/s]
+100%|██████████| 4386/4386 [00:00<00:00, 30535.12ex/s]
+05/31/2024 12:26:56 - INFO - utils.utils -   ***** arguments metrics *****
+05/31/2024 12:26:56 - INFO - utils.utils -     adafactor = False
+05/31/2024 12:26:56 - INFO - utils.utils -     adam_beta1 = 0.9
+05/31/2024 12:26:56 - INFO - utils.utils -     adam_beta2 = 0.999
+05/31/2024 12:26:56 - INFO - utils.utils -     adam_epsilon = 1e-08
+05/31/2024 12:26:56 - INFO - utils.utils -     adapter_config_name = meta-adapter
+05/31/2024 12:26:56 - INFO - utils.utils -     adapters = None
+05/31/2024 12:26:56 - INFO - utils.utils -     add_layer_norm_after_adapter = True
+05/31/2024 12:26:56 - INFO - utils.utils -     add_layer_norm_before_adapter = False
+05/31/2024 12:26:56 - INFO - utils.utils -     attention_dropout = None
+05/31/2024 12:26:56 - INFO - utils.utils -     cache_dir = None
+05/31/2024 12:26:56 - INFO - utils.utils -     compute_memory = False
+05/31/2024 12:26:56 - INFO - utils.utils -     compute_time = False
+05/31/2024 12:26:56 - INFO - utils.utils -     conditional_layer_norm = True
+05/31/2024 12:26:56 - INFO - utils.utils -     config_name = None
+05/31/2024 12:26:56 - INFO - utils.utils -     data_seed = 42
+05/31/2024 12:26:56 - INFO - utils.utils -     dataloader_drop_last = False
+05/31/2024 12:26:56 - INFO - utils.utils -     dataloader_num_workers = 0
+05/31/2024 12:26:56 - INFO - utils.utils -     debug = False
+05/31/2024 12:26:56 - INFO - utils.utils -     decoder_layerdrop = None
+05/31/2024 12:26:56 - INFO - utils.utils -     disable_tqdm = True
+05/31/2024 12:26:56 - INFO - utils.utils -     do_eval = True
+05/31/2024 12:26:56 - INFO - utils.utils -     do_predict = False
+05/31/2024 12:26:56 - INFO - utils.utils -     do_test = True
+05/31/2024 12:26:56 - INFO - utils.utils -     do_train = True
+05/31/2024 12:26:56 - INFO - utils.utils -     dropout = None
+05/31/2024 12:26:56 - INFO - utils.utils -     efficient_unique_hyper_net = True
+05/31/2024 12:26:56 - INFO - utils.utils -     encoder_layerdrop = None
+05/31/2024 12:26:56 - INFO - utils.utils -     eval_accumulation_steps = None
+05/31/2024 12:26:56 - INFO - utils.utils -     eval_beams = 1
+05/31/2024 12:26:56 - INFO - utils.utils -     eval_output_dir = None
+05/31/2024 12:26:56 - INFO - utils.utils -     eval_steps = 1000
+05/31/2024 12:26:56 - INFO - utils.utils -     eval_tasks = ['movieTrivia', 'movie', 'restaurant', 'atis', 'snips', 'mtod', 'mtop']
+05/31/2024 12:26:56 - INFO - utils.utils -     evaluate_during_training = False
+05/31/2024 12:26:56 - INFO - utils.utils -     fp16 = False
+05/31/2024 12:26:56 - INFO - utils.utils -     fp16_opt_level = O1
+05/31/2024 12:26:56 - INFO - utils.utils -     freeze_embeds = False
+05/31/2024 12:26:56 - INFO - utils.utils -     freeze_encoder = False
+05/31/2024 12:26:56 - INFO - utils.utils -     freeze_model = False
+05/31/2024 12:26:56 - INFO - utils.utils -     freeze_model_but_lm_head = False
+05/31/2024 12:26:56 - INFO - utils.utils -     freeze_model_but_task_embeddings = False
+05/31/2024 12:26:56 - INFO - utils.utils -     generate_classifier_weights = False
+05/31/2024 12:26:56 - INFO - utils.utils -     gradient_accumulation_steps = 1
+05/31/2024 12:26:56 - INFO - utils.utils -     greater_is_better = True
+05/31/2024 12:26:56 - INFO - utils.utils -     hidden_dim = 128
+05/31/2024 12:26:56 - INFO - utils.utils -     ignore_pad_token_for_loss = True
+05/31/2024 12:26:56 - INFO - utils.utils -     label_names = None
+05/31/2024 12:26:56 - INFO - utils.utils -     label_smoothing = 0.1
+05/31/2024 12:26:56 - INFO - utils.utils -     learning_rate = 0.0003
+05/31/2024 12:26:56 - INFO - utils.utils -     load_best_model_at_end = True
+05/31/2024 12:26:56 - INFO - utils.utils -     local_rank = 0
+05/31/2024 12:26:56 - INFO - utils.utils -     logging_dir = runs/May31_12-26-36_gpu-15
+05/31/2024 12:26:56 - INFO - utils.utils -     logging_first_step = True
+05/31/2024 12:26:56 - INFO - utils.utils -     logging_steps = 200
+05/31/2024 12:26:56 - INFO - utils.utils -     lr_scheduler = linear
+05/31/2024 12:26:56 - INFO - utils.utils -     max_grad_norm = 1.0
+05/31/2024 12:26:56 - INFO - utils.utils -     max_source_length = 128
+05/31/2024 12:26:56 - INFO - utils.utils -     max_steps = 65536
+05/31/2024 12:26:56 - INFO - utils.utils -     max_target_length = 128
+05/31/2024 12:26:56 - INFO - utils.utils -     metric_for_best_model = loss
+05/31/2024 12:26:56 - INFO - utils.utils -     model_name_or_path = t5-base
+05/31/2024 12:26:56 - INFO - utils.utils -     n_test = -1
+05/31/2024 12:26:56 - INFO - utils.utils -     n_train = -1
+05/31/2024 12:26:56 - INFO - utils.utils -     n_val = -1
+05/31/2024 12:26:56 - INFO - utils.utils -     no_cuda = False
+05/31/2024 12:26:56 - INFO - utils.utils -     non_linearity = gelu_new
+05/31/2024 12:26:56 - INFO - utils.utils -     not_load_t5_checkpoint = False
+05/31/2024 12:26:56 - INFO - utils.utils -     num_train_epochs = 100
+05/31/2024 12:26:56 - INFO - utils.utils -     optimize_from_scratch = False
+05/31/2024 12:26:56 - INFO - utils.utils -     optimize_from_scratch_with_loading_model = False
+05/31/2024 12:26:56 - INFO - utils.utils -     output_dir = outputs/hyperformer_alqvca_v2++/
+05/31/2024 12:26:56 - INFO - utils.utils -     overwrite_output_dir = True
+05/31/2024 12:26:56 - INFO - utils.utils -     past_index = -1
+05/31/2024 12:26:56 - INFO - utils.utils -     per_device_eval_batch_size = 32
+05/31/2024 12:26:56 - INFO - utils.utils -     per_device_train_batch_size = 32
+05/31/2024 12:26:56 - INFO - utils.utils -     per_gpu_eval_batch_size = None
+05/31/2024 12:26:56 - INFO - utils.utils -     per_gpu_train_batch_size = None
+05/31/2024 12:26:56 - INFO - utils.utils -     predict_with_generate = True
+05/31/2024 12:26:56 - INFO - utils.utils -     prediction_loss_only = False
+05/31/2024 12:26:56 - INFO - utils.utils -     print_num_parameters = True
+05/31/2024 12:26:56 - INFO - utils.utils -     projected_task_embedding_dim = 64
+05/31/2024 12:26:56 - INFO - utils.utils -     reduction_factor = 32
+05/31/2024 12:26:56 - INFO - utils.utils -     remove_unused_columns = False
+05/31/2024 12:26:56 - INFO - utils.utils -     run_name = outputs/hyperformer_alqvca_v2++/
+05/31/2024 12:26:56 - INFO - utils.utils -     save_steps = 1000
+05/31/2024 12:26:56 - INFO - utils.utils -     save_total_limit = 1
+05/31/2024 12:26:56 - INFO - utils.utils -     seed = 42
+05/31/2024 12:26:56 - INFO - utils.utils -     split_validation_test = True
+05/31/2024 12:26:56 - INFO - utils.utils -     task_embedding_dim = 64
+05/31/2024 12:26:56 - INFO - utils.utils -     task_embeddings = None
+05/31/2024 12:26:56 - INFO - utils.utils -     task_hidden_dim = 128
+05/31/2024 12:26:56 - INFO - utils.utils -     tasks = ['movieTrivia', 'movie', 'restaurant', 'atis', 'snips', 'mtod', 'mtop']
+05/31/2024 12:26:56 - INFO - utils.utils -     temperature = 10
+05/31/2024 12:26:56 - INFO - utils.utils -     test_max_target_length = 128
+05/31/2024 12:26:56 - INFO - utils.utils -     tokenizer_name = t5-base
+05/31/2024 12:26:56 - INFO - utils.utils -     tpu_metrics_debug = False
+05/31/2024 12:26:56 - INFO - utils.utils -     tpu_num_cores = None
+05/31/2024 12:26:56 - INFO - utils.utils -     train_adapters = True
+05/31/2024 12:26:56 - INFO - utils.utils -     train_adapters_blocks = True
+05/31/2024 12:26:56 - INFO - utils.utils -     train_task_embeddings = False
+05/31/2024 12:26:56 - INFO - utils.utils -     unfreeze_layer_norms = True
+05/31/2024 12:26:56 - INFO - utils.utils -     unfreeze_lm_head = False
+05/31/2024 12:26:56 - INFO - utils.utils -     unfreeze_model = False
+05/31/2024 12:26:56 - INFO - utils.utils -     unique_hyper_net = False
+05/31/2024 12:26:56 - INFO - utils.utils -     unique_hyper_net_layer_norm = True
+05/31/2024 12:26:56 - INFO - utils.utils -     val_max_target_length = 128
+05/31/2024 12:26:56 - INFO - utils.utils -     warmup_steps = 500
+05/31/2024 12:26:56 - INFO - utils.utils -     weight_decay = 0.0
+05/31/2024 12:26:56 - INFO - third_party.trainers.t5_trainer -   ***** Running training *****
+05/31/2024 12:26:56 - INFO - third_party.trainers.t5_trainer -     Num examples = 86475
+05/31/2024 12:26:56 - INFO - third_party.trainers.t5_trainer -     Num Epochs = 98
+05/31/2024 12:26:56 - INFO - third_party.trainers.t5_trainer -     Instantaneous batch size per device = 32
+05/31/2024 12:26:56 - INFO - third_party.trainers.t5_trainer -     Total train batch size (w. parallel, distributed & accumulation) = 128
+05/31/2024 12:26:56 - INFO - third_party.trainers.t5_trainer -     Gradient Accumulation steps = 1
+05/31/2024 12:26:56 - INFO - third_party.trainers.t5_trainer -     Total optimization steps = 65536
+{'loss': 4991.9150390625, 'learning_rate': 6e-07, 'epoch': 0.0014814814814814814}
+{'loss': 2876.1734797032036, 'learning_rate': 0.00011999999999999999, 'epoch': 0.2962962962962963}
+{'loss': 1907.7296875, 'learning_rate': 0.00023999999999999998, 'epoch': 0.5925925925925926}
+{'loss': 1797.141875, 'learning_rate': 0.00029953871701826677, 'epoch': 0.8888888888888888}
+{'loss': 1652.56625, 'learning_rate': 0.0002986161510548004, 'epoch': 1.1851851851851851}
+{'loss': 1495.179375, 'learning_rate': 0.000297693585091334, 'epoch': 1.4814814814814814}
+{'loss': 1415.658125, 'learning_rate': 0.0002967710191278676, 'epoch': 1.7777777777777777}
+{'loss': 1388.29625, 'learning_rate': 0.0002958484531644012, 'epoch': 2.074074074074074}
+{'loss': 1445.575, 'learning_rate': 0.00029492588720093487, 'epoch': 2.3703703703703702}
+{'loss': 1411.16125, 'learning_rate': 0.00029400332123746847, 'epoch': 2.6666666666666665}
+{'loss': 1380.74875, 'learning_rate': 0.00029308075527400206, 'epoch': 2.962962962962963}
+{'loss': 1422.145, 'learning_rate': 0.00029215818931053566, 'epoch': 3.259259259259259}
+{'loss': 1366.4775, 'learning_rate': 0.0002912356233470693, 'epoch': 3.5555555555555554}
+{'loss': 1382.22875, 'learning_rate': 0.0002903130573836029, 'epoch': 3.851851851851852}
+{'loss': 1394.7225, 'learning_rate': 0.0002893904914201365, 'epoch': 4.148148148148148}
+{'loss': 1402.1425, 'learning_rate': 0.0002884679254566701, 'epoch': 4.444444444444445}
+{'loss': 1340.2225, 'learning_rate': 0.00028754535949320376, 'epoch': 4.7407407407407405}
+{'loss': 1330.68, 'learning_rate': 0.00028662279352973736, 'epoch': 5.037037037037037}
+{'loss': 1380.6225, 'learning_rate': 0.00028570022756627095, 'epoch': 5.333333333333333}
+{'loss': 1345.0225, 'learning_rate': 0.00028477766160280455, 'epoch': 5.62962962962963}
+{'loss': 1407.22, 'learning_rate': 0.0002838550956393382, 'epoch': 5.925925925925926}
+{'loss': 1304.36, 'learning_rate': 0.0002829325296758718, 'epoch': 6.222222222222222}
+{'loss': 1302.88, 'learning_rate': 0.0002820099637124054, 'epoch': 6.518518518518518}
+{'loss': 1413.665, 'learning_rate': 0.00028108739774893905, 'epoch': 6.814814814814815}
+{'loss': 1297.6825, 'learning_rate': 0.0002801648317854726, 'epoch': 7.111111111111111}
+{'loss': 1314.06, 'learning_rate': 0.00027924226582200625, 'epoch': 7.407407407407407}
+{'loss': 1306.8025, 'learning_rate': 0.00027831969985853984, 'epoch': 7.703703703703704}
+{'loss': 1294.6325, 'learning_rate': 0.0002773971338950735, 'epoch': 8.0}
+{'loss': 1306.9275, 'learning_rate': 0.0002764745679316071, 'epoch': 8.296296296296296}
+{'loss': 1343.3075, 'learning_rate': 0.0002755520019681407, 'epoch': 8.592592592592592}
+{'loss': 1323.305, 'learning_rate': 0.0002746294360046743, 'epoch': 8.88888888888889}
+{'loss': 1284.66, 'learning_rate': 0.00027370687004120794, 'epoch': 9.185185185185185}
+{'loss': 1291.85, 'learning_rate': 0.00027278430407774154, 'epoch': 9.481481481481481}
+{'loss': 1298.795, 'learning_rate': 0.00027186173811427514, 'epoch': 9.777777777777779}
+{'loss': 1334.535, 'learning_rate': 0.00027093917215080873, 'epoch': 10.074074074074074}
+{'loss': 1312.445, 'learning_rate': 0.0002700166061873424, 'epoch': 10.37037037037037}
+{'loss': 1317.885, 'learning_rate': 0.000269094040223876, 'epoch': 10.666666666666666}
+{'loss': 1354.095, 'learning_rate': 0.0002681714742604096, 'epoch': 10.962962962962964}
+{'loss': 1344.07, 'learning_rate': 0.0002672489082969432, 'epoch': 11.25925925925926}
+{'loss': 1294.565, 'learning_rate': 0.00026632634233347683, 'epoch': 11.555555555555555}
+{'loss': 1266.375, 'learning_rate': 0.00026540377637001043, 'epoch': 11.851851851851851}
+{'loss': 1324.785, 'learning_rate': 0.000264481210406544, 'epoch': 12.148148148148149}
+{'loss': 1309.735, 'learning_rate': 0.0002635586444430776, 'epoch': 12.444444444444445}
+{'loss': 1316.76, 'learning_rate': 0.0002626360784796113, 'epoch': 12.74074074074074}
+{'loss': 1277.635, 'learning_rate': 0.0002617135125161449, 'epoch': 13.037037037037036}
+{'loss': 1259.15, 'learning_rate': 0.0002607909465526785, 'epoch': 13.333333333333334}
+{'loss': 1328.27, 'learning_rate': 0.0002598683805892121, 'epoch': 13.62962962962963}
+{'loss': 1331.935, 'learning_rate': 0.0002589458146257457, 'epoch': 13.925925925925926}
+{'loss': 1311.88, 'learning_rate': 0.0002580232486622793, 'epoch': 14.222222222222221}
+{'loss': 1295.11, 'learning_rate': 0.00025710068269881297, 'epoch': 14.518518518518519}
+{'loss': 1329.27, 'learning_rate': 0.00025617811673534657, 'epoch': 14.814814814814815}
+{'loss': 1347.375, 'learning_rate': 0.00025525555077188017, 'epoch': 15.11111111111111}
+{'loss': 1321.165, 'learning_rate': 0.00025433298480841376, 'epoch': 15.407407407407407}
+{'loss': 1227.595, 'learning_rate': 0.0002534104188449474, 'epoch': 15.703703703703704}
+{'loss': 1356.21, 'learning_rate': 0.000252487852881481, 'epoch': 16.0}
+{'loss': 1298.145, 'learning_rate': 0.0002515652869180146, 'epoch': 16.296296296296298}
+{'loss': 1303.085, 'learning_rate': 0.0002506427209545482, 'epoch': 16.59259259259259}
+{'loss': 1314.725, 'learning_rate': 0.00024972015499108186, 'epoch': 16.88888888888889}
+{'loss': 1335.095, 'learning_rate': 0.00024879758902761546, 'epoch': 17.185185185185187}
+{'loss': 1321.145, 'learning_rate': 0.00024787502306414905, 'epoch': 17.48148148148148}
+{'loss': 1344.34, 'learning_rate': 0.00024695245710068265, 'epoch': 17.77777777777778}
+{'loss': 1253.12, 'learning_rate': 0.00024602989113721625, 'epoch': 18.074074074074073}
+{'loss': 1263.68, 'learning_rate': 0.0002451073251737499, 'epoch': 18.37037037037037}
+{'loss': 1291.12, 'learning_rate': 0.0002441847592102835, 'epoch': 18.666666666666668}
+{'loss': 1260.36, 'learning_rate': 0.00024326219324681712, 'epoch': 18.962962962962962}
+{'loss': 1293.76, 'learning_rate': 0.00024233962728335072, 'epoch': 19.25925925925926}
+{'loss': 1321.7, 'learning_rate': 0.00024141706131988435, 'epoch': 19.555555555555557}
+{'loss': 1279.81, 'learning_rate': 0.00024049449535641794, 'epoch': 19.85185185185185}
+{'loss': 1363.58, 'learning_rate': 0.00023957192939295157, 'epoch': 20.14814814814815}
+{'loss': 1287.69, 'learning_rate': 0.00023864936342948517, 'epoch': 20.444444444444443}
+{'loss': 1267.65, 'learning_rate': 0.0002377267974660188, 'epoch': 20.74074074074074}
+{'loss': 1288.57, 'learning_rate': 0.0002368042315025524, 'epoch': 21.037037037037038}
+{'loss': 1294.21, 'learning_rate': 0.00023588166553908604, 'epoch': 21.333333333333332}
+{'loss': 1271.01, 'learning_rate': 0.0002349590995756196, 'epoch': 21.62962962962963}
+{'loss': 1311.26, 'learning_rate': 0.00023403653361215326, 'epoch': 21.925925925925927}
+{'loss': 1276.26, 'learning_rate': 0.00023311396764868686, 'epoch': 22.22222222222222}
+{'loss': 1307.62, 'learning_rate': 0.00023219140168522049, 'epoch': 22.51851851851852}
+{'loss': 1345.57, 'learning_rate': 0.00023126883572175408, 'epoch': 22.814814814814813}
+{'loss': 1283.88, 'learning_rate': 0.0002303462697582877, 'epoch': 23.11111111111111}
+{'loss': 1313.34, 'learning_rate': 0.0002294237037948213, 'epoch': 23.40740740740741}
+{'loss': 1284.67, 'learning_rate': 0.00022850113783135493, 'epoch': 23.703703703703702}
+{'loss': 1330.94, 'learning_rate': 0.00022757857186788853, 'epoch': 24.0}
+{'loss': 1272.79, 'learning_rate': 0.00022665600590442215, 'epoch': 24.296296296296298}
+{'loss': 1249.84, 'learning_rate': 0.00022573343994095575, 'epoch': 24.59259259259259}
+{'loss': 1307.01, 'learning_rate': 0.00022481087397748938, 'epoch': 24.88888888888889}
+{'loss': 1246.94, 'learning_rate': 0.00022388830801402297, 'epoch': 25.185185185185187}
+{'loss': 1312.26, 'learning_rate': 0.0002229657420505566, 'epoch': 25.48148148148148}
+{'loss': 1278.37, 'learning_rate': 0.0002220431760870902, 'epoch': 25.77777777777778}
+{'loss': 1265.66, 'learning_rate': 0.00022112061012362382, 'epoch': 26.074074074074073}
+{'loss': 1304.0, 'learning_rate': 0.00022019804416015742, 'epoch': 26.37037037037037}
+{'loss': 1324.12, 'learning_rate': 0.00021927547819669104, 'epoch': 26.666666666666668}
+{'loss': 1308.9, 'learning_rate': 0.00021835291223322464, 'epoch': 26.962962962962962}
+{'loss': 1291.36, 'learning_rate': 0.0002174303462697583, 'epoch': 27.25925925925926}
+{'loss': 1395.58, 'learning_rate': 0.0002165077803062919, 'epoch': 27.555555555555557}
+{'loss': 1260.16, 'learning_rate': 0.00021558521434282552, 'epoch': 27.85185185185185}
+{'loss': 1239.49, 'learning_rate': 0.0002146626483793591, 'epoch': 28.14814814814815}
+{'loss': 1268.43, 'learning_rate': 0.00021374008241589274, 'epoch': 28.444444444444443}
+{'loss': 1275.93, 'learning_rate': 0.00021281751645242634, 'epoch': 28.74074074074074}
+{'loss': 1290.54, 'learning_rate': 0.00021189495048895996, 'epoch': 29.037037037037038}
+{'loss': 1290.99, 'learning_rate': 0.00021097238452549356, 'epoch': 29.333333333333332}
+{'loss': 1359.6, 'learning_rate': 0.00021004981856202716, 'epoch': 29.62962962962963}
+{'loss': 1320.97, 'learning_rate': 0.00020912725259856078, 'epoch': 29.925925925925927}
+{'loss': 1299.52, 'learning_rate': 0.00020820468663509438, 'epoch': 30.22222222222222}
+{'loss': 1333.74, 'learning_rate': 0.000207282120671628, 'epoch': 30.51851851851852}
+{'loss': 1269.85, 'learning_rate': 0.0002063595547081616, 'epoch': 30.814814814814813}
+{'loss': 1323.52, 'learning_rate': 0.00020543698874469523, 'epoch': 31.11111111111111}
+{'loss': 1206.71, 'learning_rate': 0.00020451442278122882, 'epoch': 31.40740740740741}
+{'loss': 1230.21, 'learning_rate': 0.00020359185681776245, 'epoch': 31.703703703703702}
+{'loss': 1306.66, 'learning_rate': 0.00020266929085429605, 'epoch': 32.0}
+{'loss': 1326.45, 'learning_rate': 0.00020174672489082967, 'epoch': 32.2962962962963}
+{'loss': 1277.48, 'learning_rate': 0.00020082415892736327, 'epoch': 32.592592592592595}
+{'loss': 1312.23, 'learning_rate': 0.00019990159296389692, 'epoch': 32.888888888888886}
+{'loss': 1236.95, 'learning_rate': 0.0001989790270004305, 'epoch': 33.18518518518518}
+{'loss': 1289.49, 'learning_rate': 0.00019805646103696414, 'epoch': 33.48148148148148}
+{'loss': 1298.15, 'learning_rate': 0.00019713389507349774, 'epoch': 33.77777777777778}
+{'loss': 1289.62, 'learning_rate': 0.00019621132911003136, 'epoch': 34.074074074074076}
+{'loss': 1229.04, 'learning_rate': 0.00019528876314656496, 'epoch': 34.370370370370374}
+{'loss': 1305.65, 'learning_rate': 0.0001943661971830986, 'epoch': 34.666666666666664}
+{'loss': 1279.71, 'learning_rate': 0.00019344363121963218, 'epoch': 34.96296296296296}
+{'loss': 1255.74, 'learning_rate': 0.0001925210652561658, 'epoch': 35.25925925925926}
+{'loss': 1282.43, 'learning_rate': 0.0001915984992926994, 'epoch': 35.55555555555556}
+{'loss': 1281.21, 'learning_rate': 0.00019067593332923303, 'epoch': 35.851851851851855}
+{'loss': 1292.19, 'learning_rate': 0.00018975336736576663, 'epoch': 36.148148148148145}
+{'loss': 1288.74, 'learning_rate': 0.00018883080140230025, 'epoch': 36.44444444444444}
+{'loss': 1264.95, 'learning_rate': 0.00018790823543883385, 'epoch': 36.74074074074074}
+{'loss': 1272.52, 'learning_rate': 0.00018698566947536748, 'epoch': 37.03703703703704}
+{'loss': 1306.18, 'learning_rate': 0.00018606310351190107, 'epoch': 37.333333333333336}
+{'loss': 1264.12, 'learning_rate': 0.0001851405375484347, 'epoch': 37.629629629629626}
+{'loss': 1328.42, 'learning_rate': 0.0001842179715849683, 'epoch': 37.925925925925924}
+{'loss': 1217.9, 'learning_rate': 0.00018329540562150192, 'epoch': 38.22222222222222}
+{'loss': 1236.74, 'learning_rate': 0.00018237283965803552, 'epoch': 38.51851851851852}
+{'loss': 1324.3, 'learning_rate': 0.00018145027369456917, 'epoch': 38.81481481481482}
+{'loss': 1304.62, 'learning_rate': 0.00018052770773110277, 'epoch': 39.111111111111114}
+{'loss': 1246.84, 'learning_rate': 0.0001796051417676364, 'epoch': 39.407407407407405}
+{'loss': 1319.06, 'learning_rate': 0.00017868257580417, 'epoch': 39.7037037037037}
+{'loss': 1259.0, 'learning_rate': 0.00017776000984070362, 'epoch': 40.0}
+{'loss': 1262.5, 'learning_rate': 0.0001768374438772372, 'epoch': 40.2962962962963}
+{'loss': 1246.18, 'learning_rate': 0.00017591487791377084, 'epoch': 40.592592592592595}
+{'loss': 1308.86, 'learning_rate': 0.00017499231195030444, 'epoch': 40.888888888888886}
+{'loss': 1227.54, 'learning_rate': 0.00017406974598683803, 'epoch': 41.18518518518518}
+{'loss': 1276.1, 'learning_rate': 0.00017314718002337166, 'epoch': 41.48148148148148}
+{'loss': 1295.14, 'learning_rate': 0.00017222461405990526, 'epoch': 41.77777777777778}
+{'loss': 1285.08, 'learning_rate': 0.00017130204809643888, 'epoch': 42.074074074074076}
+{'loss': 1309.18, 'learning_rate': 0.00017037948213297248, 'epoch': 42.370370370370374}
+{'loss': 1285.48, 'learning_rate': 0.0001694569161695061, 'epoch': 42.666666666666664}
+{'loss': 1353.62, 'learning_rate': 0.0001685343502060397, 'epoch': 42.96296296296296}
+{'loss': 1276.14, 'learning_rate': 0.00016761178424257333, 'epoch': 43.25925925925926}
+{'loss': 1251.46, 'learning_rate': 0.00016668921827910692, 'epoch': 43.55555555555556}
+{'loss': 1270.06, 'learning_rate': 0.00016576665231564055, 'epoch': 43.851851851851855}
+{'loss': 1314.02, 'learning_rate': 0.00016484408635217415, 'epoch': 44.148148148148145}
+{'loss': 1283.8, 'learning_rate': 0.00016392152038870777, 'epoch': 44.44444444444444}
+{'loss': 1251.76, 'learning_rate': 0.00016299895442524137, 'epoch': 44.74074074074074}
+{'loss': 1195.26, 'learning_rate': 0.00016207638846177502, 'epoch': 45.03703703703704}
+{'loss': 1312.32, 'learning_rate': 0.00016115382249830862, 'epoch': 45.333333333333336}
+{'loss': 1320.0, 'learning_rate': 0.00016023125653484224, 'epoch': 45.629629629629626}
+{'loss': 1308.74, 'learning_rate': 0.00015930869057137584, 'epoch': 45.925925925925924}
+{'loss': 1231.52, 'learning_rate': 0.00015838612460790946, 'epoch': 46.22222222222222}
+{'loss': 1253.36, 'learning_rate': 0.00015746355864444306, 'epoch': 46.51851851851852}
+{'loss': 1269.82, 'learning_rate': 0.0001565409926809767, 'epoch': 46.81481481481482}
+{'loss': 1247.0, 'learning_rate': 0.00015561842671751028, 'epoch': 47.111111111111114}
+{'loss': 1228.28, 'learning_rate': 0.0001546958607540439, 'epoch': 47.407407407407405}
+{'loss': 1240.72, 'learning_rate': 0.0001537732947905775, 'epoch': 47.7037037037037}
+{'loss': 1318.04, 'learning_rate': 0.00015285072882711113, 'epoch': 48.0}
+{'loss': 1291.56, 'learning_rate': 0.00015192816286364473, 'epoch': 48.2962962962963}
+{'loss': 1256.46, 'learning_rate': 0.00015100559690017835, 'epoch': 48.592592592592595}
+{'loss': 1271.76, 'learning_rate': 0.00015008303093671195, 'epoch': 48.888888888888886}
+{'loss': 1290.62, 'learning_rate': 0.00014916046497324558, 'epoch': 49.18518518518518}
+{'loss': 1251.24, 'learning_rate': 0.00014823789900977917, 'epoch': 49.48148148148148}
+{'loss': 1279.62, 'learning_rate': 0.0001473153330463128, 'epoch': 49.77777777777778}
+{'loss': 1348.42, 'learning_rate': 0.0001463927670828464, 'epoch': 50.074074074074076}
+{'loss': 1259.44, 'learning_rate': 0.00014547020111938002, 'epoch': 50.370370370370374}
+{'loss': 1264.48, 'learning_rate': 0.00014454763515591362, 'epoch': 50.666666666666664}
+{'loss': 1269.62, 'learning_rate': 0.00014362506919244724, 'epoch': 50.96296296296296}
+{'loss': 1267.92, 'learning_rate': 0.00014270250322898087, 'epoch': 51.25925925925926}
+{'loss': 1271.6, 'learning_rate': 0.00014177993726551447, 'epoch': 51.55555555555556}
+{'loss': 1276.42, 'learning_rate': 0.0001408573713020481, 'epoch': 51.851851851851855}
+{'loss': 1298.48, 'learning_rate': 0.0001399348053385817, 'epoch': 52.148148148148145}
+{'loss': 1263.36, 'learning_rate': 0.00013901223937511531, 'epoch': 52.44444444444444}
+{'loss': 1287.22, 'learning_rate': 0.0001380896734116489, 'epoch': 52.74074074074074}
+{'loss': 1256.4, 'learning_rate': 0.00013716710744818254, 'epoch': 53.03703703703704}
+{'loss': 1333.36, 'learning_rate': 0.00013624454148471613, 'epoch': 53.333333333333336}
+{'loss': 1333.88, 'learning_rate': 0.00013532197552124976, 'epoch': 53.629629629629626}
+{'loss': 1277.44, 'learning_rate': 0.00013439940955778338, 'epoch': 53.925925925925924}
+{'loss': 1255.22, 'learning_rate': 0.00013347684359431698, 'epoch': 54.22222222222222}
+{'loss': 1248.98, 'learning_rate': 0.0001325542776308506, 'epoch': 54.51851851851852}
+{'loss': 1270.94, 'learning_rate': 0.0001316317116673842, 'epoch': 54.81481481481482}
+{'loss': 1307.44, 'learning_rate': 0.00013070914570391783, 'epoch': 55.111111111111114}
+{'loss': 1287.02, 'learning_rate': 0.00012978657974045143, 'epoch': 55.407407407407405}
+{'loss': 1265.64, 'learning_rate': 0.00012886401377698505, 'epoch': 55.7037037037037}
+{'loss': 1249.56, 'learning_rate': 0.00012794144781351865, 'epoch': 56.0}
+{'loss': 1242.68, 'learning_rate': 0.00012701888185005227, 'epoch': 56.2962962962963}
+{'loss': 1302.1, 'learning_rate': 0.0001260963158865859, 'epoch': 56.592592592592595}
+{'loss': 1265.24, 'learning_rate': 0.0001251737499231195, 'epoch': 56.888888888888886}
+{'loss': 1277.02, 'learning_rate': 0.00012425118395965312, 'epoch': 57.18518518518518}
+{'loss': 1202.5, 'learning_rate': 0.00012332861799618672, 'epoch': 57.48148148148148}
+{'loss': 1297.94, 'learning_rate': 0.00012240605203272034, 'epoch': 57.77777777777778}
+{'loss': 1249.8, 'learning_rate': 0.00012148348606925395, 'epoch': 58.074074074074076}
+{'loss': 1283.46, 'learning_rate': 0.00012056092010578755, 'epoch': 58.370370370370374}
+{'loss': 1258.42, 'learning_rate': 0.00011963835414232116, 'epoch': 58.666666666666664}
+{'loss': 1256.82, 'learning_rate': 0.00011871578817885477, 'epoch': 58.96296296296296}
+{'loss': 1311.12, 'learning_rate': 0.00011779322221538839, 'epoch': 59.25925925925926}
+{'loss': 1313.26, 'learning_rate': 0.000116870656251922, 'epoch': 59.55555555555556}
+{'loss': 1249.02, 'learning_rate': 0.00011594809028845561, 'epoch': 59.851851851851855}
+{'loss': 1240.02, 'learning_rate': 0.00011502552432498922, 'epoch': 60.148148148148145}
+{'loss': 1299.26, 'learning_rate': 0.00011410295836152283, 'epoch': 60.44444444444444}
+{'loss': 1341.82, 'learning_rate': 0.00011318039239805644, 'epoch': 60.74074074074074}
+{'loss': 1284.64, 'learning_rate': 0.00011225782643459005, 'epoch': 61.03703703703704}
+{'loss': 1334.24, 'learning_rate': 0.00011133526047112368, 'epoch': 61.333333333333336}
+{'loss': 1264.66, 'learning_rate': 0.00011041269450765729, 'epoch': 61.629629629629626}
+{'loss': 1198.68, 'learning_rate': 0.0001094901285441909, 'epoch': 61.925925925925924}
+{'loss': 1266.46, 'learning_rate': 0.00010856756258072451, 'epoch': 62.22222222222222}
+{'loss': 1259.1, 'learning_rate': 0.00010764499661725812, 'epoch': 62.51851851851852}
+{'loss': 1228.48, 'learning_rate': 0.00010672243065379173, 'epoch': 62.81481481481482}
+{'loss': 1285.52, 'learning_rate': 0.00010579986469032534, 'epoch': 63.111111111111114}
+{'loss': 1254.76, 'learning_rate': 0.00010487729872685896, 'epoch': 63.407407407407405}
+{'loss': 1265.5, 'learning_rate': 0.00010395473276339257, 'epoch': 63.7037037037037}
+{'loss': 1259.52, 'learning_rate': 0.00010303216679992619, 'epoch': 64.0}
+{'loss': 1249.1, 'learning_rate': 0.0001021096008364598, 'epoch': 64.29629629629629}
+{'loss': 1290.4, 'learning_rate': 0.00010118703487299341, 'epoch': 64.5925925925926}
+{'loss': 1216.64, 'learning_rate': 0.00010026446890952703, 'epoch': 64.88888888888889}
+{'loss': 1243.48, 'learning_rate': 9.934190294606064e-05, 'epoch': 65.18518518518519}
+{'loss': 1293.3, 'learning_rate': 9.841933698259425e-05, 'epoch': 65.48148148148148}
+{'loss': 1212.42, 'learning_rate': 9.749677101912786e-05, 'epoch': 65.77777777777777}
+{'loss': 1263.2, 'learning_rate': 9.657420505566147e-05, 'epoch': 66.07407407407408}
+{'loss': 1295.34, 'learning_rate': 9.565163909219508e-05, 'epoch': 66.37037037037037}
+{'loss': 1311.32, 'learning_rate': 9.472907312872869e-05, 'epoch': 66.66666666666667}
+{'loss': 1222.5, 'learning_rate': 9.380650716526232e-05, 'epoch': 66.96296296296296}
+{'loss': 1287.76, 'learning_rate': 9.288394120179593e-05, 'epoch': 67.25925925925925}
+{'loss': 1255.54, 'learning_rate': 9.196137523832954e-05, 'epoch': 67.55555555555556}
+{'loss': 1293.84, 'learning_rate': 9.103880927486315e-05, 'epoch': 67.85185185185185}
+{'loss': 1223.22, 'learning_rate': 9.011624331139676e-05, 'epoch': 68.14814814814815}
+{'loss': 1259.14, 'learning_rate': 8.919367734793037e-05, 'epoch': 68.44444444444444}
+{'loss': 1219.0, 'learning_rate': 8.827111138446399e-05, 'epoch': 68.74074074074075}
+{'loss': 1252.32, 'learning_rate': 8.73485454209976e-05, 'epoch': 69.03703703703704}
+{'loss': 1284.28, 'learning_rate': 8.642597945753121e-05, 'epoch': 69.33333333333333}
+{'loss': 1337.22, 'learning_rate': 8.550341349406483e-05, 'epoch': 69.62962962962963}
+{'loss': 1286.92, 'learning_rate': 8.458084753059842e-05, 'epoch': 69.92592592592592}
+{'loss': 1355.14, 'learning_rate': 8.365828156713204e-05, 'epoch': 70.22222222222223}
+{'loss': 1315.26, 'learning_rate': 8.273571560366565e-05, 'epoch': 70.51851851851852}
+{'loss': 1310.36, 'learning_rate': 8.181314964019926e-05, 'epoch': 70.81481481481481}
+{'loss': 1285.8, 'learning_rate': 8.089058367673287e-05, 'epoch': 71.11111111111111}
+{'loss': 1258.74, 'learning_rate': 7.996801771326649e-05, 'epoch': 71.4074074074074}
+{'loss': 1274.52, 'learning_rate': 7.90454517498001e-05, 'epoch': 71.70370370370371}
+{'loss': 1223.58, 'learning_rate': 7.812288578633371e-05, 'epoch': 72.0}
+{'loss': 1232.26, 'learning_rate': 7.720031982286732e-05, 'epoch': 72.29629629629629}
+{'loss': 1265.7, 'learning_rate': 7.627775385940093e-05, 'epoch': 72.5925925925926}
+{'loss': 1289.34, 'learning_rate': 7.535518789593456e-05, 'epoch': 72.88888888888889}
+{'loss': 1273.84, 'learning_rate': 7.443262193246817e-05, 'epoch': 73.18518518518519}
+{'loss': 1220.36, 'learning_rate': 7.351005596900178e-05, 'epoch': 73.48148148148148}
+{'loss': 1258.32, 'learning_rate': 7.258749000553539e-05, 'epoch': 73.77777777777777}
+{'loss': 1249.56, 'learning_rate': 7.1664924042069e-05, 'epoch': 74.07407407407408}
+{'loss': 1229.92, 'learning_rate': 7.074235807860261e-05, 'epoch': 74.37037037037037}
+{'loss': 1324.2, 'learning_rate': 6.981979211513622e-05, 'epoch': 74.66666666666667}
+{'loss': 1319.74, 'learning_rate': 6.889722615166983e-05, 'epoch': 74.96296296296296}
+{'loss': 1274.84, 'learning_rate': 6.797466018820345e-05, 'epoch': 75.25925925925925}
+{'loss': 1290.72, 'learning_rate': 6.705209422473706e-05, 'epoch': 75.55555555555556}
+{'loss': 1231.26, 'learning_rate': 6.612952826127068e-05, 'epoch': 75.85185185185185}
+{'loss': 1211.24, 'learning_rate': 6.520696229780429e-05, 'epoch': 76.14814814814815}
+{'loss': 1222.44, 'learning_rate': 6.42843963343379e-05, 'epoch': 76.44444444444444}
+{'loss': 1265.48, 'learning_rate': 6.336183037087151e-05, 'epoch': 76.74074074074075}
+{'loss': 1242.28, 'learning_rate': 6.243926440740513e-05, 'epoch': 77.03703703703704}
+{'loss': 1295.64, 'learning_rate': 6.151669844393874e-05, 'epoch': 77.33333333333333}
+{'loss': 1237.92, 'learning_rate': 6.059413248047235e-05, 'epoch': 77.62962962962963}
+{'loss': 1231.96, 'learning_rate': 5.967156651700597e-05, 'epoch': 77.92592592592592}
+{'loss': 1336.52, 'learning_rate': 5.874900055353958e-05, 'epoch': 78.22222222222223}
+{'loss': 1321.44, 'learning_rate': 5.782643459007318e-05, 'epoch': 78.51851851851852}
+{'loss': 1289.52, 'learning_rate': 5.6903868626606793e-05, 'epoch': 78.81481481481481}
+{'loss': 1269.48, 'learning_rate': 5.5981302663140405e-05, 'epoch': 79.11111111111111}
+{'loss': 1263.32, 'learning_rate': 5.5058736699674016e-05, 'epoch': 79.4074074074074}
+{'loss': 1267.24, 'learning_rate': 5.4136170736207634e-05, 'epoch': 79.70370370370371}
+{'loss': 1238.28, 'learning_rate': 5.3213604772741245e-05, 'epoch': 80.0}
+{'loss': 1262.84, 'learning_rate': 5.2291038809274856e-05, 'epoch': 80.29629629629629}
+{'loss': 1263.36, 'learning_rate': 5.136847284580847e-05, 'epoch': 80.5925925925926}
+{'loss': 1279.08, 'learning_rate': 5.0445906882342086e-05, 'epoch': 80.88888888888889}
+{'loss': 1228.08, 'learning_rate': 4.95233409188757e-05, 'epoch': 81.18518518518519}
+{'loss': 1238.6, 'learning_rate': 4.860077495540931e-05, 'epoch': 81.48148148148148}
+{'loss': 1311.92, 'learning_rate': 4.767820899194292e-05, 'epoch': 81.77777777777777}
+{'loss': 1260.92, 'learning_rate': 4.675564302847653e-05, 'epoch': 82.07407407407408}
+{'loss': 1261.08, 'learning_rate': 4.583307706501015e-05, 'epoch': 82.37037037037037}
+{'loss': 1222.84, 'learning_rate': 4.491051110154376e-05, 'epoch': 82.66666666666667}
+{'loss': 1290.68, 'learning_rate': 4.398794513807737e-05, 'epoch': 82.96296296296296}
+{'loss': 1263.76, 'learning_rate': 4.306537917461098e-05, 'epoch': 83.25925925925925}
+{'loss': 1276.64, 'learning_rate': 4.214281321114459e-05, 'epoch': 83.55555555555556}
+{'loss': 1300.28, 'learning_rate': 4.122024724767821e-05, 'epoch': 83.85185185185185}
+{'loss': 1289.64, 'learning_rate': 4.0297681284211816e-05, 'epoch': 84.14814814814815}
+{'loss': 1288.2, 'learning_rate': 3.937511532074543e-05, 'epoch': 84.44444444444444}
+{'loss': 1273.6, 'learning_rate': 3.845254935727904e-05, 'epoch': 84.74074074074075}
+{'loss': 1269.08, 'learning_rate': 3.752998339381265e-05, 'epoch': 85.03703703703704}
+{'loss': 1235.0, 'learning_rate': 3.660741743034627e-05, 'epoch': 85.33333333333333}
+{'loss': 1308.44, 'learning_rate': 3.568485146687988e-05, 'epoch': 85.62962962962963}
+{'loss': 1254.36, 'learning_rate': 3.476228550341349e-05, 'epoch': 85.92592592592592}
+{'loss': 1314.48, 'learning_rate': 3.38397195399471e-05, 'epoch': 86.22222222222223}
+{'loss': 1248.08, 'learning_rate': 3.291715357648071e-05, 'epoch': 86.51851851851852}
+{'loss': 1277.48, 'learning_rate': 3.199458761301433e-05, 'epoch': 86.81481481481481}
+{'loss': 1305.16, 'learning_rate': 3.107202164954794e-05, 'epoch': 87.11111111111111}
+{'loss': 1289.88, 'learning_rate': 3.0149455686081553e-05, 'epoch': 87.4074074074074}
+{'loss': 1224.08, 'learning_rate': 2.9226889722615164e-05, 'epoch': 87.70370370370371}
+{'loss': 1223.56, 'learning_rate': 2.830432375914878e-05, 'epoch': 88.0}
+{'loss': 1299.4, 'learning_rate': 2.738175779568239e-05, 'epoch': 88.29629629629629}
+{'loss': 1310.96, 'learning_rate': 2.6459191832216e-05, 'epoch': 88.5925925925926}
+{'loss': 1263.96, 'learning_rate': 2.5536625868749612e-05, 'epoch': 88.88888888888889}
+{'loss': 1268.48, 'learning_rate': 2.4614059905283223e-05, 'epoch': 89.18518518518519}
+{'loss': 1276.52, 'learning_rate': 2.3691493941816838e-05, 'epoch': 89.48148148148148}
+{'loss': 1329.96, 'learning_rate': 2.276892797835045e-05, 'epoch': 89.77777777777777}
+{'loss': 1215.64, 'learning_rate': 2.1846362014884064e-05, 'epoch': 90.07407407407408}
+{'loss': 1280.56, 'learning_rate': 2.0923796051417675e-05, 'epoch': 90.37037037037037}
+{'loss': 1276.04, 'learning_rate': 2.000123008795129e-05, 'epoch': 90.66666666666667}
+{'loss': 1225.76, 'learning_rate': 1.90786641244849e-05, 'epoch': 90.96296296296296}
+{'loss': 1206.24, 'learning_rate': 1.8156098161018512e-05, 'epoch': 91.25925925925925}
+{'loss': 1237.8, 'learning_rate': 1.7233532197552123e-05, 'epoch': 91.55555555555556}
+{'loss': 1253.32, 'learning_rate': 1.6310966234085738e-05, 'epoch': 91.85185185185185}
+{'loss': 1260.2, 'learning_rate': 1.5388400270619346e-05, 'epoch': 92.14814814814815}
+{'loss': 1272.92, 'learning_rate': 1.446583430715296e-05, 'epoch': 92.44444444444444}
+{'loss': 1267.64, 'learning_rate': 1.3543268343686573e-05, 'epoch': 92.74074074074075}
+{'loss': 1282.48, 'learning_rate': 1.2620702380220184e-05, 'epoch': 93.03703703703704}
+{'loss': 1313.08, 'learning_rate': 1.1698136416753797e-05, 'epoch': 93.33333333333333}
+{'loss': 1297.68, 'learning_rate': 1.0775570453287409e-05, 'epoch': 93.62962962962963}
+{'loss': 1237.96, 'learning_rate': 9.853004489821021e-06, 'epoch': 93.92592592592592}
+{'loss': 1258.84, 'learning_rate': 8.930438526354634e-06, 'epoch': 94.22222222222223}
+{'loss': 1219.8, 'learning_rate': 8.007872562888246e-06, 'epoch': 94.51851851851852}
+{'loss': 1269.08, 'learning_rate': 7.085306599421858e-06, 'epoch': 94.81481481481481}
+{'loss': 1245.16, 'learning_rate': 6.1627406359554705e-06, 'epoch': 95.11111111111111}
+{'loss': 1238.6, 'learning_rate': 5.240174672489083e-06, 'epoch': 95.4074074074074}
+{'loss': 1273.48, 'learning_rate': 4.317608709022695e-06, 'epoch': 95.70370370370371}
+{'loss': 1219.0, 'learning_rate': 3.395042745556307e-06, 'epoch': 96.0}
+{'loss': 1290.2, 'learning_rate': 2.4724767820899192e-06, 'epoch': 96.29629629629629}
+{'loss': 1278.64, 'learning_rate': 1.5499108186235313e-06, 'epoch': 96.5925925925926}
+{'loss': 1203.2, 'learning_rate': 6.273448551571438e-07, 'epoch': 96.88888888888889}
+05/31/2024 20:11:23 - INFO - third_party.trainers.t5_trainer -   
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+{'epoch': 97.09037037037037}
+05/31/2024 20:11:29 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/31/2024 20:12:39 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1930.1656494140625
+05/31/2024 20:12:39 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7109151047409041
+05/31/2024 20:12:39 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:12:39 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/31/2024 20:13:56 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1199.718505859375
+05/31/2024 20:13:56 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8827392120075048
+05/31/2024 20:13:56 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:13:56 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/31/2024 20:14:49 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1069.3482666015625
+05/31/2024 20:14:49 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7897965773329029
+05/31/2024 20:14:49 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:14:49 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/31/2024 20:15:40 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1829.5262451171875
+05/31/2024 20:15:40 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9859894921190893
+05/31/2024 20:15:40 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:15:40 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/31/2024 20:16:32 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1045.8505859375
+05/31/2024 20:16:32 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9605116796440488
+05/31/2024 20:16:32 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:16:32 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/31/2024 20:21:02 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 766.18896484375
+05/31/2024 20:21:02 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9652322599031063
+05/31/2024 20:21:02 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:21:02 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/31/2024 20:23:48 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1086.3323974609375
+05/31/2024 20:23:48 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8930980799169694
+05/31/2024 20:23:48 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:23:48 - INFO - utils.utils -   ***** val metrics *****
+05/31/2024 20:23:48 - INFO - utils.utils -     atis_eval_loss = 1829.5262451171875
+05/31/2024 20:23:48 - INFO - utils.utils -     atis_eval_micro_f1_score = 0.9859894921190893
+05/31/2024 20:23:48 - INFO - utils.utils -     eval_average_metrics = 0.8840403436663609
+05/31/2024 20:23:48 - INFO - utils.utils -     movieTrivia_eval_loss = 1930.1656494140625
+05/31/2024 20:23:48 - INFO - utils.utils -     movieTrivia_eval_micro_f1_score = 0.7109151047409041
+05/31/2024 20:23:48 - INFO - utils.utils -     movie_eval_loss = 1199.718505859375
+05/31/2024 20:23:48 - INFO - utils.utils -     movie_eval_micro_f1_score = 0.8827392120075048
+05/31/2024 20:23:48 - INFO - utils.utils -     mtod_eval_loss = 766.18896484375
+05/31/2024 20:23:48 - INFO - utils.utils -     mtod_eval_micro_f1_score = 0.9652322599031063
+05/31/2024 20:23:48 - INFO - utils.utils -     mtop_eval_loss = 1086.3323974609375
+05/31/2024 20:23:48 - INFO - utils.utils -     mtop_eval_micro_f1_score = 0.8930980799169694
+05/31/2024 20:23:48 - INFO - utils.utils -     restaurant_eval_loss = 1069.3482666015625
+05/31/2024 20:23:48 - INFO - utils.utils -     restaurant_eval_micro_f1_score = 0.7897965773329029
+05/31/2024 20:23:48 - INFO - utils.utils -     snips_eval_loss = 1045.8505859375
+05/31/2024 20:23:48 - INFO - utils.utils -     snips_eval_micro_f1_score = 0.9605116796440488
+05/31/2024 20:23:48 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/31/2024 20:26:44 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2064.618896484375
+05/31/2024 20:26:44 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7139994773063857
+05/31/2024 20:26:44 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:26:44 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/31/2024 20:29:52 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1197.7222900390625
+05/31/2024 20:29:52 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8745112641966115
+05/31/2024 20:29:52 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:29:52 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/31/2024 20:31:37 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1081.471435546875
+05/31/2024 20:31:37 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7964573778269808
+05/31/2024 20:31:37 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:31:37 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/31/2024 20:32:59 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1731.7158203125
+05/31/2024 20:32:59 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9598874032371569
+05/31/2024 20:32:59 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:32:59 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/31/2024 20:33:51 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1034.9669189453125
+05/31/2024 20:33:51 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9592406476828589
+05/31/2024 20:33:51 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:33:51 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/31/2024 20:42:56 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.4981079101562
+05/31/2024 20:42:56 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9652025876744977
+05/31/2024 20:42:56 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:42:56 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/31/2024 20:48:29 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1087.369384765625
+05/31/2024 20:48:29 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.898274598627673
+05/31/2024 20:48:29 - INFO - utils.utils -   config is reset to the initial values.
+05/31/2024 20:48:29 - INFO - utils.utils -   ***** test metrics *****
+05/31/2024 20:48:29 - INFO - utils.utils -     atis_eval_loss = 1731.7158203125
+05/31/2024 20:48:29 - INFO - utils.utils -     atis_eval_micro_f1_score = 0.9598874032371569
+05/31/2024 20:48:29 - INFO - utils.utils -     eval_average_metrics = 0.8810819080788806
+05/31/2024 20:48:29 - INFO - utils.utils -     movieTrivia_eval_loss = 2064.618896484375
+05/31/2024 20:48:29 - INFO - utils.utils -     movieTrivia_eval_micro_f1_score = 0.7139994773063857
+05/31/2024 20:48:29 - INFO - utils.utils -     movie_eval_loss = 1197.7222900390625
+05/31/2024 20:48:29 - INFO - utils.utils -     movie_eval_micro_f1_score = 0.8745112641966115
+05/31/2024 20:48:29 - INFO - utils.utils -     mtod_eval_loss = 767.4981079101562
+05/31/2024 20:48:29 - INFO - utils.utils -     mtod_eval_micro_f1_score = 0.9652025876744977
+05/31/2024 20:48:29 - INFO - utils.utils -     mtop_eval_loss = 1087.369384765625
+05/31/2024 20:48:29 - INFO - utils.utils -     mtop_eval_micro_f1_score = 0.898274598627673
+05/31/2024 20:48:29 - INFO - utils.utils -     restaurant_eval_loss = 1081.471435546875
+05/31/2024 20:48:29 - INFO - utils.utils -     restaurant_eval_micro_f1_score = 0.7964573778269808
+05/31/2024 20:48:29 - INFO - utils.utils -     snips_eval_loss = 1034.9669189453125
+05/31/2024 20:48:29 - INFO - utils.utils -     snips_eval_micro_f1_score = 0.9592406476828589
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************

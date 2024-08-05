@@ -1,0 +1,2816 @@
+05/26/2024 08:12:44 - WARNING - __main__ -   Process rank: 1, device: cuda:1, n_gpu: 1, distributed training: True, 16-bits training: False
+05/26/2024 08:12:44 - WARNING - __main__ -   Process rank: 3, device: cuda:3, n_gpu: 1, distributed training: True, 16-bits training: False
+05/26/2024 08:12:44 - WARNING - __main__ -   Process rank: 0, device: cuda:0, n_gpu: 1, distributed training: True, 16-bits training: False
+05/26/2024 08:12:44 - INFO - __main__ -   Training/evaluation parameters Seq2SeqTrainingArguments(output_dir='outputs/hyperformer_al++/', overwrite_output_dir=True, do_train=True, do_eval=True, do_predict=False, evaluate_during_training=False, evaluation_strategy=<EvaluationStrategy.STEPS: 'steps'>, prediction_loss_only=False, per_device_train_batch_size=32, per_device_eval_batch_size=32, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=0.0003, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100, max_steps=65536, warmup_steps=500, logging_dir='runs/May26_08-12-37_gpu-08', logging_first_step=True, logging_steps=200, save_steps=1000, save_total_limit=1, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=0, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=1000, dataloader_num_workers=0, past_index=-1, run_name='outputs/hyperformer_al++/', disable_tqdm=True, remove_unused_columns=True, label_names=None, load_best_model_at_end=True, metric_for_best_model='average_metrics', greater_is_better=True, label_smoothing=0.1, predict_with_generate=True, adafactor=False, encoder_layerdrop=None, decoder_layerdrop=None, dropout=None, attention_dropout=None, lr_scheduler='linear', temperature=10, train_adapters=True, do_test=True, eval_output_dir=None, generate_classifier_weights=False, optimize_from_scratch=False, optimize_from_scratch_with_loading_model=False, split_validation_test=True, print_num_parameters=True, compute_memory=False, compute_time=False)
+05/26/2024 08:12:44 - WARNING - __main__ -   Process rank: 2, device: cuda:2, n_gpu: 1, distributed training: True, 16-bits training: False
+05/26/2024 08:12:45 - WARNING - __main__ -   model path loaded from : outputs/hyperformer_al++/checkpoint-40000
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/26/2024 08:12:45 - WARNING - __main__ -   model path loaded from : outputs/hyperformer_al++/checkpoint-40000
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/26/2024 08:12:45 - WARNING - __main__ -   model path loaded from : outputs/hyperformer_al++/checkpoint-40000
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/26/2024 08:12:45 - WARNING - __main__ -   model path loaded from : outputs/hyperformer_al++/checkpoint-40000
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+Trainable param: layer_id_embeddings.weight
+Trainable param: adapters_block_type.weight
+Trainable param: task_hypernet.task_embeding_generator.0.weight
+Trainable param: task_hypernet.task_embeding_generator.0.bias
+Trainable param: task_hypernet.task_embeding_generator.2.weight
+Trainable param: task_hypernet.task_embeding_generator.2.bias
+Trainable param: LayerNorm.weight
+Trainable param: LayerNorm.bias
+Trainable param: up_sampler_hyper_net.weight_generator.0.weight
+Trainable param: up_sampler_hyper_net.weight_generator.0.bias
+Trainable param: up_sampler_hyper_net.bias_generator.0.weight
+Trainable param: up_sampler_hyper_net.bias_generator.0.bias
+Trainable param: down_sampler_hyper_net.weight_generator.0.weight
+Trainable param: down_sampler_hyper_net.weight_generator.0.bias
+Trainable param: down_sampler_hyper_net.bias_generator.0.weight
+Trainable param: down_sampler_hyper_net.bias_generator.0.bias
+Trainable param: lora_query_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_query_b_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_b_hyper_net.weight_generator.0.weight
+Trainable param: post_layernorm_hypernet.weight_generator.weight
+Trainable param: post_layernorm_hypernet.weight_generator.bias
+Trainable param: post_layernorm_hypernet.bias_generator.weight
+Trainable param: post_layernorm_hypernet.bias_generator.bias
+Trainable param: layer_id_embeddings.weight
+Trainable param: adapters_block_type.weight
+Trainable param: task_hypernet.task_embeding_generator.0.weight
+Trainable param: task_hypernet.task_embeding_generator.0.bias
+Trainable param: task_hypernet.task_embeding_generator.2.weight
+Trainable param: task_hypernet.task_embeding_generator.2.bias
+Trainable param: LayerNorm.weight
+Trainable param: LayerNorm.bias
+Trainable param: up_sampler_hyper_net.weight_generator.0.weight
+Trainable param: up_sampler_hyper_net.weight_generator.0.bias
+Trainable param: up_sampler_hyper_net.bias_generator.0.weight
+Trainable param: up_sampler_hyper_net.bias_generator.0.bias
+Trainable param: down_sampler_hyper_net.weight_generator.0.weight
+Trainable param: down_sampler_hyper_net.weight_generator.0.bias
+Trainable param: down_sampler_hyper_net.bias_generator.0.weight
+Trainable param: down_sampler_hyper_net.bias_generator.0.bias
+Trainable param: lora_query_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_query_b_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_b_hyper_net.weight_generator.0.weight
+Trainable param: post_layernorm_hypernet.weight_generator.weight
+Trainable param: post_layernorm_hypernet.weight_generator.bias
+Trainable param: post_layernorm_hypernet.bias_generator.weight
+Trainable param: post_layernorm_hypernet.bias_generator.bias
+Trainable param: layer_id_embeddings.weight
+Trainable param: adapters_block_type.weight
+Trainable param: task_hypernet.task_embeding_generator.0.weight
+Trainable param: task_hypernet.task_embeding_generator.0.bias
+Trainable param: task_hypernet.task_embeding_generator.2.weight
+Trainable param: task_hypernet.task_embeding_generator.2.bias
+Trainable param: LayerNorm.weight
+Trainable param: LayerNorm.bias
+Trainable param: up_sampler_hyper_net.weight_generator.0.weight
+Trainable param: up_sampler_hyper_net.weight_generator.0.bias
+Trainable param: up_sampler_hyper_net.bias_generator.0.weight
+Trainable param: up_sampler_hyper_net.bias_generator.0.bias
+Trainable param: down_sampler_hyper_net.weight_generator.0.weight
+Trainable param: down_sampler_hyper_net.weight_generator.0.bias
+Trainable param: down_sampler_hyper_net.bias_generator.0.weight
+Trainable param: down_sampler_hyper_net.bias_generator.0.bias
+Trainable param: lora_query_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_query_b_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_b_hyper_net.weight_generator.0.weight
+Trainable param: post_layernorm_hypernet.weight_generator.weight
+Trainable param: post_layernorm_hypernet.weight_generator.bias
+Trainable param: post_layernorm_hypernet.bias_generator.weight
+Trainable param: post_layernorm_hypernet.bias_generator.bias
+Trainable param: layer_id_embeddings.weight
+Trainable param: adapters_block_type.weight
+Trainable param: task_hypernet.task_embeding_generator.0.weight
+Trainable param: task_hypernet.task_embeding_generator.0.bias
+Trainable param: task_hypernet.task_embeding_generator.2.weight
+Trainable param: task_hypernet.task_embeding_generator.2.bias
+Trainable param: LayerNorm.weight
+Trainable param: LayerNorm.bias
+Trainable param: up_sampler_hyper_net.weight_generator.0.weight
+Trainable param: up_sampler_hyper_net.weight_generator.0.bias
+Trainable param: up_sampler_hyper_net.bias_generator.0.weight
+Trainable param: up_sampler_hyper_net.bias_generator.0.bias
+Trainable param: down_sampler_hyper_net.weight_generator.0.weight
+Trainable param: down_sampler_hyper_net.weight_generator.0.bias
+Trainable param: down_sampler_hyper_net.bias_generator.0.weight
+Trainable param: down_sampler_hyper_net.bias_generator.0.bias
+Trainable param: lora_query_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_query_b_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_b_hyper_net.weight_generator.0.weight
+Trainable param: post_layernorm_hypernet.weight_generator.weight
+Trainable param: post_layernorm_hypernet.weight_generator.bias
+Trainable param: post_layernorm_hypernet.bias_generator.weight
+Trainable param: post_layernorm_hypernet.bias_generator.bias
+05/26/2024 08:12:52 - INFO - __main__ -   T5ForConditionalGeneration(
+  (task_embedding_controller): TaskEmbeddingController(
+    (task_to_embeddings): ParameterDict(
+        (movieTrivia): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (movie): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (restaurant): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (atis): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (snips): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (mtod): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (mtop): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+    )
+  )
+  (shared): Embedding(32128, 768)
+  (encoder): T5Stack(
+    (embed_tokens): Embedding(32128, 768)
+    (block): ModuleList(
+      (0): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (1): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (2): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (3): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (4): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (5): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (6): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (7): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (8): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (9): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (10): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (11): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (adapter_layers_hyper_net): AdapterLayersOneHyperNetController(
+      (layer_id_embeddings): Embedding(12, 64)
+      (adapters_block_type): Embedding(3, 64)
+      (task_hypernet): TaskHyperNet(
+        (task_embeding_generator): Sequential(
+          (0): Linear(in_features=192, out_features=128, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=128, out_features=64, bias=True)
+        )
+      )
+      (LayerNorm): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+      (up_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=768, bias=True)
+        )
+      )
+      (down_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=24, bias=True)
+        )
+      )
+      (lora_query_a_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (lora_query_b_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (lora_value_a_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (lora_value_b_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (post_layernorm_hypernet): LayerNormHyperNet(
+        (weight_generator): Linear(in_features=64, out_features=768, bias=True)
+        (bias_generator): Linear(in_features=64, out_features=768, bias=True)
+      )
+    )
+    (final_layer_norm): T5LayerNorm()
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (decoder): T5Stack(
+    (embed_tokens): Embedding(32128, 768)
+    (block): ModuleList(
+      (0): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (1): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (2): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (3): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (4): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (5): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (6): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (7): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (8): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (9): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (10): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (11): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): MetaLinearLoraController(
+                (linear): Linear(in_features=768, out_features=768, bias=False)
+                (lora): MetaLoRALayer()
+              )
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (adapter_layers_hyper_net): AdapterLayersOneHyperNetController(
+      (layer_id_embeddings): Embedding(12, 64)
+      (adapters_block_type): Embedding(3, 64)
+      (task_hypernet): TaskHyperNet(
+        (task_embeding_generator): Sequential(
+          (0): Linear(in_features=192, out_features=128, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=128, out_features=64, bias=True)
+        )
+      )
+      (LayerNorm): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+      (up_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=768, bias=True)
+        )
+      )
+      (down_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=24, bias=True)
+        )
+      )
+      (lora_query_a_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (lora_query_b_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (lora_value_a_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (lora_value_b_hyper_net): LoRALayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=6144, bias=False)
+        )
+      )
+      (post_layernorm_hypernet): LayerNormHyperNet(
+        (weight_generator): Linear(in_features=64, out_features=768, bias=True)
+        (bias_generator): Linear(in_features=64, out_features=768, bias=True)
+      )
+    )
+    (final_layer_norm): T5LayerNorm()
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (lm_head): Linear(in_features=768, out_features=32128, bias=False)
+)
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.movieTrivia
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.movie
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.restaurant
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.atis
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.snips
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.mtod
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.mtop
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.0.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.0.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.1.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.1.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.2.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.2.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.3.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.3.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.4.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.4.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.5.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.5.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.6.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.6.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.7.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.7.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.8.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.8.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.9.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.9.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.10.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.10.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.11.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.block.11.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.layer_id_embeddings.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.adapters_block_type.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.LayerNorm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.LayerNorm.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.lora_query_a_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.lora_query_b_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.lora_value_a_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.lora_value_b_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name encoder.final_layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.0.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.0.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.0.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.1.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.1.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.1.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.2.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.2.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.2.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.3.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.3.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.3.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.4.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.4.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.4.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.5.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.5.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.5.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.6.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.6.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.6.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.7.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.7.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.7.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.8.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.8.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.8.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.9.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.9.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.9.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.10.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.10.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.10.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.11.layer.0.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.11.layer.1.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.block.11.layer.2.layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.layer_id_embeddings.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.adapters_block_type.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.LayerNorm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.LayerNorm.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.lora_query_a_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.lora_query_b_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.lora_value_a_hyper_net.weight_generator.0.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.lora_value_b_hyper_net.weight_generator.0.weight
+train
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias
+05/26/2024 08:12:52 - INFO - __main__ -   Parameter name decoder.final_layer_norm.weight
+05/26/2024 08:12:52 - INFO - __main__ -   Total trainable parameters 8356848
+05/26/2024 08:12:52 - INFO - __main__ -   Total parameters 231213168
+train
+Trainable param: layer_id_embeddings.weight
+Trainable param: adapters_block_type.weight
+Trainable param: task_hypernet.task_embeding_generator.0.weight
+Trainable param: task_hypernet.task_embeding_generator.0.bias
+Trainable param: task_hypernet.task_embeding_generator.2.weight
+Trainable param: task_hypernet.task_embeding_generator.2.bias
+Trainable param: LayerNorm.weight
+Trainable param: LayerNorm.bias
+Trainable param: up_sampler_hyper_net.weight_generator.0.weight
+Trainable param: up_sampler_hyper_net.weight_generator.0.bias
+Trainable param: up_sampler_hyper_net.bias_generator.0.weight
+Trainable param: up_sampler_hyper_net.bias_generator.0.bias
+Trainable param: down_sampler_hyper_net.weight_generator.0.weight
+Trainable param: down_sampler_hyper_net.weight_generator.0.bias
+Trainable param: down_sampler_hyper_net.bias_generator.0.weight
+Trainable param: down_sampler_hyper_net.bias_generator.0.bias
+Trainable param: lora_query_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_query_b_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_b_hyper_net.weight_generator.0.weight
+Trainable param: post_layernorm_hypernet.weight_generator.weight
+Trainable param: post_layernorm_hypernet.weight_generator.bias
+Trainable param: post_layernorm_hypernet.bias_generator.weight
+Trainable param: post_layernorm_hypernet.bias_generator.bias
+Trainable param: layer_id_embeddings.weight
+Trainable param: adapters_block_type.weight
+Trainable param: task_hypernet.task_embeding_generator.0.weight
+Trainable param: task_hypernet.task_embeding_generator.0.bias
+Trainable param: task_hypernet.task_embeding_generator.2.weight
+Trainable param: task_hypernet.task_embeding_generator.2.bias
+Trainable param: LayerNorm.weight
+Trainable param: LayerNorm.bias
+Trainable param: up_sampler_hyper_net.weight_generator.0.weight
+Trainable param: up_sampler_hyper_net.weight_generator.0.bias
+Trainable param: up_sampler_hyper_net.bias_generator.0.weight
+Trainable param: up_sampler_hyper_net.bias_generator.0.bias
+Trainable param: down_sampler_hyper_net.weight_generator.0.weight
+Trainable param: down_sampler_hyper_net.weight_generator.0.bias
+Trainable param: down_sampler_hyper_net.bias_generator.0.weight
+Trainable param: down_sampler_hyper_net.bias_generator.0.bias
+Trainable param: lora_query_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_query_b_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_b_hyper_net.weight_generator.0.weight
+Trainable param: post_layernorm_hypernet.weight_generator.weight
+Trainable param: post_layernorm_hypernet.weight_generator.bias
+Trainable param: post_layernorm_hypernet.bias_generator.weight
+Trainable param: post_layernorm_hypernet.bias_generator.bias
+Trainable param: layer_id_embeddings.weight
+Trainable param: adapters_block_type.weight
+Trainable param: task_hypernet.task_embeding_generator.0.weight
+Trainable param: task_hypernet.task_embeding_generator.0.bias
+Trainable param: task_hypernet.task_embeding_generator.2.weight
+Trainable param: task_hypernet.task_embeding_generator.2.bias
+Trainable param: LayerNorm.weight
+Trainable param: LayerNorm.bias
+Trainable param: up_sampler_hyper_net.weight_generator.0.weight
+Trainable param: up_sampler_hyper_net.weight_generator.0.bias
+Trainable param: up_sampler_hyper_net.bias_generator.0.weight
+Trainable param: up_sampler_hyper_net.bias_generator.0.bias
+Trainable param: down_sampler_hyper_net.weight_generator.0.weight
+Trainable param: down_sampler_hyper_net.weight_generator.0.bias
+Trainable param: down_sampler_hyper_net.bias_generator.0.weight
+Trainable param: down_sampler_hyper_net.bias_generator.0.bias
+Trainable param: lora_query_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_query_b_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_b_hyper_net.weight_generator.0.weight
+Trainable param: post_layernorm_hypernet.weight_generator.weight
+Trainable param: post_layernorm_hypernet.weight_generator.bias
+Trainable param: post_layernorm_hypernet.bias_generator.weight
+Trainable param: post_layernorm_hypernet.bias_generator.bias
+Trainable param: layer_id_embeddings.weight
+Trainable param: adapters_block_type.weight
+Trainable param: task_hypernet.task_embeding_generator.0.weight
+Trainable param: task_hypernet.task_embeding_generator.0.bias
+Trainable param: task_hypernet.task_embeding_generator.2.weight
+Trainable param: task_hypernet.task_embeding_generator.2.bias
+Trainable param: LayerNorm.weight
+Trainable param: LayerNorm.bias
+Trainable param: up_sampler_hyper_net.weight_generator.0.weight
+Trainable param: up_sampler_hyper_net.weight_generator.0.bias
+Trainable param: up_sampler_hyper_net.bias_generator.0.weight
+Trainable param: up_sampler_hyper_net.bias_generator.0.bias
+Trainable param: down_sampler_hyper_net.weight_generator.0.weight
+Trainable param: down_sampler_hyper_net.weight_generator.0.bias
+Trainable param: down_sampler_hyper_net.bias_generator.0.weight
+Trainable param: down_sampler_hyper_net.bias_generator.0.bias
+Trainable param: lora_query_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_query_b_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_a_hyper_net.weight_generator.0.weight
+Trainable param: lora_value_b_hyper_net.weight_generator.0.weight
+Trainable param: post_layernorm_hypernet.weight_generator.weight
+Trainable param: post_layernorm_hypernet.weight_generator.bias
+Trainable param: post_layernorm_hypernet.bias_generator.weight
+Trainable param: post_layernorm_hypernet.bias_generator.bias
+train
+train
+
+  0%|          | 0/7034 [00:00<?, ?ex/s]
+  0%|          | 0/7034 [00:00<?, ?ex/s]
+  0%|          | 0/7034 [00:00<?, ?ex/s]
+  0%|          | 0/7034 [00:00<?, ?ex/s]
+ 42%|████▏     | 2921/7034 [00:00<00:00, 29205.99ex/s]
+ 38%|███▊      | 2671/7034 [00:00<00:00, 26703.72ex/s]
+ 39%|███▉      | 2742/7034 [00:00<00:00, 27415.91ex/s]
+ 43%|████▎     | 3000/7034 [00:00<00:00, 29827.22ex/s]
+ 84%|████████▍ | 5901/7034 [00:00<00:00, 29381.68ex/s]
+ 82%|████████▏ | 5801/7034 [00:00<00:00, 27933.81ex/s]
+ 82%|████████▏ | 5791/7034 [00:00<00:00, 28270.16ex/s]
+ 86%|████████▌ | 6044/7034 [00:00<00:00, 30007.61ex/s]
+100%|██████████| 7034/7034 [00:00<00:00, 30199.56ex/s]
+
+100%|██████████| 7034/7034 [00:00<00:00, 29310.63ex/s]
+
+100%|██████████| 7034/7034 [00:00<00:00, 29172.39ex/s]
+
+100%|██████████| 7034/7034 [00:00<00:00, 29023.21ex/s]
+
+  0%|          | 0/8797 [00:00<?, ?ex/s]
+  0%|          | 0/8797 [00:00<?, ?ex/s]
+  0%|          | 0/8797 [00:00<?, ?ex/s]
+  0%|          | 0/8797 [00:00<?, ?ex/s]
+ 36%|███▌      | 3132/8797 [00:00<00:00, 31316.45ex/s]
+ 28%|██▊       | 2497/8797 [00:00<00:00, 24966.04ex/s]
+ 29%|██▉       | 2565/8797 [00:00<00:00, 25648.62ex/s]
+ 31%|███▏      | 2757/8797 [00:00<00:00, 27563.19ex/s]
+ 71%|███████   | 6248/8797 [00:00<00:00, 31269.20ex/s]
+ 62%|██████▏   | 5459/8797 [00:00<00:00, 26198.95ex/s]
+ 64%|██████▍   | 5618/8797 [00:00<00:00, 26940.47ex/s]
+ 66%|██████▌   | 5786/8797 [00:00<00:00, 28327.45ex/s]
+ 99%|█████████▊| 8686/8797 [00:00<00:00, 27961.40ex/s]
+ 99%|█████████▉| 8696/8797 [00:00<00:00, 24598.13ex/s]
+100%|██████████| 8797/8797 [00:00<00:00, 24944.02ex/s]
+
+ 87%|████████▋ | 7696/8797 [00:00<00:00, 21477.77ex/s]
+100%|██████████| 8797/8797 [00:00<00:00, 23265.63ex/s]
+
+100%|██████████| 8797/8797 [00:00<00:00, 22823.70ex/s]
+
+ 99%|█████████▉| 8696/8797 [00:00<00:00, 23815.25ex/s]
+100%|██████████| 8797/8797 [00:00<00:00, 23689.94ex/s]
+
+  0%|          | 0/6894 [00:00<?, ?ex/s]
+  0%|          | 0/6894 [00:00<?, ?ex/s]
+  0%|          | 0/6894 [00:00<?, ?ex/s]
+  0%|          | 0/6894 [00:00<?, ?ex/s]
+ 46%|████▋     | 3190/6894 [00:00<00:00, 31892.58ex/s]
+ 44%|████▍     | 3045/6894 [00:00<00:00, 30442.63ex/s]
+ 45%|████▍     | 3074/6894 [00:00<00:00, 30739.74ex/s]
+ 44%|████▍     | 3046/6894 [00:00<00:00, 30456.04ex/s]
+ 92%|█████████▏| 6361/6894 [00:00<00:00, 31837.05ex/s]
+ 89%|████████▊ | 6118/6894 [00:00<00:00, 30527.15ex/s]
+ 89%|████████▉ | 6133/6894 [00:00<00:00, 30692.64ex/s]
+ 88%|████████▊ | 6053/6894 [00:00<00:00, 30337.77ex/s]
+100%|██████████| 6894/6894 [00:00<00:00, 31815.41ex/s]
+
+100%|██████████| 6894/6894 [00:00<00:00, 30722.51ex/s]
+
+100%|██████████| 6894/6894 [00:00<00:00, 30631.90ex/s]
+
+100%|██████████| 6894/6894 [00:00<00:00, 30338.75ex/s]
+
+  0%|          | 0/4478 [00:00<?, ?ex/s]
+  0%|          | 0/4478 [00:00<?, ?ex/s]
+  0%|          | 0/4478 [00:00<?, ?ex/s]
+  0%|          | 0/4478 [00:00<?, ?ex/s]
+ 66%|██████▌   | 2966/4478 [00:00<00:00, 29653.03ex/s]
+ 70%|██████▉   | 3120/4478 [00:00<00:00, 31199.51ex/s]
+ 68%|██████▊   | 3064/4478 [00:00<00:00, 30638.86ex/s]
+ 62%|██████▏   | 2775/4478 [00:00<00:00, 27741.30ex/s]
+100%|██████████| 4478/4478 [00:00<00:00, 31279.66ex/s]
+
+100%|██████████| 4478/4478 [00:00<00:00, 30701.43ex/s]
+
+100%|██████████| 4478/4478 [00:00<00:00, 29917.46ex/s]
+
+100%|██████████| 4478/4478 [00:00<00:00, 28536.37ex/s]
+
+  0%|          | 0/13084 [00:00<?, ?ex/s]
+  0%|          | 0/13084 [00:00<?, ?ex/s]
+  0%|          | 0/13084 [00:00<?, ?ex/s]
+  0%|          | 0/13084 [00:00<?, ?ex/s]
+ 23%|██▎       | 3028/13084 [00:00<00:00, 30271.66ex/s]
+ 24%|██▎       | 3092/13084 [00:00<00:00, 30916.12ex/s]
+ 23%|██▎       | 3004/13084 [00:00<00:00, 30032.73ex/s]
+ 24%|██▎       | 3092/13084 [00:00<00:00, 30914.65ex/s]
+ 46%|████▌     | 6050/13084 [00:00<00:00, 30253.38ex/s]
+ 47%|████▋     | 6173/13084 [00:00<00:00, 30881.63ex/s]
+ 46%|████▌     | 6000/13084 [00:00<00:00, 29980.87ex/s]
+ 47%|████▋     | 6207/13084 [00:00<00:00, 30982.35ex/s]
+ 71%|███████   | 9305/13084 [00:00<00:00, 31010.19ex/s]
+ 69%|██████▉   | 9092/13084 [00:00<00:00, 30300.94ex/s]
+ 69%|██████▉   | 9015/13084 [00:00<00:00, 30029.75ex/s]
+ 71%|███████▏  | 9326/13084 [00:00<00:00, 31044.23ex/s]
+ 95%|█████████▍| 12415/13084 [00:00<00:00, 31036.53ex/s]
+ 92%|█████████▏| 11990/13084 [00:00<00:00, 29891.37ex/s]
+ 92%|█████████▏| 12032/13084 [00:00<00:00, 30069.90ex/s]
+ 95%|█████████▍| 12426/13084 [00:00<00:00, 31028.91ex/s]
+100%|██████████| 13084/13084 [00:00<00:00, 31013.44ex/s]
+
+100%|██████████| 13084/13084 [00:00<00:00, 31057.67ex/s]
+
+100%|██████████| 13084/13084 [00:00<00:00, 29965.81ex/s]
+
+100%|██████████| 13084/13084 [00:00<00:00, 30063.60ex/s]
+
+  0%|          | 0/30521 [00:00<?, ?ex/s]
+  0%|          | 0/30521 [00:00<?, ?ex/s]
+  0%|          | 0/30521 [00:00<?, ?ex/s]
+ 10%|█         | 3083/30521 [00:00<00:00, 30827.53ex/s]
+  8%|▊         | 2540/30521 [00:00<00:01, 25399.96ex/s]
+  8%|▊         | 2498/30521 [00:00<00:01, 24974.66ex/s]
+  0%|          | 0/30521 [00:00<?, ?ex/s]
+ 20%|██        | 6186/30521 [00:00<00:00, 30886.97ex/s]
+ 18%|█▊        | 5590/30521 [00:00<00:00, 26739.94ex/s]
+ 18%|█▊        | 5508/30521 [00:00<00:00, 26317.04ex/s]
+ 10%|█         | 3076/30521 [00:00<00:00, 30759.66ex/s]
+ 30%|███       | 9284/30521 [00:00<00:00, 30914.52ex/s]
+ 29%|██▊       | 8720/30521 [00:00<00:00, 27960.43ex/s]
+ 28%|██▊       | 8525/30521 [00:00<00:00, 27365.08ex/s]
+ 20%|██        | 6169/30521 [00:00<00:00, 30810.51ex/s]
+ 41%|████      | 12387/30521 [00:00<00:00, 30946.72ex/s]
+ 37%|███▋      | 11413/30521 [00:00<00:00, 27643.09ex/s]
+ 38%|███▊      | 11485/30521 [00:00<00:00, 27997.24ex/s]
+ 30%|███       | 9260/30521 [00:00<00:00, 30840.28ex/s]
+ 51%|█████     | 15463/30521 [00:00<00:00, 30888.72ex/s]
+ 48%|████▊     | 14516/30521 [00:00<00:00, 28577.16ex/s]
+ 48%|████▊     | 14537/30521 [00:00<00:00, 28708.28ex/s]
+ 41%|████      | 12369/30521 [00:00<00:00, 30914.14ex/s]
+ 61%|██████    | 18496/30521 [00:00<00:00, 30718.76ex/s]
+ 58%|█████▊    | 17648/30521 [00:00<00:00, 29347.35ex/s]
+ 58%|█████▊    | 17600/30521 [00:00<00:00, 29258.64ex/s]
+ 50%|█████     | 15378/30521 [00:00<00:00, 30660.11ex/s]
+ 71%|███████   | 21621/30521 [00:00<00:00, 30875.80ex/s]
+ 68%|██████▊   | 20828/30521 [00:00<00:00, 30039.83ex/s]
+ 68%|██████▊   | 20669/30521 [00:00<00:00, 29672.65ex/s]
+ 61%|██████    | 18482/30521 [00:00<00:00, 30771.47ex/s]
+ 81%|████████  | 24748/30521 [00:00<00:00, 30990.58ex/s]
+ 79%|███████▊  | 24000/30521 [00:00<00:00, 30502.49ex/s]
+ 78%|███████▊  | 23732/30521 [00:00<00:00, 29951.76ex/s]
+ 71%|███████   | 21588/30521 [00:00<00:00, 30855.02ex/s]
+ 91%|█████████▏| 27902/30521 [00:00<00:00, 31152.89ex/s]
+ 88%|████████▊ | 26970/30521 [00:00<00:00, 30254.09ex/s]
+ 88%|████████▊ | 26807/30521 [00:00<00:00, 30186.28ex/s]
+100%|██████████| 30521/30521 [00:00<00:00, 31019.43ex/s]
+
+ 81%|████████  | 24701/30521 [00:00<00:00, 30934.44ex/s]
+ 98%|█████████▊| 29879/30521 [00:01<00:00, 30343.12ex/s]
+ 98%|█████████▊| 29904/30521 [00:01<00:00, 29400.03ex/s]
+100%|██████████| 30521/30521 [00:01<00:00, 29881.79ex/s]
+
+100%|██████████| 30521/30521 [00:01<00:00, 29731.19ex/s]
+
+ 91%|█████████ | 27816/30521 [00:00<00:00, 30996.64ex/s]
+100%|██████████| 30521/30521 [00:00<00:00, 30921.43ex/s]
+
+  0%|          | 0/15667 [00:00<?, ?ex/s]
+  0%|          | 0/15667 [00:00<?, ?ex/s]
+  0%|          | 0/15667 [00:00<?, ?ex/s]
+  0%|          | 0/15667 [00:00<?, ?ex/s]
+ 16%|█▌        | 2489/15667 [00:00<00:00, 24884.98ex/s]
+ 16%|█▌        | 2479/15667 [00:00<00:00, 24783.11ex/s]
+ 15%|█▌        | 2379/15667 [00:00<00:00, 23789.00ex/s]
+ 18%|█▊        | 2763/15667 [00:00<00:00, 27626.73ex/s]
+ 36%|███▌      | 5589/15667 [00:00<00:00, 26449.85ex/s]
+ 36%|███▌      | 5568/15667 [00:00<00:00, 26345.52ex/s]
+ 35%|███▌      | 5536/15667 [00:00<00:00, 25687.67ex/s]
+ 37%|███▋      | 5820/15667 [00:00<00:00, 28445.98ex/s]
+ 55%|█████▌    | 8673/15667 [00:00<00:00, 27629.36ex/s]
+ 55%|█████▌    | 8649/15667 [00:00<00:00, 27542.07ex/s]
+ 55%|█████▍    | 8561/15667 [00:00<00:00, 26903.87ex/s]
+ 56%|█████▋    | 8850/15667 [00:00<00:00, 28977.37ex/s]
+ 75%|███████▌  | 11800/15667 [00:00<00:00, 28629.22ex/s]
+ 75%|███████▌  | 11762/15667 [00:00<00:00, 28527.87ex/s]
+ 75%|███████▍  | 11732/15667 [00:00<00:00, 28183.45ex/s]
+ 76%|███████▌  | 11903/15667 [00:00<00:00, 29425.42ex/s]
+ 95%|█████████▌| 14911/15667 [00:00<00:00, 29330.38ex/s]
+ 95%|█████████▍| 14882/15667 [00:00<00:00, 29278.46ex/s]
+ 95%|█████████▌| 14899/15667 [00:00<00:00, 29145.14ex/s]
+100%|██████████| 15667/15667 [00:00<00:00, 29779.03ex/s]
+
+100%|██████████| 15667/15667 [00:00<00:00, 29718.85ex/s]
+validation
+validation
+
+100%|██████████| 15667/15667 [00:00<00:00, 29486.15ex/s]
+validation
+
+ 96%|█████████▌| 14967/15667 [00:00<00:00, 29779.55ex/s]
+100%|██████████| 15667/15667 [00:00<00:00, 29682.56ex/s]
+validation
+
+  0%|          | 0/782 [00:00<?, ?ex/s]
+  0%|          | 0/782 [00:00<?, ?ex/s]
+  0%|          | 0/782 [00:00<?, ?ex/s]
+100%|██████████| 782/782 [00:00<00:00, 31731.38ex/s]
+
+  0%|          | 0/782 [00:00<?, ?ex/s]
+100%|██████████| 782/782 [00:00<00:00, 31182.04ex/s]
+
+100%|██████████| 782/782 [00:00<00:00, 27866.76ex/s]
+
+100%|██████████| 782/782 [00:00<00:00, 20200.32ex/s]
+
+  0%|          | 0/978 [00:00<?, ?ex/s]
+  0%|          | 0/978 [00:00<?, ?ex/s]
+  0%|          | 0/978 [00:00<?, ?ex/s]
+  0%|          | 0/978 [00:00<?, ?ex/s]
+100%|██████████| 978/978 [00:00<00:00, 30264.79ex/s]
+
+100%|██████████| 978/978 [00:00<00:00, 25316.64ex/s]
+
+100%|██████████| 978/978 [00:00<00:00, 19331.78ex/s]
+
+100%|██████████| 978/978 [00:00<00:00, 26935.11ex/s]
+
+  0%|          | 0/766 [00:00<?, ?ex/s]
+  0%|          | 0/766 [00:00<?, ?ex/s]
+  0%|          | 0/766 [00:00<?, ?ex/s]
+  0%|          | 0/766 [00:00<?, ?ex/s]
+100%|██████████| 766/766 [00:00<00:00, 19664.21ex/s]
+
+100%|██████████| 766/766 [00:00<00:00, 15153.10ex/s]
+
+100%|██████████| 766/766 [00:00<00:00, 13550.90ex/s]
+
+  0%|          | 0/500 [00:00<?, ?ex/s]
+100%|██████████| 766/766 [00:00<00:00, 15030.75ex/s]
+
+  0%|          | 0/500 [00:00<?, ?ex/s]
+  0%|          | 0/500 [00:00<?, ?ex/s]
+100%|██████████| 500/500 [00:00<00:00, 25078.35ex/s]
+
+  0%|          | 0/500 [00:00<?, ?ex/s]
+100%|██████████| 500/500 [00:00<00:00, 15915.73ex/s]
+
+100%|██████████| 500/500 [00:00<00:00, 19945.90ex/s]
+
+100%|██████████| 500/500 [00:00<00:00, 18329.67ex/s]
+
+  0%|          | 0/700 [00:00<?, ?ex/s]
+  0%|          | 0/700 [00:00<?, ?ex/s]
+  0%|          | 0/700 [00:00<?, ?ex/s]
+100%|██████████| 700/700 [00:00<00:00, 30393.82ex/s]
+
+100%|██████████| 700/700 [00:00<00:00, 25670.28ex/s]
+
+100%|██████████| 700/700 [00:00<00:00, 27186.81ex/s]
+
+  0%|          | 0/700 [00:00<?, ?ex/s]
+100%|██████████| 700/700 [00:00<00:00, 21300.92ex/s]
+
+  0%|          | 0/4181 [00:00<?, ?ex/s]
+  0%|          | 0/4181 [00:00<?, ?ex/s]
+  0%|          | 0/4181 [00:00<?, ?ex/s]
+  0%|          | 0/4181 [00:00<?, ?ex/s]
+ 73%|███████▎  | 3040/4181 [00:00<00:00, 30392.42ex/s]
+ 73%|███████▎  | 3066/4181 [00:00<00:00, 30656.30ex/s]
+ 74%|███████▍  | 3108/4181 [00:00<00:00, 31075.95ex/s]
+100%|██████████| 4181/4181 [00:00<00:00, 30772.23ex/s]
+
+100%|██████████| 4181/4181 [00:00<00:00, 30385.19ex/s]
+
+100%|██████████| 4181/4181 [00:00<00:00, 31024.18ex/s]
+
+ 65%|██████▌   | 2732/4181 [00:00<00:00, 27316.38ex/s]
+100%|██████████| 4181/4181 [00:00<00:00, 28559.96ex/s]
+
+  0%|          | 0/2235 [00:00<?, ?ex/s]
+  0%|          | 0/2235 [00:00<?, ?ex/s]
+  0%|          | 0/2235 [00:00<?, ?ex/s]
+  0%|          | 0/2235 [00:00<?, ?ex/s]
+100%|██████████| 2235/2235 [00:00<00:00, 31006.75ex/s]
+test
+
+100%|██████████| 2235/2235 [00:00<00:00, 31425.85ex/s]
+test
+
+100%|██████████| 2235/2235 [00:00<00:00, 30872.46ex/s]
+test
+
+100%|██████████| 2235/2235 [00:00<00:00, 27149.60ex/s]
+test
+
+  0%|          | 0/1953 [00:00<?, ?ex/s]
+  0%|          | 0/1953 [00:00<?, ?ex/s]
+  0%|          | 0/1953 [00:00<?, ?ex/s]
+  0%|          | 0/1953 [00:00<?, ?ex/s]
+100%|██████████| 1953/1953 [00:00<00:00, 31214.90ex/s]
+
+100%|██████████| 1953/1953 [00:00<00:00, 30606.21ex/s]
+
+100%|██████████| 1953/1953 [00:00<00:00, 30039.85ex/s]
+
+100%|██████████| 1953/1953 [00:00<00:00, 25976.73ex/s]
+
+  0%|          | 0/2443 [00:00<?, ?ex/s]
+  0%|          | 0/2443 [00:00<?, ?ex/s]
+  0%|          | 0/2443 [00:00<?, ?ex/s]
+  0%|          | 0/2443 [00:00<?, ?ex/s]
+100%|██████████| 2443/2443 [00:00<00:00, 29145.34ex/s]
+
+100%|██████████| 2443/2443 [00:00<00:00, 27811.53ex/s]
+
+100%|██████████| 2443/2443 [00:00<00:00, 27386.57ex/s]
+
+100%|██████████| 2443/2443 [00:00<00:00, 26339.13ex/s]
+
+  0%|          | 0/1521 [00:00<?, ?ex/s]
+  0%|          | 0/1521 [00:00<?, ?ex/s]
+  0%|          | 0/1521 [00:00<?, ?ex/s]
+  0%|          | 0/1521 [00:00<?, ?ex/s]
+100%|██████████| 1521/1521 [00:00<00:00, 26770.58ex/s]
+
+100%|██████████| 1521/1521 [00:00<00:00, 25443.95ex/s]
+
+100%|██████████| 1521/1521 [00:00<00:00, 26160.54ex/s]
+
+100%|██████████| 1521/1521 [00:00<00:00, 20532.39ex/s]
+
+  0%|          | 0/893 [00:00<?, ?ex/s]
+  0%|          | 0/893 [00:00<?, ?ex/s]
+  0%|          | 0/893 [00:00<?, ?ex/s]
+  0%|          | 0/893 [00:00<?, ?ex/s]
+100%|██████████| 893/893 [00:00<00:00, 25361.85ex/s]
+
+100%|██████████| 893/893 [00:00<00:00, 31831.74ex/s]
+
+100%|██████████| 893/893 [00:00<00:00, 25964.89ex/s]
+
+100%|██████████| 893/893 [00:00<00:00, 19024.83ex/s]
+
+  0%|          | 0/700 [00:00<?, ?ex/s]
+  0%|          | 0/700 [00:00<?, ?ex/s]
+  0%|          | 0/700 [00:00<?, ?ex/s]
+  0%|          | 0/700 [00:00<?, ?ex/s]
+100%|██████████| 700/700 [00:00<00:00, 20494.44ex/s]
+
+100%|██████████| 700/700 [00:00<00:00, 18443.33ex/s]
+
+100%|██████████| 700/700 [00:00<00:00, 18200.04ex/s]
+
+100%|██████████| 700/700 [00:00<00:00, 25548.99ex/s]
+
+  0%|          | 0/8621 [00:00<?, ?ex/s]
+  0%|          | 0/8621 [00:00<?, ?ex/s]
+  0%|          | 0/8621 [00:00<?, ?ex/s]
+  0%|          | 0/8621 [00:00<?, ?ex/s]
+ 36%|███▌      | 3091/8621 [00:00<00:00, 30907.67ex/s]
+ 27%|██▋       | 2364/8621 [00:00<00:00, 23637.88ex/s]
+ 37%|███▋      | 3169/8621 [00:00<00:00, 31680.82ex/s]
+ 32%|███▏      | 2748/8621 [00:00<00:00, 27472.69ex/s]
+ 72%|███████▏  | 6222/8621 [00:00<00:00, 31026.50ex/s]
+ 63%|██████▎   | 5405/8621 [00:00<00:00, 25329.94ex/s]
+ 74%|███████▎  | 6341/8621 [00:00<00:00, 31690.83ex/s]
+ 68%|██████▊   | 5845/8621 [00:00<00:00, 28433.60ex/s]
+100%|██████████| 8621/8621 [00:00<00:00, 31750.70ex/s]
+
+100%|██████████| 8621/8621 [00:00<00:00, 31095.34ex/s]
+
+ 97%|█████████▋| 8378/8621 [00:00<00:00, 26505.11ex/s]
+100%|██████████| 8621/8621 [00:00<00:00, 27979.94ex/s]
+
+  0%|          | 0/4386 [00:00<?, ?ex/s]
+  0%|          | 0/4386 [00:00<?, ?ex/s]
+  0%|          | 0/4386 [00:00<?, ?ex/s]
+100%|██████████| 8621/8621 [00:00<00:00, 29415.67ex/s]
+
+  0%|          | 0/4386 [00:00<?, ?ex/s]
+ 54%|█████▎    | 2349/4386 [00:00<00:00, 23483.47ex/s]
+ 71%|███████   | 3116/4386 [00:00<00:00, 31153.05ex/s]
+ 71%|███████   | 3097/4386 [00:00<00:00, 30967.22ex/s]
+100%|██████████| 4386/4386 [00:00<00:00, 31168.51ex/s]
+
+100%|██████████| 4386/4386 [00:00<00:00, 31125.64ex/s]
+
+100%|██████████| 4386/4386 [00:00<00:00, 26119.41ex/s]
+
+ 58%|█████▊    | 2552/4386 [00:00<00:00, 25514.31ex/s]
+100%|██████████| 4386/4386 [00:00<00:00, 27529.23ex/s]
+05/26/2024 08:13:02 - INFO - utils.utils -   ***** arguments metrics *****
+05/26/2024 08:13:02 - INFO - utils.utils -     adafactor = False
+05/26/2024 08:13:02 - INFO - utils.utils -     adam_beta1 = 0.9
+05/26/2024 08:13:02 - INFO - utils.utils -     adam_beta2 = 0.999
+05/26/2024 08:13:02 - INFO - utils.utils -     adam_epsilon = 1e-08
+05/26/2024 08:13:02 - INFO - utils.utils -     adapter_config_name = meta-adapter
+05/26/2024 08:13:02 - INFO - utils.utils -     adapters = None
+05/26/2024 08:13:02 - INFO - utils.utils -     add_layer_norm_after_adapter = True
+05/26/2024 08:13:02 - INFO - utils.utils -     add_layer_norm_before_adapter = False
+05/26/2024 08:13:02 - INFO - utils.utils -     attention_dropout = None
+05/26/2024 08:13:02 - INFO - utils.utils -     cache_dir = None
+05/26/2024 08:13:02 - INFO - utils.utils -     compute_memory = False
+05/26/2024 08:13:02 - INFO - utils.utils -     compute_time = False
+05/26/2024 08:13:02 - INFO - utils.utils -     conditional_layer_norm = True
+05/26/2024 08:13:02 - INFO - utils.utils -     config_name = None
+05/26/2024 08:13:02 - INFO - utils.utils -     data_seed = 42
+05/26/2024 08:13:02 - INFO - utils.utils -     dataloader_drop_last = False
+05/26/2024 08:13:02 - INFO - utils.utils -     dataloader_num_workers = 0
+05/26/2024 08:13:02 - INFO - utils.utils -     debug = False
+05/26/2024 08:13:02 - INFO - utils.utils -     decoder_layerdrop = None
+05/26/2024 08:13:02 - INFO - utils.utils -     disable_tqdm = True
+05/26/2024 08:13:02 - INFO - utils.utils -     do_eval = True
+05/26/2024 08:13:02 - INFO - utils.utils -     do_predict = False
+05/26/2024 08:13:02 - INFO - utils.utils -     do_test = True
+05/26/2024 08:13:02 - INFO - utils.utils -     do_train = True
+05/26/2024 08:13:02 - INFO - utils.utils -     dropout = None
+05/26/2024 08:13:02 - INFO - utils.utils -     efficient_unique_hyper_net = True
+05/26/2024 08:13:02 - INFO - utils.utils -     encoder_layerdrop = None
+05/26/2024 08:13:02 - INFO - utils.utils -     eval_accumulation_steps = None
+05/26/2024 08:13:02 - INFO - utils.utils -     eval_beams = 1
+05/26/2024 08:13:02 - INFO - utils.utils -     eval_output_dir = None
+05/26/2024 08:13:02 - INFO - utils.utils -     eval_steps = 1000
+05/26/2024 08:13:02 - INFO - utils.utils -     eval_tasks = ['movieTrivia', 'movie', 'restaurant', 'atis', 'snips', 'mtod', 'mtop']
+05/26/2024 08:13:02 - INFO - utils.utils -     evaluate_during_training = False
+05/26/2024 08:13:02 - INFO - utils.utils -     fp16 = False
+05/26/2024 08:13:02 - INFO - utils.utils -     fp16_opt_level = O1
+05/26/2024 08:13:02 - INFO - utils.utils -     freeze_embeds = False
+05/26/2024 08:13:02 - INFO - utils.utils -     freeze_encoder = False
+05/26/2024 08:13:02 - INFO - utils.utils -     freeze_model = False
+05/26/2024 08:13:02 - INFO - utils.utils -     freeze_model_but_lm_head = False
+05/26/2024 08:13:02 - INFO - utils.utils -     freeze_model_but_task_embeddings = False
+05/26/2024 08:13:02 - INFO - utils.utils -     generate_classifier_weights = False
+05/26/2024 08:13:02 - INFO - utils.utils -     gradient_accumulation_steps = 1
+05/26/2024 08:13:02 - INFO - utils.utils -     greater_is_better = True
+05/26/2024 08:13:02 - INFO - utils.utils -     hidden_dim = 128
+05/26/2024 08:13:02 - INFO - utils.utils -     ignore_pad_token_for_loss = True
+05/26/2024 08:13:02 - INFO - utils.utils -     label_names = None
+05/26/2024 08:13:02 - INFO - utils.utils -     label_smoothing = 0.1
+05/26/2024 08:13:02 - INFO - utils.utils -     learning_rate = 0.0003
+05/26/2024 08:13:02 - INFO - utils.utils -     load_best_model_at_end = True
+05/26/2024 08:13:02 - INFO - utils.utils -     local_rank = 0
+05/26/2024 08:13:02 - INFO - utils.utils -     logging_dir = runs/May26_08-12-37_gpu-08
+05/26/2024 08:13:02 - INFO - utils.utils -     logging_first_step = True
+05/26/2024 08:13:02 - INFO - utils.utils -     logging_steps = 200
+05/26/2024 08:13:02 - INFO - utils.utils -     lr_scheduler = linear
+05/26/2024 08:13:02 - INFO - utils.utils -     max_grad_norm = 1.0
+05/26/2024 08:13:02 - INFO - utils.utils -     max_source_length = 128
+05/26/2024 08:13:02 - INFO - utils.utils -     max_steps = 65536
+05/26/2024 08:13:02 - INFO - utils.utils -     max_target_length = 128
+05/26/2024 08:13:02 - INFO - utils.utils -     metric_for_best_model = average_metrics
+05/26/2024 08:13:02 - INFO - utils.utils -     model_name_or_path = outputs/hyperformer_al++/checkpoint-40000
+05/26/2024 08:13:02 - INFO - utils.utils -     n_test = -1
+05/26/2024 08:13:02 - INFO - utils.utils -     n_train = -1
+05/26/2024 08:13:02 - INFO - utils.utils -     n_val = -1
+05/26/2024 08:13:02 - INFO - utils.utils -     no_cuda = False
+05/26/2024 08:13:02 - INFO - utils.utils -     non_linearity = gelu_new
+05/26/2024 08:13:02 - INFO - utils.utils -     not_load_t5_checkpoint = False
+05/26/2024 08:13:02 - INFO - utils.utils -     num_train_epochs = 100
+05/26/2024 08:13:02 - INFO - utils.utils -     optimize_from_scratch = False
+05/26/2024 08:13:02 - INFO - utils.utils -     optimize_from_scratch_with_loading_model = False
+05/26/2024 08:13:02 - INFO - utils.utils -     output_dir = outputs/hyperformer_al++/
+05/26/2024 08:13:02 - INFO - utils.utils -     overwrite_output_dir = True
+05/26/2024 08:13:02 - INFO - utils.utils -     past_index = -1
+05/26/2024 08:13:02 - INFO - utils.utils -     per_device_eval_batch_size = 32
+05/26/2024 08:13:02 - INFO - utils.utils -     per_device_train_batch_size = 32
+05/26/2024 08:13:02 - INFO - utils.utils -     per_gpu_eval_batch_size = None
+05/26/2024 08:13:02 - INFO - utils.utils -     per_gpu_train_batch_size = None
+05/26/2024 08:13:02 - INFO - utils.utils -     predict_with_generate = True
+05/26/2024 08:13:02 - INFO - utils.utils -     prediction_loss_only = False
+05/26/2024 08:13:02 - INFO - utils.utils -     print_num_parameters = True
+05/26/2024 08:13:02 - INFO - utils.utils -     projected_task_embedding_dim = 64
+05/26/2024 08:13:02 - INFO - utils.utils -     reduction_factor = 32
+05/26/2024 08:13:02 - INFO - utils.utils -     remove_unused_columns = False
+05/26/2024 08:13:02 - INFO - utils.utils -     run_name = outputs/hyperformer_al++/
+05/26/2024 08:13:02 - INFO - utils.utils -     save_steps = 1000
+05/26/2024 08:13:02 - INFO - utils.utils -     save_total_limit = 1
+05/26/2024 08:13:02 - INFO - utils.utils -     seed = 42
+05/26/2024 08:13:02 - INFO - utils.utils -     split_validation_test = True
+05/26/2024 08:13:02 - INFO - utils.utils -     task_embedding_dim = 64
+05/26/2024 08:13:02 - INFO - utils.utils -     task_embeddings = None
+05/26/2024 08:13:02 - INFO - utils.utils -     task_hidden_dim = 128
+05/26/2024 08:13:02 - INFO - utils.utils -     tasks = ['movieTrivia', 'movie', 'restaurant', 'atis', 'snips', 'mtod', 'mtop']
+05/26/2024 08:13:02 - INFO - utils.utils -     temperature = 10
+05/26/2024 08:13:02 - INFO - utils.utils -     test_max_target_length = 128
+05/26/2024 08:13:02 - INFO - utils.utils -     tokenizer_name = t5-base
+05/26/2024 08:13:02 - INFO - utils.utils -     tpu_metrics_debug = False
+05/26/2024 08:13:02 - INFO - utils.utils -     tpu_num_cores = None
+05/26/2024 08:13:02 - INFO - utils.utils -     train_adapters = True
+05/26/2024 08:13:02 - INFO - utils.utils -     train_adapters_blocks = True
+05/26/2024 08:13:02 - INFO - utils.utils -     train_task_embeddings = False
+05/26/2024 08:13:02 - INFO - utils.utils -     unfreeze_layer_norms = True
+05/26/2024 08:13:02 - INFO - utils.utils -     unfreeze_lm_head = False
+05/26/2024 08:13:02 - INFO - utils.utils -     unfreeze_model = False
+05/26/2024 08:13:02 - INFO - utils.utils -     unique_hyper_net = False
+05/26/2024 08:13:02 - INFO - utils.utils -     unique_hyper_net_layer_norm = True
+05/26/2024 08:13:02 - INFO - utils.utils -     val_max_target_length = 128
+05/26/2024 08:13:02 - INFO - utils.utils -     warmup_steps = 500
+05/26/2024 08:13:02 - INFO - utils.utils -     weight_decay = 0.0
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -   ***** Running training *****
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Num examples = 86475
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Num Epochs = 98
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Instantaneous batch size per device = 32
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Total train batch size (w. parallel, distributed & accumulation) = 128
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Gradient Accumulation steps = 1
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Total optimization steps = 65536
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Continuing training from checkpoint, will skip to saved global_step
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Continuing training from epoch 59
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Continuing training from global step 40000
+05/26/2024 08:13:02 - INFO - third_party.trainers.t5_trainer -     Will skip the first 175 steps in the first epoch
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 6.54270211442786, 'learning_rate': 0.000116870656251922, 'epoch': 59.55555555555556}
+{'loss': 1250.573125, 'learning_rate': 0.00011594809028845561, 'epoch': 59.851851851851855}
+{'loss': 1241.6915625, 'learning_rate': 0.00011502552432498922, 'epoch': 60.148148148148145}
+{'loss': 1300.626875, 'learning_rate': 0.00011410295836152283, 'epoch': 60.44444444444444}
+{'loss': 1343.7209375, 'learning_rate': 0.00011318039239805644, 'epoch': 60.74074074074074}
+05/26/2024 08:19:30 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 08:20:39 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1948.1787109375
+05/26/2024 08:20:39 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6717391304347825
+05/26/2024 08:20:39 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:20:39 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 08:21:47 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1200.9261474609375
+05/26/2024 08:21:47 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8653619429379864
+05/26/2024 08:21:47 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:21:47 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 08:22:35 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1068.0838623046875
+05/26/2024 08:22:35 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7660535656663441
+05/26/2024 08:22:35 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:22:35 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 08:23:19 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1834.05322265625
+05/26/2024 08:23:19 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9783625730994152
+05/26/2024 08:23:19 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:23:19 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 08:24:07 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1052.7744140625
+05/26/2024 08:24:07 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9355555555555556
+05/26/2024 08:24:07 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:24:07 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 08:28:15 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.0315551757812
+05/26/2024 08:28:15 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9593681064541378
+05/26/2024 08:28:15 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:28:15 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 08:30:45 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1095.2982177734375
+05/26/2024 08:30:45 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8582137779501099
+05/26/2024 08:30:45 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1286.063125, 'learning_rate': 0.00011225782643459005, 'epoch': 61.03703703703704}
+{'loss': 1335.53375, 'learning_rate': 0.00011133526047112368, 'epoch': 61.333333333333336}
+{'loss': 1265.73125, 'learning_rate': 0.00011041269450765729, 'epoch': 61.629629629629626}
+{'loss': 1200.57125, 'learning_rate': 0.0001094901285441909, 'epoch': 61.925925925925924}
+{'loss': 1268.27, 'learning_rate': 0.00010856756258072451, 'epoch': 62.22222222222222}
+05/26/2024 08:36:58 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 08:38:06 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1939.4571533203125
+05/26/2024 08:38:06 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6771270718232045
+05/26/2024 08:38:06 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:38:06 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 08:39:15 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1198.2015380859375
+05/26/2024 08:39:15 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8675434476279942
+05/26/2024 08:39:15 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:39:15 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 08:40:04 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1067.2247314453125
+05/26/2024 08:40:04 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7616897774911319
+05/26/2024 08:40:04 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:40:04 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 08:40:48 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1835.6396484375
+05/26/2024 08:40:48 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9788980070339975
+05/26/2024 08:40:48 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:40:48 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 08:41:36 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1051.6097412109375
+05/26/2024 08:41:36 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9398998330550918
+05/26/2024 08:41:36 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:41:36 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 08:45:43 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 765.408447265625
+05/26/2024 08:45:43 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9602677299914555
+05/26/2024 08:45:43 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:45:43 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 08:48:13 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1092.6544189453125
+05/26/2024 08:48:13 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8578851649779162
+05/26/2024 08:48:13 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1259.9575, 'learning_rate': 0.00010764499661725812, 'epoch': 62.51851851851852}
+{'loss': 1228.9825, 'learning_rate': 0.00010672243065379173, 'epoch': 62.81481481481482}
+{'loss': 1287.0375, 'learning_rate': 0.00010579986469032534, 'epoch': 63.111111111111114}
+{'loss': 1255.8725, 'learning_rate': 0.00010487729872685896, 'epoch': 63.407407407407405}
+{'loss': 1266.48625, 'learning_rate': 0.00010395473276339257, 'epoch': 63.7037037037037}
+05/26/2024 08:54:29 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 08:55:38 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1945.0802001953125
+05/26/2024 08:55:38 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6730172795746566
+05/26/2024 08:55:38 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:55:38 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 08:56:45 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.5009765625
+05/26/2024 08:56:45 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8588207657975101
+05/26/2024 08:56:45 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:56:45 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 08:57:35 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1070.63037109375
+05/26/2024 08:57:35 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7665056360708535
+05/26/2024 08:57:35 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:57:35 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 08:58:19 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1835.5262451171875
+05/26/2024 08:58:19 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9809663250366033
+05/26/2024 08:58:19 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:58:19 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 08:59:06 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1053.45361328125
+05/26/2024 08:59:06 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9360400444938821
+05/26/2024 08:59:06 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 08:59:06 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 09:03:15 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 766.3348388671875
+05/26/2024 09:03:15 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9610870029166964
+05/26/2024 09:03:15 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:03:15 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 09:05:46 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1095.3438720703125
+05/26/2024 09:05:46 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8598692810457516
+05/26/2024 09:05:46 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1260.86375, 'learning_rate': 0.00010303216679992619, 'epoch': 64.0}
+{'loss': 1249.825, 'learning_rate': 0.0001021096008364598, 'epoch': 64.29629629629629}
+{'loss': 1291.235, 'learning_rate': 0.00010118703487299341, 'epoch': 64.5925925925926}
+{'loss': 1218.11, 'learning_rate': 0.00010026446890952703, 'epoch': 64.88888888888889}
+{'loss': 1244.9425, 'learning_rate': 9.934190294606064e-05, 'epoch': 65.18518518518519}
+05/26/2024 09:11:54 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 09:13:03 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1941.826416015625
+05/26/2024 09:13:03 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6852502194907815
+05/26/2024 09:13:03 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:13:03 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 09:14:11 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1204.937255859375
+05/26/2024 09:14:11 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8597603946441155
+05/26/2024 09:14:11 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:14:11 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 09:15:01 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1069.7481689453125
+05/26/2024 09:15:01 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7659024862770424
+05/26/2024 09:15:01 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:15:01 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 09:15:45 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1834.605224609375
+05/26/2024 09:15:45 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9798186604270255
+05/26/2024 09:15:45 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:15:45 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 09:16:32 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1052.8065185546875
+05/26/2024 09:16:32 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9404563160823595
+05/26/2024 09:16:32 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:16:32 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 09:20:43 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 766.4489135742188
+05/26/2024 09:20:43 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9612425192362497
+05/26/2024 09:20:43 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:20:43 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 09:23:14 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.5091552734375
+05/26/2024 09:23:14 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8602290473711608
+05/26/2024 09:23:14 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1293.8125, 'learning_rate': 9.841933698259425e-05, 'epoch': 65.48148148148148}
+{'loss': 1212.775, 'learning_rate': 9.749677101912786e-05, 'epoch': 65.77777777777777}
+{'loss': 1265.1075, 'learning_rate': 9.657420505566147e-05, 'epoch': 66.07407407407408}
+{'loss': 1296.59, 'learning_rate': 9.565163909219508e-05, 'epoch': 66.37037037037037}
+{'loss': 1311.735, 'learning_rate': 9.472907312872869e-05, 'epoch': 66.66666666666667}
+05/26/2024 09:29:29 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 09:30:38 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1946.7333984375
+05/26/2024 09:30:38 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6799999999999999
+05/26/2024 09:30:38 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:30:38 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 09:31:46 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1203.994140625
+05/26/2024 09:31:46 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8602200889721376
+05/26/2024 09:31:46 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:31:46 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 09:32:35 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1070.444580078125
+05/26/2024 09:32:35 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.765559496936472
+05/26/2024 09:32:35 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:32:35 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 09:33:19 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1833.0465087890625
+05/26/2024 09:33:19 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9827333918642084
+05/26/2024 09:33:19 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:33:19 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 09:34:06 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1053.6346435546875
+05/26/2024 09:34:06 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9355913381454747
+05/26/2024 09:34:06 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:34:06 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 09:38:13 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 766.616943359375
+05/26/2024 09:38:13 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.96036997509783
+05/26/2024 09:38:13 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:38:13 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 09:40:43 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.6754150390625
+05/26/2024 09:40:43 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8610283642015283
+05/26/2024 09:40:43 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1223.43, 'learning_rate': 9.380650716526232e-05, 'epoch': 66.96296296296296}
+{'loss': 1288.87, 'learning_rate': 9.288394120179593e-05, 'epoch': 67.25925925925925}
+{'loss': 1256.6925, 'learning_rate': 9.196137523832954e-05, 'epoch': 67.55555555555556}
+{'loss': 1294.545, 'learning_rate': 9.103880927486315e-05, 'epoch': 67.85185185185185}
+{'loss': 1224.7975, 'learning_rate': 9.011624331139676e-05, 'epoch': 68.14814814814815}
+05/26/2024 09:46:54 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 09:48:02 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1948.318359375
+05/26/2024 09:48:02 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6845901639344262
+05/26/2024 09:48:02 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:48:02 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 09:49:10 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1203.5361328125
+05/26/2024 09:49:10 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.860235294117647
+05/26/2024 09:49:10 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:49:10 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 09:49:59 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1077.7159423828125
+05/26/2024 09:49:59 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7738629083920564
+05/26/2024 09:49:59 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:49:59 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 09:50:43 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1836.6903076171875
+05/26/2024 09:50:43 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9786237188872621
+05/26/2024 09:50:43 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:50:43 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 09:51:30 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1053.9439697265625
+05/26/2024 09:51:30 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.932518744793113
+05/26/2024 09:51:30 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:51:30 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 09:55:38 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.9495239257812
+05/26/2024 09:55:38 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.958584925765433
+05/26/2024 09:55:38 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 09:55:38 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 09:58:10 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.750732421875
+05/26/2024 09:58:10 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8608380755302638
+05/26/2024 09:58:10 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1260.3025, 'learning_rate': 8.919367734793037e-05, 'epoch': 68.44444444444444}
+{'loss': 1220.3275, 'learning_rate': 8.827111138446399e-05, 'epoch': 68.74074074074075}
+{'loss': 1252.9275, 'learning_rate': 8.73485454209976e-05, 'epoch': 69.03703703703704}
+{'loss': 1285.185, 'learning_rate': 8.642597945753121e-05, 'epoch': 69.33333333333333}
+{'loss': 1338.565, 'learning_rate': 8.550341349406483e-05, 'epoch': 69.62962962962963}
+05/26/2024 10:04:19 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 10:05:26 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1948.1627197265625
+05/26/2024 10:05:26 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6820783795684721
+05/26/2024 10:05:26 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:05:26 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 10:06:35 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1201.396728515625
+05/26/2024 10:06:35 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8586829153972345
+05/26/2024 10:06:35 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:06:35 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 10:07:24 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1071.24609375
+05/26/2024 10:07:24 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7667525773195876
+05/26/2024 10:07:24 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:07:24 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 10:08:08 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1836.103515625
+05/26/2024 10:08:08 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.977751756440281
+05/26/2024 10:08:08 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:08:08 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 10:08:56 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1052.9422607421875
+05/26/2024 10:08:56 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9349638688160089
+05/26/2024 10:08:56 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:08:56 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 10:13:03 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 766.8843383789062
+05/26/2024 10:13:03 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9612458223707602
+05/26/2024 10:13:03 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:13:03 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 10:15:35 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.8382568359375
+05/26/2024 10:15:35 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8597379006098352
+05/26/2024 10:15:35 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1287.965, 'learning_rate': 8.458084753059842e-05, 'epoch': 69.92592592592592}
+{'loss': 1356.22, 'learning_rate': 8.365828156713204e-05, 'epoch': 70.22222222222223}
+{'loss': 1315.565, 'learning_rate': 8.273571560366565e-05, 'epoch': 70.51851851851852}
+{'loss': 1311.105, 'learning_rate': 8.181314964019926e-05, 'epoch': 70.81481481481481}
+{'loss': 1286.395, 'learning_rate': 8.089058367673287e-05, 'epoch': 71.11111111111111}
+05/26/2024 10:21:46 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 10:22:53 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1955.5428466796875
+05/26/2024 10:22:53 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6744544853427374
+05/26/2024 10:22:53 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:22:53 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 10:24:02 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1205.334716796875
+05/26/2024 10:24:02 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8666666666666667
+05/26/2024 10:24:02 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:24:02 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 10:24:51 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1079.975830078125
+05/26/2024 10:24:51 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7692804130364633
+05/26/2024 10:24:51 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:24:51 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 10:25:36 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1836.49755859375
+05/26/2024 10:25:36 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9780765857936276
+05/26/2024 10:25:36 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:25:36 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 10:26:24 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1054.581787109375
+05/26/2024 10:26:24 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9371174179187535
+05/26/2024 10:26:24 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:26:24 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 10:30:34 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.5613403320312
+05/26/2024 10:30:34 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9610130904951621
+05/26/2024 10:30:34 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:30:34 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 10:33:05 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1093.956787109375
+05/26/2024 10:33:05 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8623544631306598
+05/26/2024 10:33:05 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1259.8, 'learning_rate': 7.996801771326649e-05, 'epoch': 71.4074074074074}
+{'loss': 1275.75, 'learning_rate': 7.90454517498001e-05, 'epoch': 71.70370370370371}
+{'loss': 1224.555, 'learning_rate': 7.812288578633371e-05, 'epoch': 72.0}
+{'loss': 1233.15, 'learning_rate': 7.720031982286732e-05, 'epoch': 72.29629629629629}
+{'loss': 1266.19, 'learning_rate': 7.627775385940093e-05, 'epoch': 72.5925925925926}
+05/26/2024 10:39:14 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 10:40:22 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1950.6224365234375
+05/26/2024 10:40:22 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.679120879120879
+05/26/2024 10:40:22 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:40:22 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 10:41:30 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1202.421630859375
+05/26/2024 10:41:30 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8705052878965922
+05/26/2024 10:41:30 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:41:30 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 10:42:19 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1075.7183837890625
+05/26/2024 10:42:19 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.765559496936472
+05/26/2024 10:42:19 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:42:19 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 10:43:03 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1832.0819091796875
+05/26/2024 10:43:03 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9806565064478312
+05/26/2024 10:43:03 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:43:03 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 10:43:50 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1052.4140625
+05/26/2024 10:43:50 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9394107837687604
+05/26/2024 10:43:50 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:43:50 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 10:47:57 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 766.709716796875
+05/26/2024 10:47:57 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.961965811965812
+05/26/2024 10:47:57 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:47:57 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 10:50:27 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1093.5032958984375
+05/26/2024 10:50:27 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8672658590595285
+05/26/2024 10:50:27 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1290.95, 'learning_rate': 7.535518789593456e-05, 'epoch': 72.88888888888889}
+{'loss': 1274.555, 'learning_rate': 7.443262193246817e-05, 'epoch': 73.18518518518519}
+{'loss': 1221.74, 'learning_rate': 7.351005596900178e-05, 'epoch': 73.48148148148148}
+{'loss': 1258.575, 'learning_rate': 7.258749000553539e-05, 'epoch': 73.77777777777777}
+{'loss': 1250.01, 'learning_rate': 7.1664924042069e-05, 'epoch': 74.07407407407408}
+05/26/2024 10:56:34 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 10:57:41 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1948.9674072265625
+05/26/2024 10:57:41 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6796030871003307
+05/26/2024 10:57:41 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:57:41 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 10:58:49 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.0198974609375
+05/26/2024 10:58:49 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8691566831101715
+05/26/2024 10:58:49 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:58:49 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 10:59:38 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1078.6573486328125
+05/26/2024 10:59:38 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7646109137875362
+05/26/2024 10:59:38 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 10:59:38 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 11:00:22 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1834.2542724609375
+05/26/2024 11:00:22 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9801053247513165
+05/26/2024 11:00:22 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:00:22 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 11:01:09 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1053.8212890625
+05/26/2024 11:01:09 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9371523915461623
+05/26/2024 11:01:09 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:01:09 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 11:05:17 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.9515380859375
+05/26/2024 11:05:17 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9614399544678429
+05/26/2024 11:05:17 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:05:17 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 11:07:48 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.3419189453125
+05/26/2024 11:07:48 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8611254517294786
+05/26/2024 11:07:48 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1231.205, 'learning_rate': 7.074235807860261e-05, 'epoch': 74.37037037037037}
+{'loss': 1325.68, 'learning_rate': 6.981979211513622e-05, 'epoch': 74.66666666666667}
+{'loss': 1320.195, 'learning_rate': 6.889722615166983e-05, 'epoch': 74.96296296296296}
+{'loss': 1275.13, 'learning_rate': 6.797466018820345e-05, 'epoch': 75.25925925925925}
+{'loss': 1292.62, 'learning_rate': 6.705209422473706e-05, 'epoch': 75.55555555555556}
+05/26/2024 11:13:58 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 11:15:06 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1951.8037109375
+05/26/2024 11:15:06 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6780412142698871
+05/26/2024 11:15:06 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:15:06 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 11:16:14 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1204.537109375
+05/26/2024 11:16:14 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8658192090395481
+05/26/2024 11:16:14 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:16:14 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 11:17:03 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1077.2476806640625
+05/26/2024 11:17:03 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7655997413514387
+05/26/2024 11:17:03 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:17:03 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 11:17:47 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1835.7371826171875
+05/26/2024 11:17:47 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9786362306116476
+05/26/2024 11:17:47 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:17:47 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 11:18:34 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1054.709228515625
+05/26/2024 11:18:34 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9352237976091187
+05/26/2024 11:18:34 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:18:34 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 11:22:42 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.4192504882812
+05/26/2024 11:22:42 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.961018637074975
+05/26/2024 11:22:42 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:22:42 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 11:25:12 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1095.323974609375
+05/26/2024 11:25:12 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8625875032408606
+05/26/2024 11:25:12 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1232.16, 'learning_rate': 6.612952826127068e-05, 'epoch': 75.85185185185185}
+{'loss': 1212.295, 'learning_rate': 6.520696229780429e-05, 'epoch': 76.14814814814815}
+{'loss': 1222.545, 'learning_rate': 6.42843963343379e-05, 'epoch': 76.44444444444444}
+{'loss': 1266.315, 'learning_rate': 6.336183037087151e-05, 'epoch': 76.74074074074075}
+{'loss': 1243.34, 'learning_rate': 6.243926440740513e-05, 'epoch': 77.03703703703704}
+05/26/2024 11:31:18 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 11:32:26 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1946.1419677734375
+05/26/2024 11:32:26 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6792620582351634
+05/26/2024 11:32:26 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:32:26 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 11:33:35 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1202.7855224609375
+05/26/2024 11:33:35 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8634008478568065
+05/26/2024 11:33:35 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:33:35 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 11:34:24 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1074.2548828125
+05/26/2024 11:34:24 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7678398450113012
+05/26/2024 11:34:24 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:34:24 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 11:35:08 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1833.9815673828125
+05/26/2024 11:35:08 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9809663250366033
+05/26/2024 11:35:08 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:35:08 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 11:35:55 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1053.4732666015625
+05/26/2024 11:35:55 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9368918543230469
+05/26/2024 11:35:55 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:35:55 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 11:40:02 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 766.8915405273438
+05/26/2024 11:40:02 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9600626468285043
+05/26/2024 11:40:02 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:40:02 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 11:42:33 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1093.22705078125
+05/26/2024 11:42:33 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8614028263969921
+05/26/2024 11:42:33 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1296.155, 'learning_rate': 6.151669844393874e-05, 'epoch': 77.33333333333333}
+{'loss': 1238.625, 'learning_rate': 6.059413248047235e-05, 'epoch': 77.62962962962963}
+{'loss': 1232.765, 'learning_rate': 5.967156651700597e-05, 'epoch': 77.92592592592592}
+{'loss': 1337.71, 'learning_rate': 5.874900055353958e-05, 'epoch': 78.22222222222223}
+{'loss': 1322.805, 'learning_rate': 5.782643459007318e-05, 'epoch': 78.51851851851852}
+05/26/2024 11:48:44 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 11:49:51 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1948.9974365234375
+05/26/2024 11:49:51 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6777041942604857
+05/26/2024 11:49:51 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:49:51 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 11:50:59 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1203.3470458984375
+05/26/2024 11:50:59 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8657907085875176
+05/26/2024 11:50:59 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:50:59 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 11:51:48 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1077.8043212890625
+05/26/2024 11:51:48 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7642328723062078
+05/26/2024 11:51:48 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:51:48 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 11:52:32 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1833.57666015625
+05/26/2024 11:52:32 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9803921568627451
+05/26/2024 11:52:32 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:52:32 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 11:53:19 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1052.015869140625
+05/26/2024 11:53:19 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9352237976091187
+05/26/2024 11:53:19 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:53:19 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 11:57:29 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 766.8529052734375
+05/26/2024 11:57:29 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9614509246088193
+05/26/2024 11:57:29 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 11:57:29 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 11:59:59 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.65576171875
+05/26/2024 11:59:59 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8638838475499092
+05/26/2024 11:59:59 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1290.3, 'learning_rate': 5.6903868626606793e-05, 'epoch': 78.81481481481481}
+{'loss': 1270.37, 'learning_rate': 5.5981302663140405e-05, 'epoch': 79.11111111111111}
+{'loss': 1263.97, 'learning_rate': 5.5058736699674016e-05, 'epoch': 79.4074074074074}
+{'loss': 1267.9, 'learning_rate': 5.4136170736207634e-05, 'epoch': 79.70370370370371}
+{'loss': 1239.28, 'learning_rate': 5.3213604772741245e-05, 'epoch': 80.0}
+05/26/2024 12:06:08 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 12:07:17 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1956.082763671875
+05/26/2024 12:07:17 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6741523557904008
+05/26/2024 12:07:17 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:07:17 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 12:08:25 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1205.0032958984375
+05/26/2024 12:08:25 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8659454374412041
+05/26/2024 12:08:25 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:08:25 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 12:09:14 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1077.6602783203125
+05/26/2024 12:09:14 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7750241390408756
+05/26/2024 12:09:14 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:09:14 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 12:09:57 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1833.6319580078125
+05/26/2024 12:09:57 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9801053247513165
+05/26/2024 12:09:57 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:09:57 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 12:10:45 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1055.411376953125
+05/26/2024 12:10:45 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9339255968906163
+05/26/2024 12:10:45 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:10:45 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 12:14:53 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 768.1564331054688
+05/26/2024 12:14:53 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.960881934566145
+05/26/2024 12:14:53 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:14:53 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 12:17:24 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.321533203125
+05/26/2024 12:17:24 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.862537178326652
+05/26/2024 12:17:24 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1263.89, 'learning_rate': 5.2291038809274856e-05, 'epoch': 80.29629629629629}
+{'loss': 1264.21, 'learning_rate': 5.136847284580847e-05, 'epoch': 80.5925925925926}
+{'loss': 1280.05, 'learning_rate': 5.0445906882342086e-05, 'epoch': 80.88888888888889}
+{'loss': 1229.27, 'learning_rate': 4.95233409188757e-05, 'epoch': 81.18518518518519}
+{'loss': 1239.64, 'learning_rate': 4.860077495540931e-05, 'epoch': 81.48148148148148}
+05/26/2024 12:23:31 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 12:24:39 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1959.2537841796875
+05/26/2024 12:24:39 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6775115409980216
+05/26/2024 12:24:39 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:24:39 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 12:25:47 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.0460205078125
+05/26/2024 12:25:47 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8629847238542891
+05/26/2024 12:25:47 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:25:47 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 12:26:36 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1080.3587646484375
+05/26/2024 12:26:36 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7714654615881215
+05/26/2024 12:26:36 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:26:36 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 12:27:20 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1834.9300537109375
+05/26/2024 12:27:20 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.978349912229374
+05/26/2024 12:27:20 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:27:20 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 12:28:08 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1054.4283447265625
+05/26/2024 12:28:08 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9374478732276896
+05/26/2024 12:28:08 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:28:08 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 12:32:15 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 768.0579833984375
+05/26/2024 12:32:15 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9630841453872964
+05/26/2024 12:32:15 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:32:15 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 12:34:45 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1093.997314453125
+05/26/2024 12:34:45 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8623112961998958
+05/26/2024 12:34:45 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1311.96, 'learning_rate': 4.767820899194292e-05, 'epoch': 81.77777777777777}
+{'loss': 1261.09, 'learning_rate': 4.675564302847653e-05, 'epoch': 82.07407407407408}
+{'loss': 1262.4, 'learning_rate': 4.583307706501015e-05, 'epoch': 82.37037037037037}
+{'loss': 1223.51, 'learning_rate': 4.491051110154376e-05, 'epoch': 82.66666666666667}
+{'loss': 1291.97, 'learning_rate': 4.398794513807737e-05, 'epoch': 82.96296296296296}
+05/26/2024 12:40:52 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 12:42:00 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1954.8873291015625
+05/26/2024 12:42:00 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6813574261789336
+05/26/2024 12:42:00 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:42:00 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 12:43:08 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1205.9320068359375
+05/26/2024 12:43:08 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8616470588235294
+05/26/2024 12:43:08 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:43:08 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 12:43:58 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1081.5870361328125
+05/26/2024 12:43:58 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7681347150259068
+05/26/2024 12:43:58 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:43:58 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 12:44:42 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1834.8531494140625
+05/26/2024 12:44:42 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9789350497366881
+05/26/2024 12:44:42 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:44:42 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 12:45:30 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1055.111083984375
+05/26/2024 12:45:30 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9352957511802278
+05/26/2024 12:45:30 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:45:30 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 12:49:41 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.4544067382812
+05/26/2024 12:49:41 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9629999287089186
+05/26/2024 12:49:41 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:49:41 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 12:52:13 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1093.6932373046875
+05/26/2024 12:52:13 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8644155844155844
+05/26/2024 12:52:13 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1264.85, 'learning_rate': 4.306537917461098e-05, 'epoch': 83.25925925925925}
+{'loss': 1276.75, 'learning_rate': 4.214281321114459e-05, 'epoch': 83.55555555555556}
+{'loss': 1300.52, 'learning_rate': 4.122024724767821e-05, 'epoch': 83.85185185185185}
+{'loss': 1290.64, 'learning_rate': 4.0297681284211816e-05, 'epoch': 84.14814814814815}
+{'loss': 1289.31, 'learning_rate': 3.937511532074543e-05, 'epoch': 84.44444444444444}
+05/26/2024 12:58:23 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 12:59:32 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1959.600341796875
+05/26/2024 12:59:32 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6829590488771466
+05/26/2024 12:59:32 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 12:59:32 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 13:00:40 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1207.3839111328125
+05/26/2024 13:00:40 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8588842006563525
+05/26/2024 13:00:40 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:00:40 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 13:01:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1079.8289794921875
+05/26/2024 13:01:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7676898222940225
+05/26/2024 13:01:29 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:01:29 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 13:02:12 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1833.8895263671875
+05/26/2024 13:02:12 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.980679156908665
+05/26/2024 13:02:12 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:02:12 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 13:03:00 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1054.717041015625
+05/26/2024 13:03:00 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9319255348707974
+05/26/2024 13:03:00 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:03:00 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 13:07:08 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.88134765625
+05/26/2024 13:07:08 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9623621487015298
+05/26/2024 13:07:08 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:07:08 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 13:09:39 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.103759765625
+05/26/2024 13:09:39 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8620331950207469
+05/26/2024 13:09:39 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1274.16, 'learning_rate': 3.845254935727904e-05, 'epoch': 84.74074074074075}
+{'loss': 1270.19, 'learning_rate': 3.752998339381265e-05, 'epoch': 85.03703703703704}
+{'loss': 1236.22, 'learning_rate': 3.660741743034627e-05, 'epoch': 85.33333333333333}
+{'loss': 1308.96, 'learning_rate': 3.568485146687988e-05, 'epoch': 85.62962962962963}
+{'loss': 1254.8, 'learning_rate': 3.476228550341349e-05, 'epoch': 85.92592592592592}
+05/26/2024 13:15:47 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 13:16:54 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1959.8310546875
+05/26/2024 13:16:54 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6823581170259568
+05/26/2024 13:16:54 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:16:54 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 13:18:03 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.218017578125
+05/26/2024 13:18:03 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8600890555425357
+05/26/2024 13:18:03 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:18:03 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 13:18:52 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1082.729248046875
+05/26/2024 13:18:52 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7619967793880835
+05/26/2024 13:18:52 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:18:52 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 13:19:36 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1835.3990478515625
+05/26/2024 13:19:36 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9792093704245974
+05/26/2024 13:19:36 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:19:36 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 13:20:24 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1055.23583984375
+05/26/2024 13:20:24 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9347040844679078
+05/26/2024 13:20:24 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:20:24 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 13:24:32 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.6446533203125
+05/26/2024 13:24:32 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9616615691016432
+05/26/2024 13:24:32 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:24:32 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 13:27:03 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.863037109375
+05/26/2024 13:27:03 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8630243397203521
+05/26/2024 13:27:03 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1314.21, 'learning_rate': 3.38397195399471e-05, 'epoch': 86.22222222222223}
+{'loss': 1248.73, 'learning_rate': 3.291715357648071e-05, 'epoch': 86.51851851851852}
+{'loss': 1277.96, 'learning_rate': 3.199458761301433e-05, 'epoch': 86.81481481481481}
+{'loss': 1305.52, 'learning_rate': 3.107202164954794e-05, 'epoch': 87.11111111111111}
+{'loss': 1290.64, 'learning_rate': 3.0149455686081553e-05, 'epoch': 87.4074074074074}
+05/26/2024 13:33:12 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 13:34:20 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1959.6007080078125
+05/26/2024 13:34:20 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6750440917107583
+05/26/2024 13:34:20 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:34:20 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 13:35:28 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.45751953125
+05/26/2024 13:35:28 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8623035421064976
+05/26/2024 13:35:28 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:35:28 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 13:36:17 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1082.0416259765625
+05/26/2024 13:36:17 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7664941785252263
+05/26/2024 13:36:17 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:36:17 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 13:37:01 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1834.90478515625
+05/26/2024 13:37:01 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9792093704245974
+05/26/2024 13:37:01 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:37:01 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 13:37:48 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1054.7869873046875
+05/26/2024 13:37:48 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9376739009460212
+05/26/2024 13:37:48 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:37:48 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 13:41:54 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.1126708984375
+05/26/2024 13:41:54 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.96409233399829
+05/26/2024 13:41:54 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:41:54 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 13:44:25 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.1649169921875
+05/26/2024 13:44:25 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8676851372345935
+05/26/2024 13:44:25 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1224.75, 'learning_rate': 2.9226889722615164e-05, 'epoch': 87.70370370370371}
+{'loss': 1223.43, 'learning_rate': 2.830432375914878e-05, 'epoch': 88.0}
+{'loss': 1299.69, 'learning_rate': 2.738175779568239e-05, 'epoch': 88.29629629629629}
+{'loss': 1310.98, 'learning_rate': 2.6459191832216e-05, 'epoch': 88.5925925925926}
+{'loss': 1264.54, 'learning_rate': 2.5536625868749612e-05, 'epoch': 88.88888888888889}
+05/26/2024 13:50:34 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 13:51:40 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1958.1419677734375
+05/26/2024 13:51:40 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.677269715043075
+05/26/2024 13:51:40 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:51:40 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 13:52:49 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1209.2216796875
+05/26/2024 13:52:49 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.863123236124177
+05/26/2024 13:52:49 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:52:49 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 13:53:38 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1081.3809814453125
+05/26/2024 13:53:38 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7713178294573644
+05/26/2024 13:53:38 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:53:38 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 13:54:22 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1835.1492919921875
+05/26/2024 13:54:22 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9803921568627451
+05/26/2024 13:54:22 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:54:22 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 13:55:09 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1055.326416015625
+05/26/2024 13:55:09 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.935
+05/26/2024 13:55:09 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:55:09 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 13:59:17 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 768.1520385742188
+05/26/2024 13:59:17 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9623878045305598
+05/26/2024 13:59:17 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 13:59:17 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 14:01:47 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.26123046875
+05/26/2024 14:01:47 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8628875340511092
+05/26/2024 14:01:47 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1268.83, 'learning_rate': 2.4614059905283223e-05, 'epoch': 89.18518518518519}
+{'loss': 1277.31, 'learning_rate': 2.3691493941816838e-05, 'epoch': 89.48148148148148}
+{'loss': 1330.49, 'learning_rate': 2.276892797835045e-05, 'epoch': 89.77777777777777}
+{'loss': 1216.23, 'learning_rate': 2.1846362014884064e-05, 'epoch': 90.07407407407408}
+{'loss': 1281.31, 'learning_rate': 2.0923796051417675e-05, 'epoch': 90.37037037037037}
+05/26/2024 14:07:58 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 14:09:05 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1962.1925048828125
+05/26/2024 14:09:05 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6791044776119404
+05/26/2024 14:09:05 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:09:05 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 14:10:13 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1210.0291748046875
+05/26/2024 14:10:13 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8617771509167842
+05/26/2024 14:10:13 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:10:13 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 14:11:02 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1082.017333984375
+05/26/2024 14:11:02 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7671940587665483
+05/26/2024 14:11:02 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:11:02 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 14:11:46 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1835.0758056640625
+05/26/2024 14:11:46 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9801053247513165
+05/26/2024 14:11:46 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:11:46 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 14:12:33 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1055.6671142578125
+05/26/2024 14:12:33 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9338888888888888
+05/26/2024 14:12:33 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:12:33 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 14:16:40 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.4577026367188
+05/26/2024 14:16:40 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9625257768612671
+05/26/2024 14:16:40 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:16:40 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 14:19:10 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.486328125
+05/26/2024 14:19:10 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8656639004149377
+05/26/2024 14:19:10 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1276.08, 'learning_rate': 2.000123008795129e-05, 'epoch': 90.66666666666667}
+{'loss': 1226.59, 'learning_rate': 1.90786641244849e-05, 'epoch': 90.96296296296296}
+{'loss': 1207.42, 'learning_rate': 1.8156098161018512e-05, 'epoch': 91.25925925925925}
+{'loss': 1238.63, 'learning_rate': 1.7233532197552123e-05, 'epoch': 91.55555555555556}
+{'loss': 1254.71, 'learning_rate': 1.6310966234085738e-05, 'epoch': 91.85185185185185}
+05/26/2024 14:25:16 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 14:26:23 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1961.9964599609375
+05/26/2024 14:26:23 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6800264258973794
+05/26/2024 14:26:23 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:26:23 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 14:27:31 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1210.89697265625
+05/26/2024 14:27:31 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.863231850117096
+05/26/2024 14:27:31 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:27:31 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 14:28:20 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1084.5103759765625
+05/26/2024 14:28:20 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7689332903641637
+05/26/2024 14:28:20 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:28:20 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 14:29:04 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1834.548828125
+05/26/2024 14:29:04 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9821480831138425
+05/26/2024 14:29:04 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:29:04 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 14:29:52 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1054.987548828125
+05/26/2024 14:29:52 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9347040844679078
+05/26/2024 14:29:52 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:29:52 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 14:33:59 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.8941650390625
+05/26/2024 14:33:59 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9636376574396925
+05/26/2024 14:33:59 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:33:59 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 14:36:29 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1095.341552734375
+05/26/2024 14:36:29 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8609168609168609
+05/26/2024 14:36:29 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1260.92, 'learning_rate': 1.5388400270619346e-05, 'epoch': 92.14814814814815}
+{'loss': 1273.39, 'learning_rate': 1.446583430715296e-05, 'epoch': 92.44444444444444}
+{'loss': 1267.71, 'learning_rate': 1.3543268343686573e-05, 'epoch': 92.74074074074075}
+{'loss': 1282.43, 'learning_rate': 1.2620702380220184e-05, 'epoch': 93.03703703703704}
+{'loss': 1314.24, 'learning_rate': 1.1698136416753797e-05, 'epoch': 93.33333333333333}
+05/26/2024 14:42:39 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 14:43:47 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1961.2841796875
+05/26/2024 14:43:47 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6794617251268475
+05/26/2024 14:43:47 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:43:47 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 14:44:55 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1209.8369140625
+05/26/2024 14:44:55 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8649411764705883
+05/26/2024 14:44:55 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:44:55 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 14:45:44 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1083.1920166015625
+05/26/2024 14:45:44 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7658064516129032
+05/26/2024 14:45:44 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:45:44 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 14:46:28 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1835.0030517578125
+05/26/2024 14:46:28 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9809774656131109
+05/26/2024 14:46:28 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:46:28 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 14:47:15 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1054.75048828125
+05/26/2024 14:47:15 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9352597943873299
+05/26/2024 14:47:15 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:47:15 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 14:51:23 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.8472900390625
+05/26/2024 14:51:23 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9630736392742795
+05/26/2024 14:51:23 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 14:51:23 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 14:53:54 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.355224609375
+05/26/2024 14:53:54 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8640020763041786
+05/26/2024 14:53:54 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1298.21, 'learning_rate': 1.0775570453287409e-05, 'epoch': 93.62962962962963}
+{'loss': 1238.06, 'learning_rate': 9.853004489821021e-06, 'epoch': 93.92592592592592}
+{'loss': 1259.71, 'learning_rate': 8.930438526354634e-06, 'epoch': 94.22222222222223}
+{'loss': 1220.02, 'learning_rate': 8.007872562888246e-06, 'epoch': 94.51851851851852}
+{'loss': 1269.83, 'learning_rate': 7.085306599421858e-06, 'epoch': 94.81481481481481}
+05/26/2024 15:00:08 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 15:01:15 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1962.8414306640625
+05/26/2024 15:01:15 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6814977973568282
+05/26/2024 15:01:15 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:01:15 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 15:02:23 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1210.375732421875
+05/26/2024 15:02:23 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8641278796426892
+05/26/2024 15:02:23 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:02:23 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 15:03:12 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1082.991943359375
+05/26/2024 15:03:12 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.767539605560944
+05/26/2024 15:03:12 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:03:12 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 15:03:56 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1834.8587646484375
+05/26/2024 15:03:56 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.981275599765945
+05/26/2024 15:03:56 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:03:56 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 15:04:43 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1055.2625732421875
+05/26/2024 15:04:43 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9377777777777778
+05/26/2024 15:04:43 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:04:43 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 15:08:51 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 768.2490234375
+05/26/2024 15:08:51 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9622936824132043
+05/26/2024 15:08:51 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:08:51 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 15:11:21 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1095.067626953125
+05/26/2024 15:11:21 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8607726212081929
+05/26/2024 15:11:21 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1245.52, 'learning_rate': 6.1627406359554705e-06, 'epoch': 95.11111111111111}
+{'loss': 1239.6, 'learning_rate': 5.240174672489083e-06, 'epoch': 95.4074074074074}
+{'loss': 1273.57, 'learning_rate': 4.317608709022695e-06, 'epoch': 95.70370370370371}
+{'loss': 1219.43, 'learning_rate': 3.395042745556307e-06, 'epoch': 96.0}
+{'loss': 1289.88, 'learning_rate': 2.4724767820899192e-06, 'epoch': 96.29629629629629}
+05/26/2024 15:17:37 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 15:18:44 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1962.4674072265625
+05/26/2024 15:18:44 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6815076041437074
+05/26/2024 15:18:44 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:18:44 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 15:19:52 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1210.263427734375
+05/26/2024 15:19:52 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8643310604279332
+05/26/2024 15:19:52 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:19:52 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 15:20:42 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1083.59765625
+05/26/2024 15:20:42 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7707191228635923
+05/26/2024 15:20:42 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:20:42 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 15:21:26 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1835.106689453125
+05/26/2024 15:21:26 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9795201872440024
+05/26/2024 15:21:26 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:21:26 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 15:22:13 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1055.13818359375
+05/26/2024 15:22:13 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9391497638232842
+05/26/2024 15:22:13 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:22:13 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 15:26:21 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 767.8828125
+05/26/2024 15:26:21 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9625676060347281
+05/26/2024 15:26:21 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:26:21 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 15:28:52 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.9326171875
+05/26/2024 15:28:52 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8633298755186721
+05/26/2024 15:28:52 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+{'loss': 1279.2, 'learning_rate': 1.5499108186235313e-06, 'epoch': 96.5925925925926}
+{'loss': 1203.6, 'learning_rate': 6.273448551571438e-07, 'epoch': 96.88888888888889}
+05/26/2024 15:32:09 - INFO - third_party.trainers.t5_trainer -   
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+{'epoch': 97.09037037037037}
+05/26/2024 15:32:15 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 15:33:18 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1959.14892578125
+05/26/2024 15:33:18 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6813283483615571
+05/26/2024 15:33:18 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:33:18 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 15:34:26 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.3450927734375
+05/26/2024 15:34:26 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8658049353701528
+05/26/2024 15:34:26 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:34:26 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 15:35:15 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1081.0828857421875
+05/26/2024 15:35:15 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7725515463917525
+05/26/2024 15:35:15 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:35:15 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 15:36:00 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1834.68212890625
+05/26/2024 15:36:00 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9789350497366881
+05/26/2024 15:36:00 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:36:00 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 15:36:47 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1053.947021484375
+05/26/2024 15:36:47 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9388549193996666
+05/26/2024 15:36:47 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:36:47 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 15:40:55 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 766.8907470703125
+05/26/2024 15:40:55 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9624670607506588
+05/26/2024 15:40:55 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:40:55 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 15:43:25 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1094.44970703125
+05/26/2024 15:43:25 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.863004804570835
+05/26/2024 15:43:25 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:43:25 - INFO - utils.utils -   ***** val metrics *****
+05/26/2024 15:43:25 - INFO - utils.utils -     atis_eval_loss = 1834.68212890625
+05/26/2024 15:43:25 - INFO - utils.utils -     atis_eval_micro_f1_score = 0.9789350497366881
+05/26/2024 15:43:25 - INFO - utils.utils -     eval_average_metrics = 0.86613523779733
+05/26/2024 15:43:25 - INFO - utils.utils -     movieTrivia_eval_loss = 1959.14892578125
+05/26/2024 15:43:25 - INFO - utils.utils -     movieTrivia_eval_micro_f1_score = 0.6813283483615571
+05/26/2024 15:43:25 - INFO - utils.utils -     movie_eval_loss = 1208.3450927734375
+05/26/2024 15:43:25 - INFO - utils.utils -     movie_eval_micro_f1_score = 0.8658049353701528
+05/26/2024 15:43:25 - INFO - utils.utils -     mtod_eval_loss = 766.8907470703125
+05/26/2024 15:43:25 - INFO - utils.utils -     mtod_eval_micro_f1_score = 0.9624670607506588
+05/26/2024 15:43:25 - INFO - utils.utils -     mtop_eval_loss = 1094.44970703125
+05/26/2024 15:43:25 - INFO - utils.utils -     mtop_eval_micro_f1_score = 0.863004804570835
+05/26/2024 15:43:25 - INFO - utils.utils -     restaurant_eval_loss = 1081.0828857421875
+05/26/2024 15:43:25 - INFO - utils.utils -     restaurant_eval_micro_f1_score = 0.7725515463917525
+05/26/2024 15:43:25 - INFO - utils.utils -     snips_eval_loss = 1053.947021484375
+05/26/2024 15:43:25 - INFO - utils.utils -     snips_eval_micro_f1_score = 0.9388549193996666
+05/26/2024 15:43:25 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/26/2024 15:46:04 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2099.167236328125
+05/26/2024 15:46:04 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6848739495798319
+05/26/2024 15:46:04 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:46:04 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/26/2024 15:48:55 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.27978515625
+05/26/2024 15:48:55 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8615700550732753
+05/26/2024 15:48:55 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:48:55 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/26/2024 15:50:31 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1098.836181640625
+05/26/2024 15:50:31 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7724116161616161
+05/26/2024 15:50:31 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:50:31 - INFO - utils.utils -   using task specific params for atis: {'max_length': 128}
+05/26/2024 15:51:44 - INFO - third_party.trainers.t5_trainer -     atis_eval_loss = 1733.7359619140625
+05/26/2024 15:51:44 - INFO - third_party.trainers.t5_trainer -     atis_eval_micro_f1_score = 0.9577315956322648
+05/26/2024 15:51:44 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:51:44 - INFO - utils.utils -   using task specific params for snips: {'max_length': 128}
+05/26/2024 15:52:31 - INFO - third_party.trainers.t5_trainer -     snips_eval_loss = 1044.165771484375
+05/26/2024 15:52:31 - INFO - third_party.trainers.t5_trainer -     snips_eval_micro_f1_score = 0.9368567454798331
+05/26/2024 15:52:31 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 15:52:31 - INFO - utils.utils -   using task specific params for mtod: {'max_length': 128}
+05/26/2024 16:01:03 - INFO - third_party.trainers.t5_trainer -     mtod_eval_loss = 768.5994873046875
+05/26/2024 16:01:03 - INFO - third_party.trainers.t5_trainer -     mtod_eval_micro_f1_score = 0.9645568758299002
+05/26/2024 16:01:03 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 16:01:03 - INFO - utils.utils -   using task specific params for mtop: {'max_length': 128}
+05/26/2024 16:05:55 - INFO - third_party.trainers.t5_trainer -     mtop_eval_loss = 1097.5330810546875
+05/26/2024 16:05:55 - INFO - third_party.trainers.t5_trainer -     mtop_eval_micro_f1_score = 0.8715031454959176
+05/26/2024 16:05:55 - INFO - utils.utils -   config is reset to the initial values.
+05/26/2024 16:05:55 - INFO - utils.utils -   ***** test metrics *****
+05/26/2024 16:05:55 - INFO - utils.utils -     atis_eval_loss = 1733.7359619140625
+05/26/2024 16:05:55 - INFO - utils.utils -     atis_eval_micro_f1_score = 0.9577315956322648
+05/26/2024 16:05:55 - INFO - utils.utils -     eval_average_metrics = 0.8642148547503768
+05/26/2024 16:05:55 - INFO - utils.utils -     movieTrivia_eval_loss = 2099.167236328125
+05/26/2024 16:05:55 - INFO - utils.utils -     movieTrivia_eval_micro_f1_score = 0.6848739495798319
+05/26/2024 16:05:55 - INFO - utils.utils -     movie_eval_loss = 1206.27978515625
+05/26/2024 16:05:55 - INFO - utils.utils -     movie_eval_micro_f1_score = 0.8615700550732753
+05/26/2024 16:05:55 - INFO - utils.utils -     mtod_eval_loss = 768.5994873046875
+05/26/2024 16:05:55 - INFO - utils.utils -     mtod_eval_micro_f1_score = 0.9645568758299002
+05/26/2024 16:05:55 - INFO - utils.utils -     mtop_eval_loss = 1097.5330810546875
+05/26/2024 16:05:55 - INFO - utils.utils -     mtop_eval_micro_f1_score = 0.8715031454959176
+05/26/2024 16:05:55 - INFO - utils.utils -     restaurant_eval_loss = 1098.836181640625
+05/26/2024 16:05:55 - INFO - utils.utils -     restaurant_eval_micro_f1_score = 0.7724116161616161
+05/26/2024 16:05:55 - INFO - utils.utils -     snips_eval_loss = 1044.165771484375
+05/26/2024 16:05:55 - INFO - utils.utils -     snips_eval_micro_f1_score = 0.9368567454798331
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************

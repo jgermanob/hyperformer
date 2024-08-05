@@ -1,5 +1,13 @@
-# This scripts trains hyperformer++.
+#!/bin/bash
+#SBATCH --job-name=hf_v2_10            # Job name
+#SBATCH --output=logs/hf_alqvca_v2_10.%A_%a.log   # Standard output and error log
+#SBATCH --nodes=1                   # Run all processes on a single node    
+#SBATCH --ntasks=1                  # Run on a single CPU
+#SBATCH --mem=40G                   # Total RAM to be used
+#SBATCH --cpus-per-task=64          # Number of CPU cores
+#SBATCH --gres=gpu:4                # Number of GPUs (per node)
+#SBATCH -p gpu                      # Use the gpu partition
+#SBATCH --time=12:00:00             # Specify the time needed for your experiment
+#SBATCH --qos=gpu-8                 # To enable the use of up to 8 GPUs
 
-# We experimented with `reduction_factor` of 32, 16 and report the results of the model obtaining the 
-# best results on the validation set on the test set.
-python3 -m torch.distributed.launch --nproc_per_node=4  ./finetune_t5_trainer.py configs/hyperformer++.json 
+python3 -m torch.distributed.launch --nproc_per_node=4 ./finetune_t5_trainer.py configs/hyperformer++.json 

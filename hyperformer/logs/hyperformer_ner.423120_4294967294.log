@@ -1,0 +1,1974 @@
+config path: configs/hyperformer++.json
+05/08/2024 21:59:12 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1, distributed training: False, 16-bits training: False
+05/08/2024 21:59:12 - INFO - __main__ -   Training/evaluation parameters Seq2SeqTrainingArguments(output_dir='outputs/hyperformer++/', overwrite_output_dir=True, do_train=True, do_eval=True, do_predict=False, evaluate_during_training=False, evaluation_strategy=<EvaluationStrategy.STEPS: 'steps'>, prediction_loss_only=False, per_device_train_batch_size=32, per_device_eval_batch_size=32, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=0.0003, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100, max_steps=65536, warmup_steps=500, logging_dir='runs/May08_21-59-12_gpu-07', logging_first_step=True, logging_steps=200, save_steps=1000, save_total_limit=1, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=-1, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=1000, dataloader_num_workers=0, past_index=-1, run_name='outputs/hyperformer++/', disable_tqdm=True, remove_unused_columns=True, label_names=None, load_best_model_at_end=True, metric_for_best_model='average_metrics', greater_is_better=True, label_smoothing=0.1, predict_with_generate=True, adafactor=False, encoder_layerdrop=None, decoder_layerdrop=None, dropout=None, attention_dropout=None, lr_scheduler='linear', temperature=10, train_adapters=True, do_test=True, eval_output_dir=None, generate_classifier_weights=False, optimize_from_scratch=False, optimize_from_scratch_with_loading_model=False, split_validation_test=True, print_num_parameters=True, compute_memory=False, compute_time=False)
+05/08/2024 21:59:13 - WARNING - __main__ -   model path loaded from : t5-base
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+Some weights of T5ForConditionalGeneration were not initialized from the model checkpoint at t5-base and are newly initialized: ['task_embedding_controller.task_to_embeddings.movieTrivia', 'task_embedding_controller.task_to_embeddings.movie', 'task_embedding_controller.task_to_embeddings.restaurant', 'encoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'encoder.adapter_layers_hyper_net.adapters_block_type.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'encoder.adapter_layers_hyper_net.LayerNorm.weight', 'encoder.adapter_layers_hyper_net.LayerNorm.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias', 'decoder.adapter_layers_hyper_net.layer_id_embeddings.weight', 'decoder.adapter_layers_hyper_net.adapters_block_type.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight', 'decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias', 'decoder.adapter_layers_hyper_net.LayerNorm.weight', 'decoder.adapter_layers_hyper_net.LayerNorm.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight', 'decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight', 'decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+05/08/2024 21:59:22 - INFO - __main__ -   T5ForConditionalGeneration(
+  (task_embedding_controller): TaskEmbeddingController(
+    (task_to_embeddings): ParameterDict(
+        (movieTrivia): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (movie): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (restaurant): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+    )
+  )
+  (shared): Embedding(32128, 768)
+  (encoder): T5Stack(
+    (embed_tokens): Embedding(32128, 768)
+    (block): ModuleList(
+      (0): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (1): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (2): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (3): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (4): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (5): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (6): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (7): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (8): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (9): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (10): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (11): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (adapter_layers_hyper_net): AdapterLayersOneHyperNetController(
+      (layer_id_embeddings): Embedding(12, 64)
+      (adapters_block_type): Embedding(2, 64)
+      (task_hypernet): TaskHyperNet(
+        (task_embeding_generator): Sequential(
+          (0): Linear(in_features=192, out_features=128, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=128, out_features=64, bias=True)
+        )
+      )
+      (LayerNorm): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+      (up_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=768, bias=True)
+        )
+      )
+      (down_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=24, bias=True)
+        )
+      )
+      (post_layernorm_hypernet): LayerNormHyperNet(
+        (weight_generator): Linear(in_features=64, out_features=768, bias=True)
+        (bias_generator): Linear(in_features=64, out_features=768, bias=True)
+      )
+    )
+    (final_layer_norm): T5LayerNorm()
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (decoder): T5Stack(
+    (embed_tokens): Embedding(32128, 768)
+    (block): ModuleList(
+      (0): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (1): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (2): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (3): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (4): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (5): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (6): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (7): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (8): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (9): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (10): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (11): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (adapter_layers_hyper_net): AdapterLayersOneHyperNetController(
+      (layer_id_embeddings): Embedding(12, 64)
+      (adapters_block_type): Embedding(2, 64)
+      (task_hypernet): TaskHyperNet(
+        (task_embeding_generator): Sequential(
+          (0): Linear(in_features=192, out_features=128, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=128, out_features=64, bias=True)
+        )
+      )
+      (LayerNorm): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+      (up_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=768, bias=True)
+        )
+      )
+      (down_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=24, bias=True)
+        )
+      )
+      (post_layernorm_hypernet): LayerNormHyperNet(
+        (weight_generator): Linear(in_features=64, out_features=768, bias=True)
+        (bias_generator): Linear(in_features=64, out_features=768, bias=True)
+      )
+    )
+    (final_layer_norm): T5LayerNorm()
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (lm_head): Linear(in_features=768, out_features=32128, bias=False)
+)
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.movieTrivia
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.movie
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.restaurant
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.0.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.0.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.1.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.1.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.2.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.2.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.3.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.3.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.4.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.4.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.5.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.5.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.6.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.6.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.7.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.7.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.8.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.8.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.9.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.9.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.10.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.10.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.11.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.block.11.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.layer_id_embeddings.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.adapters_block_type.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.LayerNorm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.LayerNorm.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name encoder.final_layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.0.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.0.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.0.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.1.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.1.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.1.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.2.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.2.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.2.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.3.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.3.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.3.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.4.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.4.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.4.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.5.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.5.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.5.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.6.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.6.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.6.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.7.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.7.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.7.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.8.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.8.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.8.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.9.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.9.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.9.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.10.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.10.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.10.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.11.layer.0.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.11.layer.1.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.block.11.layer.2.layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.layer_id_embeddings.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.adapters_block_type.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.LayerNorm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.LayerNorm.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias
+05/08/2024 21:59:22 - INFO - __main__ -   Parameter name decoder.final_layer_norm.weight
+05/08/2024 21:59:22 - INFO - __main__ -   Total trainable parameters 5210736
+05/08/2024 21:59:22 - INFO - __main__ -   Total parameters 228067056
+
+  0%|          | 0/7034 [00:00<?, ?ex/s]
+ 29%|██▉       | 2069/7034 [00:00<00:00, 20689.28ex/s]
+ 61%|██████▏   | 4321/7034 [00:00<00:00, 21206.11ex/s]
+100%|██████████| 7034/7034 [00:00<00:00, 23629.33ex/s]
+
+  0%|          | 0/8797 [00:00<?, ?ex/s]
+ 29%|██▊       | 2514/8797 [00:00<00:00, 25134.03ex/s]
+ 61%|██████▏   | 5409/8797 [00:00<00:00, 26167.33ex/s]
+ 95%|█████████▍| 8343/8797 [00:00<00:00, 27042.80ex/s]
+100%|██████████| 8797/8797 [00:00<00:00, 27936.24ex/s]
+
+  0%|          | 0/6894 [00:00<?, ?ex/s]
+ 25%|██▍       | 1696/6894 [00:00<00:00, 12726.88ex/s]
+ 66%|██████▌   | 4540/6894 [00:00<00:00, 15255.23ex/s]
+100%|██████████| 6894/6894 [00:00<00:00, 21950.34ex/s]
+
+  0%|          | 0/782 [00:00<?, ?ex/s]
+100%|██████████| 782/782 [00:00<00:00, 19844.66ex/s]
+
+  0%|          | 0/978 [00:00<?, ?ex/s]
+100%|██████████| 978/978 [00:00<00:00, 29011.13ex/s]
+
+  0%|          | 0/766 [00:00<?, ?ex/s]
+100%|██████████| 766/766 [00:00<00:00, 20703.80ex/s]
+
+  0%|          | 0/1953 [00:00<?, ?ex/s]
+100%|██████████| 1953/1953 [00:00<00:00, 27348.59ex/s]
+
+  0%|          | 0/2443 [00:00<?, ?ex/s]
+100%|██████████| 2443/2443 [00:00<00:00, 27898.46ex/s]
+
+  0%|          | 0/1521 [00:00<?, ?ex/s]
+100%|██████████| 1521/1521 [00:00<00:00, 28123.63ex/s]
+05/08/2024 21:59:24 - INFO - utils.utils -   ***** arguments metrics *****
+05/08/2024 21:59:24 - INFO - utils.utils -     adafactor = False
+05/08/2024 21:59:24 - INFO - utils.utils -     adam_beta1 = 0.9
+05/08/2024 21:59:24 - INFO - utils.utils -     adam_beta2 = 0.999
+05/08/2024 21:59:24 - INFO - utils.utils -     adam_epsilon = 1e-08
+05/08/2024 21:59:24 - INFO - utils.utils -     adapter_config_name = meta-adapter
+05/08/2024 21:59:24 - INFO - utils.utils -     adapters = None
+05/08/2024 21:59:24 - INFO - utils.utils -     add_layer_norm_after_adapter = True
+05/08/2024 21:59:24 - INFO - utils.utils -     add_layer_norm_before_adapter = False
+05/08/2024 21:59:24 - INFO - utils.utils -     attention_dropout = None
+05/08/2024 21:59:24 - INFO - utils.utils -     cache_dir = None
+05/08/2024 21:59:24 - INFO - utils.utils -     compute_memory = False
+05/08/2024 21:59:24 - INFO - utils.utils -     compute_time = False
+05/08/2024 21:59:24 - INFO - utils.utils -     conditional_layer_norm = True
+05/08/2024 21:59:24 - INFO - utils.utils -     config_name = None
+05/08/2024 21:59:24 - INFO - utils.utils -     data_seed = 42
+05/08/2024 21:59:24 - INFO - utils.utils -     dataloader_drop_last = False
+05/08/2024 21:59:24 - INFO - utils.utils -     dataloader_num_workers = 0
+05/08/2024 21:59:24 - INFO - utils.utils -     debug = False
+05/08/2024 21:59:24 - INFO - utils.utils -     decoder_layerdrop = None
+05/08/2024 21:59:24 - INFO - utils.utils -     disable_tqdm = True
+05/08/2024 21:59:24 - INFO - utils.utils -     do_eval = True
+05/08/2024 21:59:24 - INFO - utils.utils -     do_predict = False
+05/08/2024 21:59:24 - INFO - utils.utils -     do_test = True
+05/08/2024 21:59:24 - INFO - utils.utils -     do_train = True
+05/08/2024 21:59:24 - INFO - utils.utils -     dropout = None
+05/08/2024 21:59:24 - INFO - utils.utils -     efficient_unique_hyper_net = True
+05/08/2024 21:59:24 - INFO - utils.utils -     encoder_layerdrop = None
+05/08/2024 21:59:24 - INFO - utils.utils -     eval_accumulation_steps = None
+05/08/2024 21:59:24 - INFO - utils.utils -     eval_beams = 1
+05/08/2024 21:59:24 - INFO - utils.utils -     eval_output_dir = None
+05/08/2024 21:59:24 - INFO - utils.utils -     eval_steps = 1000
+05/08/2024 21:59:24 - INFO - utils.utils -     eval_tasks = ['movieTrivia', 'movie', 'restaurant']
+05/08/2024 21:59:24 - INFO - utils.utils -     evaluate_during_training = False
+05/08/2024 21:59:24 - INFO - utils.utils -     fp16 = False
+05/08/2024 21:59:24 - INFO - utils.utils -     fp16_opt_level = O1
+05/08/2024 21:59:24 - INFO - utils.utils -     freeze_embeds = False
+05/08/2024 21:59:24 - INFO - utils.utils -     freeze_encoder = False
+05/08/2024 21:59:24 - INFO - utils.utils -     freeze_model = False
+05/08/2024 21:59:24 - INFO - utils.utils -     freeze_model_but_lm_head = False
+05/08/2024 21:59:24 - INFO - utils.utils -     freeze_model_but_task_embeddings = False
+05/08/2024 21:59:24 - INFO - utils.utils -     generate_classifier_weights = False
+05/08/2024 21:59:24 - INFO - utils.utils -     gradient_accumulation_steps = 1
+05/08/2024 21:59:24 - INFO - utils.utils -     greater_is_better = True
+05/08/2024 21:59:24 - INFO - utils.utils -     hidden_dim = 128
+05/08/2024 21:59:24 - INFO - utils.utils -     ignore_pad_token_for_loss = True
+05/08/2024 21:59:24 - INFO - utils.utils -     label_names = None
+05/08/2024 21:59:24 - INFO - utils.utils -     label_smoothing = 0.1
+05/08/2024 21:59:24 - INFO - utils.utils -     learning_rate = 0.0003
+05/08/2024 21:59:24 - INFO - utils.utils -     load_best_model_at_end = True
+05/08/2024 21:59:24 - INFO - utils.utils -     local_rank = -1
+05/08/2024 21:59:24 - INFO - utils.utils -     logging_dir = runs/May08_21-59-12_gpu-07
+05/08/2024 21:59:24 - INFO - utils.utils -     logging_first_step = True
+05/08/2024 21:59:24 - INFO - utils.utils -     logging_steps = 200
+05/08/2024 21:59:24 - INFO - utils.utils -     lr_scheduler = linear
+05/08/2024 21:59:24 - INFO - utils.utils -     max_grad_norm = 1.0
+05/08/2024 21:59:24 - INFO - utils.utils -     max_source_length = 128
+05/08/2024 21:59:24 - INFO - utils.utils -     max_steps = 65536
+05/08/2024 21:59:24 - INFO - utils.utils -     max_target_length = 128
+05/08/2024 21:59:24 - INFO - utils.utils -     metric_for_best_model = average_metrics
+05/08/2024 21:59:24 - INFO - utils.utils -     model_name_or_path = t5-base
+05/08/2024 21:59:24 - INFO - utils.utils -     n_test = -1
+05/08/2024 21:59:24 - INFO - utils.utils -     n_train = -1
+05/08/2024 21:59:24 - INFO - utils.utils -     n_val = -1
+05/08/2024 21:59:24 - INFO - utils.utils -     no_cuda = False
+05/08/2024 21:59:24 - INFO - utils.utils -     non_linearity = gelu_new
+05/08/2024 21:59:24 - INFO - utils.utils -     not_load_t5_checkpoint = False
+05/08/2024 21:59:24 - INFO - utils.utils -     num_train_epochs = 100
+05/08/2024 21:59:24 - INFO - utils.utils -     optimize_from_scratch = False
+05/08/2024 21:59:24 - INFO - utils.utils -     optimize_from_scratch_with_loading_model = False
+05/08/2024 21:59:24 - INFO - utils.utils -     output_dir = outputs/hyperformer++/
+05/08/2024 21:59:24 - INFO - utils.utils -     overwrite_output_dir = True
+05/08/2024 21:59:24 - INFO - utils.utils -     past_index = -1
+05/08/2024 21:59:24 - INFO - utils.utils -     per_device_eval_batch_size = 32
+05/08/2024 21:59:24 - INFO - utils.utils -     per_device_train_batch_size = 32
+05/08/2024 21:59:24 - INFO - utils.utils -     per_gpu_eval_batch_size = None
+05/08/2024 21:59:24 - INFO - utils.utils -     per_gpu_train_batch_size = None
+05/08/2024 21:59:24 - INFO - utils.utils -     predict_with_generate = True
+05/08/2024 21:59:24 - INFO - utils.utils -     prediction_loss_only = False
+05/08/2024 21:59:24 - INFO - utils.utils -     print_num_parameters = True
+05/08/2024 21:59:24 - INFO - utils.utils -     projected_task_embedding_dim = 64
+05/08/2024 21:59:24 - INFO - utils.utils -     reduction_factor = 32
+05/08/2024 21:59:24 - INFO - utils.utils -     remove_unused_columns = False
+05/08/2024 21:59:24 - INFO - utils.utils -     run_name = outputs/hyperformer++/
+05/08/2024 21:59:24 - INFO - utils.utils -     save_steps = 1000
+05/08/2024 21:59:24 - INFO - utils.utils -     save_total_limit = 1
+05/08/2024 21:59:24 - INFO - utils.utils -     seed = 42
+05/08/2024 21:59:24 - INFO - utils.utils -     split_validation_test = True
+05/08/2024 21:59:24 - INFO - utils.utils -     task_embedding_dim = 64
+05/08/2024 21:59:24 - INFO - utils.utils -     task_embeddings = None
+05/08/2024 21:59:24 - INFO - utils.utils -     task_hidden_dim = 128
+05/08/2024 21:59:24 - INFO - utils.utils -     tasks = ['movieTrivia', 'movie', 'restaurant']
+05/08/2024 21:59:24 - INFO - utils.utils -     temperature = 10
+05/08/2024 21:59:24 - INFO - utils.utils -     test_max_target_length = 128
+05/08/2024 21:59:24 - INFO - utils.utils -     tokenizer_name = t5-base
+05/08/2024 21:59:24 - INFO - utils.utils -     tpu_metrics_debug = False
+05/08/2024 21:59:24 - INFO - utils.utils -     tpu_num_cores = None
+05/08/2024 21:59:24 - INFO - utils.utils -     train_adapters = True
+05/08/2024 21:59:24 - INFO - utils.utils -     train_adapters_blocks = True
+05/08/2024 21:59:24 - INFO - utils.utils -     train_task_embeddings = False
+05/08/2024 21:59:24 - INFO - utils.utils -     unfreeze_layer_norms = True
+05/08/2024 21:59:24 - INFO - utils.utils -     unfreeze_lm_head = False
+05/08/2024 21:59:24 - INFO - utils.utils -     unfreeze_model = False
+05/08/2024 21:59:24 - INFO - utils.utils -     unique_hyper_net = False
+05/08/2024 21:59:24 - INFO - utils.utils -     unique_hyper_net_layer_norm = True
+05/08/2024 21:59:24 - INFO - utils.utils -     val_max_target_length = 128
+05/08/2024 21:59:24 - INFO - utils.utils -     warmup_steps = 500
+05/08/2024 21:59:24 - INFO - utils.utils -     weight_decay = 0.0
+05/08/2024 21:59:24 - INFO - third_party.trainers.t5_trainer -   ***** Running training *****
+05/08/2024 21:59:24 - INFO - third_party.trainers.t5_trainer -     Num examples = 22725
+05/08/2024 21:59:24 - INFO - third_party.trainers.t5_trainer -     Num Epochs = 93
+05/08/2024 21:59:24 - INFO - third_party.trainers.t5_trainer -     Instantaneous batch size per device = 32
+05/08/2024 21:59:24 - INFO - third_party.trainers.t5_trainer -     Total train batch size (w. parallel, distributed & accumulation) = 32
+05/08/2024 21:59:24 - INFO - third_party.trainers.t5_trainer -     Gradient Accumulation steps = 1
+05/08/2024 21:59:24 - INFO - third_party.trainers.t5_trainer -     Total optimization steps = 65536
+05/08/2024 22:05:15 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 22:07:28 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2245.836669921875
+05/08/2024 22:07:28 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6116140428350628
+05/08/2024 22:07:28 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:07:28 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 22:09:22 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1273.7130126953125
+05/08/2024 22:09:22 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8054003724394786
+05/08/2024 22:09:22 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:09:22 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 22:10:39 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1069.2794189453125
+05/08/2024 22:10:39 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.6871890547263683
+05/08/2024 22:10:39 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 22:16:33 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 22:18:38 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2178.07666015625
+05/08/2024 22:18:38 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6623195156031673
+05/08/2024 22:18:38 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:18:38 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 22:20:32 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1238.39599609375
+05/08/2024 22:20:32 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8366963866729235
+05/08/2024 22:20:32 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:20:32 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 22:21:50 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1032.364013671875
+05/08/2024 22:21:50 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7688361654376403
+05/08/2024 22:21:50 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 22:27:41 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 22:29:58 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2175.37060546875
+05/08/2024 22:29:58 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6770513383062747
+05/08/2024 22:29:58 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:29:58 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 22:31:54 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1236.1378173828125
+05/08/2024 22:31:54 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8359104546503577
+05/08/2024 22:31:54 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:31:54 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 22:33:10 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1029.5498046875
+05/08/2024 22:33:10 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7663671373555841
+05/08/2024 22:33:10 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 22:39:06 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 22:41:10 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2149.27490234375
+05/08/2024 22:41:10 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6808884979107105
+05/08/2024 22:41:10 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:41:10 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 22:43:05 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1220.9735107421875
+05/08/2024 22:43:05 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8640525945057526
+05/08/2024 22:43:05 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:43:05 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 22:44:24 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1024.3770751953125
+05/08/2024 22:44:24 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7860095389507155
+05/08/2024 22:44:24 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 22:50:19 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 22:52:24 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2143.27734375
+05/08/2024 22:52:24 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6929442508710801
+05/08/2024 22:52:24 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:52:24 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 22:54:19 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1218.5667724609375
+05/08/2024 22:54:19 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8739808991381318
+05/08/2024 22:54:19 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 22:54:19 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 22:55:37 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1022.666259765625
+05/08/2024 22:55:37 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.794164287979702
+05/08/2024 22:55:37 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 23:01:33 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 23:03:34 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2138.638427734375
+05/08/2024 23:03:34 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.6927592954990215
+05/08/2024 23:03:34 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:03:34 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 23:05:30 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1220.5047607421875
+05/08/2024 23:05:30 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8489142857142857
+05/08/2024 23:05:30 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:05:30 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 23:06:47 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1019.851806640625
+05/08/2024 23:06:47 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7982091461464663
+05/08/2024 23:06:47 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 23:12:44 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 23:14:47 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2133.263427734375
+05/08/2024 23:14:47 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7063197026022304
+05/08/2024 23:14:47 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:14:47 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 23:16:42 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1212.160400390625
+05/08/2024 23:16:42 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8765110215690922
+05/08/2024 23:16:42 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:16:42 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 23:17:59 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1026.5345458984375
+05/08/2024 23:17:59 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7839947950553026
+05/08/2024 23:17:59 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 23:23:54 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 23:25:57 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2129.322021484375
+05/08/2024 23:25:57 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7085889570552147
+05/08/2024 23:25:57 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:25:57 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 23:27:53 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1212.0382080078125
+05/08/2024 23:27:53 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8858619069985909
+05/08/2024 23:27:53 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:27:53 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 23:29:11 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1016.8541870117188
+05/08/2024 23:29:11 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8007699711260828
+05/08/2024 23:29:11 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 23:35:04 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 23:37:06 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2126.439453125
+05/08/2024 23:37:06 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7091825553364016
+05/08/2024 23:37:06 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:37:06 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 23:39:03 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1209.266357421875
+05/08/2024 23:39:03 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8857142857142857
+05/08/2024 23:39:03 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:39:03 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 23:40:21 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1017.3609008789062
+05/08/2024 23:40:21 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8070967741935483
+05/08/2024 23:40:21 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 23:46:18 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 23:48:18 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2125.01123046875
+05/08/2024 23:48:18 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7050167224080267
+05/08/2024 23:48:18 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:48:18 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/08/2024 23:50:12 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1207.9254150390625
+05/08/2024 23:50:12 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8905109489051094
+05/08/2024 23:50:12 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:50:12 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/08/2024 23:51:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1018.1525268554688
+05/08/2024 23:51:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8005115089514067
+05/08/2024 23:51:29 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/08/2024 23:57:22 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/08/2024 23:59:24 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2122.868408203125
+05/08/2024 23:59:24 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.712516585581601
+05/08/2024 23:59:24 - INFO - utils.utils -   config is reset to the initial values.
+05/08/2024 23:59:24 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 00:01:19 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.2159423828125
+05/09/2024 00:01:19 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8864864864864865
+05/09/2024 00:01:19 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:01:19 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 00:02:36 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1015.504150390625
+05/09/2024 00:02:36 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7956646477526299
+05/09/2024 00:02:36 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 00:08:29 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 00:10:30 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2118.96728515625
+05/09/2024 00:10:30 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7118124041200964
+05/09/2024 00:10:30 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:10:30 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 00:12:25 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1207.0064697265625
+05/09/2024 00:12:25 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8857142857142857
+05/09/2024 00:12:25 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:12:25 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 00:13:43 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1014.6434326171875
+05/09/2024 00:13:43 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8055110541493111
+05/09/2024 00:13:43 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 00:19:37 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 00:21:39 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2117.833740234375
+05/09/2024 00:21:39 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7165681768439484
+05/09/2024 00:21:39 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:21:39 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 00:23:33 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.43994140625
+05/09/2024 00:23:33 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8770180436847104
+05/09/2024 00:23:33 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:23:33 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 00:24:50 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1016.8270263671875
+05/09/2024 00:24:50 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7955342902711324
+05/09/2024 00:24:50 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 00:30:48 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 00:32:43 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2114.472900390625
+05/09/2024 00:32:43 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7089337175792507
+05/09/2024 00:32:43 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:32:43 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 00:34:37 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1204.4969482421875
+05/09/2024 00:34:37 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8939501779359431
+05/09/2024 00:34:37 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:34:37 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 00:35:54 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1013.6716918945312
+05/09/2024 00:35:54 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8054563169860344
+05/09/2024 00:35:54 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 00:41:51 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 00:43:48 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2114.23583984375
+05/09/2024 00:43:48 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7136602451838879
+05/09/2024 00:43:48 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:43:48 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 00:45:42 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1203.644287109375
+05/09/2024 00:45:42 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8825891802504134
+05/09/2024 00:45:42 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:45:42 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 00:46:59 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1012.1369018554688
+05/09/2024 00:46:59 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8052117263843648
+05/09/2024 00:46:59 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 00:52:52 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 00:54:56 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2118.034423828125
+05/09/2024 00:54:56 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7139096094778412
+05/09/2024 00:54:56 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:54:56 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 00:56:52 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.532470703125
+05/09/2024 00:56:52 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8896746817538896
+05/09/2024 00:56:52 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 00:56:52 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 00:58:09 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1016.4848022460938
+05/09/2024 00:58:09 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7994891443167306
+05/09/2024 00:58:09 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 01:04:04 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 01:06:03 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2111.696044921875
+05/09/2024 01:06:03 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.705907906168549
+05/09/2024 01:06:03 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:06:03 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 01:07:59 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.7559814453125
+05/09/2024 01:07:59 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8735205384079833
+05/09/2024 01:07:59 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:07:59 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 01:09:17 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1021.4494018554688
+05/09/2024 01:09:17 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.796437659033079
+05/09/2024 01:09:17 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 01:15:09 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 01:17:06 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2112.01416015625
+05/09/2024 01:17:06 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7137203166226913
+05/09/2024 01:17:06 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:17:06 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 01:19:00 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1204.9383544921875
+05/09/2024 01:19:00 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8905624852906566
+05/09/2024 01:19:00 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:19:00 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 01:20:18 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1016.0147705078125
+05/09/2024 01:20:18 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.801038623823434
+05/09/2024 01:20:18 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 01:26:13 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 01:28:16 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2108.624267578125
+05/09/2024 01:28:16 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7167503821795153
+05/09/2024 01:28:16 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:28:16 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 01:30:10 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1205.359375
+05/09/2024 01:30:10 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8904045155221072
+05/09/2024 01:30:10 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:30:10 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 01:31:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1014.963134765625
+05/09/2024 01:31:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8081002892960464
+05/09/2024 01:31:29 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 01:37:22 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 01:39:19 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2110.014404296875
+05/09/2024 01:39:19 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7102348249889233
+05/09/2024 01:39:19 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:39:19 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 01:41:13 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1204.455810546875
+05/09/2024 01:41:13 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8829462819610603
+05/09/2024 01:41:13 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:41:13 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 01:42:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1016.4854736328125
+05/09/2024 01:42:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8065764023210832
+05/09/2024 01:42:29 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 01:48:22 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 01:50:18 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2112.227294921875
+05/09/2024 01:50:18 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7086267605633801
+05/09/2024 01:50:18 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:50:18 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 01:52:12 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.5987548828125
+05/09/2024 01:52:12 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8848056537102473
+05/09/2024 01:52:12 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 01:52:12 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 01:53:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1018.849365234375
+05/09/2024 01:53:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7943078913324709
+05/09/2024 01:53:29 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 01:59:20 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 02:01:17 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2112.785888671875
+05/09/2024 02:01:17 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7117750439367312
+05/09/2024 02:01:17 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:01:17 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 02:03:10 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1202.021728515625
+05/09/2024 02:03:10 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8967787444157065
+05/09/2024 02:03:10 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:03:10 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 02:04:27 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1021.07275390625
+05/09/2024 02:04:27 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7975539105246218
+05/09/2024 02:04:27 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 02:10:21 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 02:12:17 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2109.01025390625
+05/09/2024 02:12:17 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7188253342099497
+05/09/2024 02:12:17 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:12:17 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 02:14:12 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1201.9530029296875
+05/09/2024 02:14:12 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8945266619685225
+05/09/2024 02:14:12 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:14:12 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 02:15:30 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1018.3480834960938
+05/09/2024 02:15:30 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8069835111542192
+05/09/2024 02:15:30 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 02:21:25 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 02:23:19 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2111.713623046875
+05/09/2024 02:23:19 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.698054818744474
+05/09/2024 02:23:19 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:23:19 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 02:25:13 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1207.40283203125
+05/09/2024 02:25:13 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8826554464703132
+05/09/2024 02:25:13 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:25:13 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 02:26:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1020.2678833007812
+05/09/2024 02:26:29 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7902501603592047
+05/09/2024 02:26:29 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 02:32:26 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 02:34:26 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2108.65625
+05/09/2024 02:34:26 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7154756685664183
+05/09/2024 02:34:26 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:34:26 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 02:36:19 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1202.5018310546875
+05/09/2024 02:36:19 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8885767790262172
+05/09/2024 02:36:19 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:36:19 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 02:37:34 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1020.2363891601562
+05/09/2024 02:37:34 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8038834951456311
+05/09/2024 02:37:34 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 02:43:29 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 02:45:30 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2111.06201171875
+05/09/2024 02:45:30 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7059851463521188
+05/09/2024 02:45:30 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:45:30 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 02:47:24 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1202.738037109375
+05/09/2024 02:47:24 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8866510538641686
+05/09/2024 02:47:24 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:47:24 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 02:48:40 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1020.277099609375
+05/09/2024 02:48:40 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7961227786752827
+05/09/2024 02:48:40 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 02:54:35 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 02:56:37 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2107.43896484375
+05/09/2024 02:56:37 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7072578866093094
+05/09/2024 02:56:37 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:56:37 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 02:58:31 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1202.2923583984375
+05/09/2024 02:58:31 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.890716803760282
+05/09/2024 02:58:31 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 02:58:31 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 02:59:46 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1021.6588745117188
+05/09/2024 02:59:46 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7985820174025137
+05/09/2024 02:59:46 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 03:05:41 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 03:07:43 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2106.44873046875
+05/09/2024 03:07:43 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7124425978569867
+05/09/2024 03:07:43 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:07:43 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 03:09:36 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1203.9146728515625
+05/09/2024 03:09:36 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8924377642085487
+05/09/2024 03:09:36 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:09:36 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 03:10:52 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1023.1710815429688
+05/09/2024 03:10:52 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8112784363985903
+05/09/2024 03:10:52 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 03:16:48 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 03:18:51 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2101.444091796875
+05/09/2024 03:18:51 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7141919965012027
+05/09/2024 03:18:51 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:18:51 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 03:20:44 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1203.5123291015625
+05/09/2024 03:20:44 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8806738418343473
+05/09/2024 03:20:44 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:20:44 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 03:22:00 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1020.96044921875
+05/09/2024 03:22:00 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8089089735313105
+05/09/2024 03:22:00 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 03:27:56 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 03:29:54 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2106.41064453125
+05/09/2024 03:29:54 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7162606978275181
+05/09/2024 03:29:54 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:29:54 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 03:31:45 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1205.0048828125
+05/09/2024 03:31:45 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8860345632881831
+05/09/2024 03:31:45 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:31:45 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 03:33:01 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1021.4844970703125
+05/09/2024 03:33:01 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8014207297384566
+05/09/2024 03:33:01 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 03:38:51 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 03:40:50 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2108.444580078125
+05/09/2024 03:40:50 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7187976475713351
+05/09/2024 03:40:50 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:40:50 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 03:42:43 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1201.9521484375
+05/09/2024 03:42:43 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.890657925544369
+05/09/2024 03:42:43 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:42:43 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 03:43:59 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1023.8927001953125
+05/09/2024 03:43:59 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7938243808298489
+05/09/2024 03:43:59 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 03:49:52 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 03:51:54 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2105.76123046875
+05/09/2024 03:51:54 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7141922825376062
+05/09/2024 03:51:54 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:51:54 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 03:53:47 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1202.65234375
+05/09/2024 03:53:47 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8936768149882904
+05/09/2024 03:53:47 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 03:53:47 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 03:55:03 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1021.5496215820312
+05/09/2024 03:55:03 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7987075928917609
+05/09/2024 03:55:03 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 04:00:56 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 04:02:57 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2112.03125
+05/09/2024 04:02:57 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7122753842823121
+05/09/2024 04:02:57 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:02:57 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 04:04:50 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.2945556640625
+05/09/2024 04:04:50 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8850305021116848
+05/09/2024 04:04:50 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:04:50 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 04:06:06 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1026.7454833984375
+05/09/2024 04:06:06 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7953518398967074
+05/09/2024 04:06:06 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 04:11:57 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 04:13:58 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2110.05859375
+05/09/2024 04:13:58 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7103131158309612
+05/09/2024 04:13:58 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:13:58 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 04:15:50 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1205.120849609375
+05/09/2024 04:15:50 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8881069669247009
+05/09/2024 04:15:50 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:15:50 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 04:17:05 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1023.850830078125
+05/09/2024 04:17:05 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7914369120986052
+05/09/2024 04:17:05 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 04:22:57 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 04:24:55 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2106.103271484375
+05/09/2024 04:24:55 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7064459930313589
+05/09/2024 04:24:55 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:24:55 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 04:26:46 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1204.51171875
+05/09/2024 04:26:46 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8877980364656382
+05/09/2024 04:26:46 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:26:46 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 04:28:00 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1024.670166015625
+05/09/2024 04:28:00 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7984471044969267
+05/09/2024 04:28:00 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 04:33:50 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 04:35:49 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2106.469970703125
+05/09/2024 04:35:49 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7133113311331132
+05/09/2024 04:35:49 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:35:49 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 04:37:41 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1204.6533203125
+05/09/2024 04:37:41 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8836227123416236
+05/09/2024 04:37:41 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:37:41 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 04:38:56 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1022.9417724609375
+05/09/2024 04:38:56 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.806690254100997
+05/09/2024 04:38:56 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 04:44:47 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 04:46:45 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2105.58251953125
+05/09/2024 04:46:45 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7215996484289166
+05/09/2024 04:46:45 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:46:45 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 04:48:37 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1203.369384765625
+05/09/2024 04:48:37 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8872710192578676
+05/09/2024 04:48:37 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:48:37 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 04:49:53 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1023.5421142578125
+05/09/2024 04:49:53 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7996134020618557
+05/09/2024 04:49:53 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 04:55:45 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 04:57:46 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2106.38037109375
+05/09/2024 04:57:46 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7122144112478032
+05/09/2024 04:57:46 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:57:46 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 04:59:41 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1202.8265380859375
+05/09/2024 04:59:41 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8838845883180858
+05/09/2024 04:59:41 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 04:59:41 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 05:00:58 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1026.4219970703125
+05/09/2024 05:00:58 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7998706757193664
+05/09/2024 05:00:58 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 05:06:53 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 05:08:56 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2107.959716796875
+05/09/2024 05:08:56 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7171453437771975
+05/09/2024 05:08:56 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:08:56 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 05:10:51 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1205.2574462890625
+05/09/2024 05:10:51 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.881316098707403
+05/09/2024 05:10:51 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:10:51 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 05:12:07 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1028.5694580078125
+05/09/2024 05:12:07 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8041504539559016
+05/09/2024 05:12:07 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 05:18:10 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 05:20:11 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2106.84375
+05/09/2024 05:20:11 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7116187129365253
+05/09/2024 05:20:11 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:20:11 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 05:22:06 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1206.165771484375
+05/09/2024 05:22:06 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8846153846153846
+05/09/2024 05:22:06 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:22:06 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 05:23:23 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1026.8726806640625
+05/09/2024 05:23:23 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8023255813953487
+05/09/2024 05:23:23 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 05:29:21 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 05:31:20 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2107.72705078125
+05/09/2024 05:31:20 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7193174360096259
+05/09/2024 05:31:20 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:31:20 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 05:33:14 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1207.2939453125
+05/09/2024 05:33:14 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8860285513690616
+05/09/2024 05:33:14 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:33:14 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 05:34:31 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1030.2535400390625
+05/09/2024 05:34:31 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7994858611825192
+05/09/2024 05:34:31 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 05:40:28 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 05:42:32 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2108.767822265625
+05/09/2024 05:42:32 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.716183837943803
+05/09/2024 05:42:32 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:42:32 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 05:44:27 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.8555908203125
+05/09/2024 05:44:27 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8837426900584796
+05/09/2024 05:44:27 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:44:27 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 05:45:44 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1030.5587158203125
+05/09/2024 05:45:44 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7921744708146249
+05/09/2024 05:45:44 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 05:51:42 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 05:53:44 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2104.607666015625
+05/09/2024 05:53:44 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7184083952776562
+05/09/2024 05:53:44 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:53:44 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 05:55:39 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1207.3974609375
+05/09/2024 05:55:39 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8795124238162212
+05/09/2024 05:55:39 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 05:55:39 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 05:56:56 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1027.8179931640625
+05/09/2024 05:56:56 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7952579301505928
+05/09/2024 05:56:56 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 06:02:57 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 06:04:58 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2109.271728515625
+05/09/2024 06:04:58 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.727153762268266
+05/09/2024 06:04:58 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:04:58 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 06:06:53 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.1873779296875
+05/09/2024 06:06:53 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8858082706766917
+05/09/2024 06:06:53 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:06:53 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 06:08:09 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1033.0301513671875
+05/09/2024 06:08:09 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7949628672909267
+05/09/2024 06:08:09 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 06:14:11 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 06:16:10 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2111.538330078125
+05/09/2024 06:16:10 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.720314891755959
+05/09/2024 06:16:10 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:16:10 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 06:18:04 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.3017578125
+05/09/2024 06:18:04 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8826841858282496
+05/09/2024 06:18:04 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:18:04 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 06:19:21 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1030.1231689453125
+05/09/2024 06:19:21 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7943170810461737
+05/09/2024 06:19:21 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 06:25:21 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 06:27:23 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2109.06640625
+05/09/2024 06:27:23 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7177914110429449
+05/09/2024 06:27:23 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:27:23 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 06:29:17 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.65283203125
+05/09/2024 06:29:17 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8774314506679165
+05/09/2024 06:29:17 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:29:17 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 06:30:34 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1030.0682373046875
+05/09/2024 06:30:34 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7918944998391767
+05/09/2024 06:30:34 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 06:36:30 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 06:38:30 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2105.475341796875
+05/09/2024 06:38:30 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7171717171717171
+05/09/2024 06:38:30 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:38:30 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 06:40:24 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1205.8909912109375
+05/09/2024 06:40:24 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8819525932879605
+05/09/2024 06:40:24 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:40:24 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 06:41:41 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1031.445556640625
+05/09/2024 06:41:41 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.792258064516129
+05/09/2024 06:41:41 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 06:47:43 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 06:49:43 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2108.915283203125
+05/09/2024 06:49:43 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7243337702053299
+05/09/2024 06:49:43 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:49:43 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 06:51:37 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1210.086181640625
+05/09/2024 06:51:37 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8841463414634148
+05/09/2024 06:51:37 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 06:51:37 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 06:52:53 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1034.732666015625
+05/09/2024 06:52:53 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7992240543161978
+05/09/2024 06:52:53 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 06:58:53 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 07:00:52 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2105.862548828125
+05/09/2024 07:00:52 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.719352014010508
+05/09/2024 07:00:52 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:00:52 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 07:02:46 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1209.2420654296875
+05/09/2024 07:02:46 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8749707875671886
+05/09/2024 07:02:46 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:02:46 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 07:04:03 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1033.583984375
+05/09/2024 07:04:03 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7903381642512077
+05/09/2024 07:04:03 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 07:10:03 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 07:12:04 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2107.65283203125
+05/09/2024 07:12:04 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7174339951996509
+05/09/2024 07:12:04 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:12:04 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 07:13:59 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.1492919921875
+05/09/2024 07:13:59 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8799812470698547
+05/09/2024 07:13:59 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:13:59 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 07:15:16 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1034.1185302734375
+05/09/2024 07:15:16 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.795235028976175
+05/09/2024 07:15:16 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 07:21:18 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 07:23:16 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2109.052978515625
+05/09/2024 07:23:16 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.715315708979681
+05/09/2024 07:23:16 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:23:16 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 07:25:11 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1207.2847900390625
+05/09/2024 07:25:11 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8873272429140314
+05/09/2024 07:25:11 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:25:11 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 07:26:28 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1034.864013671875
+05/09/2024 07:26:28 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7909677419354838
+05/09/2024 07:26:28 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 07:32:29 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 07:34:29 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2108.439697265625
+05/09/2024 07:34:29 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7196671046868155
+05/09/2024 07:34:29 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:34:29 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 07:36:24 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1208.5614013671875
+05/09/2024 07:36:24 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.878346641615782
+05/09/2024 07:36:24 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:36:24 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 07:37:40 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1034.706787109375
+05/09/2024 07:37:40 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8010302640051514
+05/09/2024 07:37:40 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 07:43:40 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 07:45:40 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2109.962890625
+05/09/2024 07:45:40 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7199124726477025
+05/09/2024 07:45:40 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:45:40 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 07:47:33 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1209.4635009765625
+05/09/2024 07:47:33 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8837209302325583
+05/09/2024 07:47:33 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:47:33 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 07:48:49 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1036.839111328125
+05/09/2024 07:48:49 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8059508408796894
+05/09/2024 07:48:49 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 07:54:48 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 07:56:46 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2109.034912109375
+05/09/2024 07:56:46 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7146304014038166
+05/09/2024 07:56:46 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:56:46 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 07:58:39 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1212.5518798828125
+05/09/2024 07:58:39 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8802619270346117
+05/09/2024 07:58:39 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 07:58:39 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 07:59:55 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1035.410888671875
+05/09/2024 07:59:55 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8018047051240735
+05/09/2024 07:59:55 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 08:05:52 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 08:07:54 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2108.679443359375
+05/09/2024 08:07:54 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7145351374945438
+05/09/2024 08:07:54 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:07:54 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 08:09:48 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1209.80078125
+05/09/2024 08:09:48 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8754398311048557
+05/09/2024 08:09:48 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:09:48 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 08:11:04 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1036.574462890625
+05/09/2024 08:11:04 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8020732102364754
+05/09/2024 08:11:04 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 08:17:00 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 08:19:00 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2108.8779296875
+05/09/2024 08:19:00 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7157526764256062
+05/09/2024 08:19:00 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:19:00 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 08:20:54 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1211.0587158203125
+05/09/2024 08:20:54 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8803378695448147
+05/09/2024 08:20:54 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:20:54 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 08:22:11 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1038.4327392578125
+05/09/2024 08:22:11 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7951030927835052
+05/09/2024 08:22:11 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 08:28:12 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 08:30:12 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2111.309814453125
+05/09/2024 08:30:12 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7160061309393474
+05/09/2024 08:30:12 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:30:12 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 08:32:08 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1211.7027587890625
+05/09/2024 08:32:08 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8791363529687867
+05/09/2024 08:32:08 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:32:08 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 08:33:25 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1037.80859375
+05/09/2024 08:33:25 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.797427652733119
+05/09/2024 08:33:25 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 08:39:28 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 08:41:26 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2109.427490234375
+05/09/2024 08:41:26 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7139396608676503
+05/09/2024 08:41:26 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:41:26 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 08:43:20 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1209.9927978515625
+05/09/2024 08:43:20 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8772012209438835
+05/09/2024 08:43:20 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:43:20 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 08:44:36 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1039.2889404296875
+05/09/2024 08:44:36 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7942028985507247
+05/09/2024 08:44:36 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 08:50:38 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 08:52:38 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2110.890380859375
+05/09/2024 08:52:38 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7165423431329531
+05/09/2024 08:52:38 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:52:38 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 08:54:32 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1211.423095703125
+05/09/2024 08:54:32 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8743882544861339
+05/09/2024 08:54:32 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 08:54:32 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 08:55:49 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1038.6885986328125
+05/09/2024 08:55:49 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7938243808298489
+05/09/2024 08:55:49 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 09:01:49 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 09:03:49 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2110.7919921875
+05/09/2024 09:03:49 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7180385288966726
+05/09/2024 09:03:49 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:03:49 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 09:05:43 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1211.6851806640625
+05/09/2024 09:05:43 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.879943833372338
+05/09/2024 09:05:43 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:05:43 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 09:07:00 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1038.4161376953125
+05/09/2024 09:07:00 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7953593296809539
+05/09/2024 09:07:00 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 09:12:55 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 09:14:55 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2110.37255859375
+05/09/2024 09:14:55 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.718544498027181
+05/09/2024 09:14:55 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:14:55 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 09:16:49 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1212.298095703125
+05/09/2024 09:16:49 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8805795746669782
+05/09/2024 09:16:49 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:16:49 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 09:18:05 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1039.229248046875
+05/09/2024 09:18:05 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7965116279069767
+05/09/2024 09:18:05 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 09:24:02 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 09:26:02 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2110.18359375
+05/09/2024 09:26:02 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.718859649122807
+05/09/2024 09:26:02 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:26:02 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 09:27:56 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1211.151123046875
+05/09/2024 09:27:56 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8782771535580524
+05/09/2024 09:27:56 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:27:56 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 09:29:13 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1038.717529296875
+05/09/2024 09:29:13 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7913576265720735
+05/09/2024 09:29:13 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 09:35:13 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 09:37:12 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2111.689697265625
+05/09/2024 09:37:12 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7188798949901553
+05/09/2024 09:37:12 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:37:12 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 09:39:06 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1211.9539794921875
+05/09/2024 09:39:06 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8785747773089546
+05/09/2024 09:39:06 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:39:06 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 09:40:22 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1041.1307373046875
+05/09/2024 09:40:22 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.794714792136642
+05/09/2024 09:40:22 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 09:46:20 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/09/2024 09:48:20 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2111.508544921875
+05/09/2024 09:48:20 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7206654991243433
+05/09/2024 09:48:20 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:48:20 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/09/2024 09:50:15 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1211.9676513671875
+05/09/2024 09:50:15 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8802437309585188
+05/09/2024 09:50:15 - INFO - utils.utils -   config is reset to the initial values.
+05/09/2024 09:50:15 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/09/2024 09:51:32 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1040.44287109375
+05/09/2024 09:51:32 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7918683446272992
+05/09/2024 09:51:32 - INFO - utils.utils -   config is reset to the initial values.
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/09/2024 09:57:32 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+slurmstepd-gpu-07: error: *** JOB 423120 ON gpu-07 CANCELLED AT 2024-05-09T09:59:00 DUE TO TIME LIMIT ***

@@ -8,6 +8,7 @@ from logging import getLogger
 from hyperformer.third_party.utils import calculate_rouge, calculate_bleu, lmap
 from transformers import EvalPrediction, PreTrainedTokenizer
 from typing import Callable, Dict, List, Tuple
+from third_party.utils.seq_f1 import get_micro_f1_score
 
 logger = getLogger(__name__)
 
@@ -50,6 +51,11 @@ def spearman_corrcoef(predictions, targets) -> dict:
         spearman_corrcoef = 0
     return {"spearman_corrcoef": spearman_corrcoef}
 
+
+def micro_f1_score(predictions, targets) -> dict:
+    f1 = get_micro_f1_score(predictions, targets)
+    
+    return {"micro_f1_score":f1}
 
 def f1_score_with_invalid(predictions, targets) -> dict:
     """Computes F1 score,  with any prediction != 0 or 1 is counted as incorrect.

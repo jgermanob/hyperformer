@@ -2,7 +2,7 @@
 "model_name_or_path": "t5-base",
 "tokenizer_name": "t5-base",
 "learning_rate": 3e-4,
-"output_dir": "outputs/hyperformer++/",
+"output_dir": "outputs/hyperformer_alqvca_v2_10++/",
 "max_source_length": 128,
 "max_target_length": 128 ,
 "val_max_target_length":128,
@@ -27,13 +27,14 @@
 "split_validation_test": true,
 "non_linearity": "gelu_new",
 "load_best_model_at_end": true,
-"evaluation_strategy": "steps",
-"metric_for_best_model": "average_metrics",
+"evaluation_strategy": "no",
+"metric_for_best_model": "loss",
 "greater_is_better": true,
 "max_steps": 65536,
-"tasks": ["rte", "sst2", "mrpc", "stsb", "qqp", "mnli", "qnli", "cola"],
-"eval_tasks": ["rte", "sst2", "mrpc", "stsb", "qqp", "mnli", "qnli", "cola"],
-                                 
+
+
+"tasks": ["movieTrivia", "movie", "restaurant", "atis", "snips", "mtod", "mtop"],
+"eval_tasks": ["movieTrivia", "movie", "restaurant", "atis", "snips", "mtod", "mtop"],                     
 "train_adapters": true,
 "reduction_factor": 32,
 "projected_task_embedding_dim": 64, 
@@ -42,7 +43,9 @@
 "unfreeze_lm_head": false,
 "unfreeze_layer_norms": true,
 "efficient_unique_hyper_net": true,
-"adapter_config_name": "meta-adapter"
+"adapter_config_name": "meta-adapter",
+"print_num_parameters": true,
+"disable_tqdm": true
 }
 
 

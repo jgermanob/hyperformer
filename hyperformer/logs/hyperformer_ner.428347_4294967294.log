@@ -1,0 +1,1152 @@
+05/13/2024 16:37:19 - WARNING - __main__ -   Process rank: 0, device: cuda:0, n_gpu: 1, distributed training: True, 16-bits training: False
+05/13/2024 16:37:19 - WARNING - __main__ -   Process rank: 2, device: cuda:2, n_gpu: 1, distributed training: True, 16-bits training: False
+05/13/2024 16:37:19 - WARNING - __main__ -   Process rank: 3, device: cuda:3, n_gpu: 1, distributed training: True, 16-bits training: False
+05/13/2024 16:37:19 - WARNING - __main__ -   Process rank: 1, device: cuda:1, n_gpu: 1, distributed training: True, 16-bits training: False
+05/13/2024 16:37:19 - INFO - __main__ -   Training/evaluation parameters Seq2SeqTrainingArguments(output_dir='outputs/hyperformer++/', overwrite_output_dir=True, do_train=True, do_eval=True, do_predict=False, evaluate_during_training=False, evaluation_strategy=<EvaluationStrategy.STEPS: 'steps'>, prediction_loss_only=False, per_device_train_batch_size=32, per_device_eval_batch_size=32, per_gpu_train_batch_size=None, per_gpu_eval_batch_size=None, gradient_accumulation_steps=1, eval_accumulation_steps=None, learning_rate=0.0003, weight_decay=0.0, adam_beta1=0.9, adam_beta2=0.999, adam_epsilon=1e-08, max_grad_norm=1.0, num_train_epochs=100, max_steps=65536, warmup_steps=500, logging_dir='runs/May13_16-37-14_gpu-07', logging_first_step=True, logging_steps=200, save_steps=1000, save_total_limit=1, no_cuda=False, seed=42, fp16=False, fp16_opt_level='O1', local_rank=0, tpu_num_cores=None, tpu_metrics_debug=False, debug=False, dataloader_drop_last=False, eval_steps=1000, dataloader_num_workers=0, past_index=-1, run_name='outputs/hyperformer++/', disable_tqdm=True, remove_unused_columns=True, label_names=None, load_best_model_at_end=True, metric_for_best_model='average_metrics', greater_is_better=True, label_smoothing=0.1, predict_with_generate=True, adafactor=False, encoder_layerdrop=None, decoder_layerdrop=None, dropout=None, attention_dropout=None, lr_scheduler='linear', temperature=10, train_adapters=True, do_test=True, eval_output_dir=None, generate_classifier_weights=False, optimize_from_scratch=False, optimize_from_scratch_with_loading_model=False, split_validation_test=True, print_num_parameters=True, compute_memory=False, compute_time=False)
+05/13/2024 16:37:20 - WARNING - __main__ -   model path loaded from : outputs/hyperformer++/
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/13/2024 16:37:20 - WARNING - __main__ -   model path loaded from : outputs/hyperformer++/
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+05/13/2024 16:37:20 - WARNING - __main__ -   model path loaded from : outputs/hyperformer++/
+05/13/2024 16:37:20 - WARNING - __main__ -   model path loaded from : outputs/hyperformer++/
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+/home/jesus.ortizbarajas/.conda/envs/hyperformer/lib/python3.8/site-packages/torch-1.7.0+cu110-py3.8-linux-x86_64.egg/torch/nn/modules/container.py:550: UserWarning: Setting attributes on ParameterDict is not supported.
+  warnings.warn("Setting attributes on ParameterDict is not supported.")
+train
+train
+05/13/2024 16:37:28 - INFO - __main__ -   T5ForConditionalGeneration(
+  (task_embedding_controller): TaskEmbeddingController(
+    (task_to_embeddings): ParameterDict(
+        (movieTrivia): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (movie): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+        (restaurant): Parameter containing: [torch.cuda.FloatTensor of size 64 (GPU 0)]
+    )
+  )
+  (shared): Embedding(32128, 768)
+  (encoder): T5Stack(
+    (embed_tokens): Embedding(32128, 768)
+    (block): ModuleList(
+      (0): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (1): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (2): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (3): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (4): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (5): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (6): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (7): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (8): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (9): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (10): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (11): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (adapter_layers_hyper_net): AdapterLayersOneHyperNetController(
+      (layer_id_embeddings): Embedding(12, 64)
+      (adapters_block_type): Embedding(2, 64)
+      (task_hypernet): TaskHyperNet(
+        (task_embeding_generator): Sequential(
+          (0): Linear(in_features=192, out_features=128, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=128, out_features=64, bias=True)
+        )
+      )
+      (LayerNorm): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+      (up_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=768, bias=True)
+        )
+      )
+      (down_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=24, bias=True)
+        )
+      )
+      (post_layernorm_hypernet): LayerNormHyperNet(
+        (weight_generator): Linear(in_features=64, out_features=768, bias=True)
+        (bias_generator): Linear(in_features=64, out_features=768, bias=True)
+      )
+    )
+    (final_layer_norm): T5LayerNorm()
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (decoder): T5Stack(
+    (embed_tokens): Embedding(32128, 768)
+    (block): ModuleList(
+      (0): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+              (relative_attention_bias): Embedding(32, 12)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (1): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (2): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (3): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (4): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (5): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (6): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (7): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (8): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (9): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (10): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+      (11): T5Block(
+        (layer): ModuleList(
+          (0): T5LayerSelfAttention(
+            (SelfAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (1): T5LayerCrossAttention(
+            (EncDecAttention): T5Attention(
+              (q): Linear(in_features=768, out_features=768, bias=False)
+              (k): Linear(in_features=768, out_features=768, bias=False)
+              (v): Linear(in_features=768, out_features=768, bias=False)
+              (o): Linear(in_features=768, out_features=768, bias=False)
+            )
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+          (2): T5LayerFF(
+            (DenseReluDense): T5DenseReluDense(
+              (wi): Linear(in_features=768, out_features=3072, bias=False)
+              (wo): Linear(in_features=3072, out_features=768, bias=False)
+              (dropout): Dropout(p=0.1, inplace=False)
+            )
+            (layer_hyper_net): MetaLayersAdapterController()
+            (layer_norm): T5LayerNorm()
+            (dropout): Dropout(p=0.1, inplace=False)
+          )
+        )
+      )
+    )
+    (adapter_layers_hyper_net): AdapterLayersOneHyperNetController(
+      (layer_id_embeddings): Embedding(12, 64)
+      (adapters_block_type): Embedding(2, 64)
+      (task_hypernet): TaskHyperNet(
+        (task_embeding_generator): Sequential(
+          (0): Linear(in_features=192, out_features=128, bias=True)
+          (1): ReLU()
+          (2): Linear(in_features=128, out_features=64, bias=True)
+        )
+      )
+      (LayerNorm): LayerNorm((64,), eps=1e-06, elementwise_affine=True)
+      (up_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=768, bias=True)
+        )
+      )
+      (down_sampler_hyper_net): AdapterLayersHyperNet(
+        (weight_generator): Sequential(
+          (0): Linear(in_features=64, out_features=18432, bias=True)
+        )
+        (bias_generator): Sequential(
+          (0): Linear(in_features=64, out_features=24, bias=True)
+        )
+      )
+      (post_layernorm_hypernet): LayerNormHyperNet(
+        (weight_generator): Linear(in_features=64, out_features=768, bias=True)
+        (bias_generator): Linear(in_features=64, out_features=768, bias=True)
+      )
+    )
+    (final_layer_norm): T5LayerNorm()
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (lm_head): Linear(in_features=768, out_features=32128, bias=False)
+)
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.movieTrivia
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.movie
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name task_embedding_controller.task_to_embeddings.restaurant
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.0.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.0.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.1.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.1.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.2.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.2.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.3.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.3.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.4.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.4.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.5.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.5.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.6.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.6.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.7.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.7.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.8.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.8.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.9.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.9.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.10.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.10.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.11.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.block.11.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.layer_id_embeddings.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.adapters_block_type.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.LayerNorm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.LayerNorm.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name encoder.final_layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.0.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.0.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.0.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.1.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.1.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.1.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.2.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.2.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.2.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.3.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.3.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.3.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.4.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.4.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.4.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.5.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.5.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.5.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.6.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.6.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.6.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.7.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.7.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.7.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.8.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.8.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.8.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.9.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.9.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.9.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.10.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.10.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.10.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.11.layer.0.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.11.layer.1.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.block.11.layer.2.layer_norm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.layer_id_embeddings.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.adapters_block_type.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.task_hypernet.task_embeding_generator.2.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.LayerNorm.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.LayerNorm.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.weight_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.up_sampler_hyper_net.bias_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.weight_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.down_sampler_hyper_net.bias_generator.0.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.weight_generator.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.weight
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.adapter_layers_hyper_net.post_layernorm_hypernet.bias_generator.bias
+05/13/2024 16:37:28 - INFO - __main__ -   Parameter name decoder.final_layer_norm.weight
+train
+05/13/2024 16:37:28 - INFO - __main__ -   Total trainable parameters 5210736
+05/13/2024 16:37:28 - INFO - __main__ -   Total parameters 228067056
+train
+  0%|          | 0/7034 [00:00<?, ?ex/s]  0%|          | 0/7034 [00:00<?, ?ex/s]  0%|          | 0/7034 [00:00<?, ?ex/s]  0%|          | 0/7034 [00:00<?, ?ex/s] 34%|███▍      | 2416/7034 [00:00<00:00, 24155.13ex/s] 41%|████      | 2856/7034 [00:00<00:00, 28559.14ex/s] 41%|████      | 2885/7034 [00:00<00:00, 28842.67ex/s] 32%|███▏      | 2274/7034 [00:00<00:00, 22734.49ex/s] 76%|███████▌  | 5320/7034 [00:00<00:00, 25437.80ex/s] 82%|████████▏ | 5763/7034 [00:00<00:00, 28707.92ex/s] 83%|████████▎ | 5828/7034 [00:00<00:00, 29015.81ex/s]100%|██████████| 7034/7034 [00:00<00:00, 28893.12ex/s]
+100%|██████████| 7034/7034 [00:00<00:00, 27246.86ex/s]
+ 74%|███████▍  | 5194/7034 [00:00<00:00, 24350.10ex/s]100%|██████████| 7034/7034 [00:00<00:00, 29193.55ex/s]
+  0%|          | 0/8797 [00:00<?, ?ex/s]  0%|          | 0/8797 [00:00<?, ?ex/s]100%|██████████| 7034/7034 [00:00<00:00, 26839.55ex/s]
+  0%|          | 0/8797 [00:00<?, ?ex/s]  0%|          | 0/8797 [00:00<?, ?ex/s] 33%|███▎      | 2907/8797 [00:00<00:00, 29066.70ex/s] 33%|███▎      | 2870/8797 [00:00<00:00, 28691.68ex/s] 33%|███▎      | 2938/8797 [00:00<00:00, 29375.41ex/s] 33%|███▎      | 2921/8797 [00:00<00:00, 29203.34ex/s] 66%|██████▋   | 5847/8797 [00:00<00:00, 29165.63ex/s] 66%|██████▌   | 5811/8797 [00:00<00:00, 28903.11ex/s] 66%|██████▌   | 5785/8797 [00:00<00:00, 29096.76ex/s] 67%|██████▋   | 5896/8797 [00:00<00:00, 29362.35ex/s]100%|██████████| 8797/8797 [00:00<00:00, 29458.80ex/s]
+100%|█████████▉| 8785/8797 [00:00<00:00, 29148.11ex/s]100%|██████████| 8797/8797 [00:00<00:00, 29260.60ex/s]
+  0%|          | 0/6894 [00:00<?, ?ex/s]100%|██████████| 8797/8797 [00:00<00:00, 29433.86ex/s]
+  0%|          | 0/6894 [00:00<?, ?ex/s] 98%|█████████▊| 8593/8797 [00:00<00:00, 28599.59ex/s]  0%|          | 0/6894 [00:00<?, ?ex/s]100%|██████████| 8797/8797 [00:00<00:00, 28517.68ex/s]
+  0%|          | 0/6894 [00:00<?, ?ex/s] 25%|██▍       | 1696/6894 [00:00<00:00, 11651.70ex/s] 25%|██▍       | 1696/6894 [00:00<00:00, 11143.81ex/s] 25%|██▍       | 1696/6894 [00:00<00:00, 10488.84ex/s] 25%|██▍       | 1696/6894 [00:00<00:00, 12336.77ex/s] 58%|█████▊    | 3990/6894 [00:00<00:00, 13668.98ex/s] 61%|██████    | 4198/6894 [00:00<00:00, 13367.63ex/s] 67%|██████▋   | 4588/6894 [00:00<00:00, 12968.30ex/s] 66%|██████▋   | 4577/6894 [00:00<00:00, 14891.09ex/s]100%|██████████| 6894/6894 [00:00<00:00, 19954.89ex/s]
+validation
+100%|██████████| 6894/6894 [00:00<00:00, 19999.70ex/s]
+validation
+  0%|          | 0/782 [00:00<?, ?ex/s]  0%|          | 0/782 [00:00<?, ?ex/s]100%|██████████| 6894/6894 [00:00<00:00, 20349.32ex/s]
+validation
+100%|██████████| 782/782 [00:00<00:00, 29315.85ex/s]
+  0%|          | 0/782 [00:00<?, ?ex/s]100%|██████████| 6894/6894 [00:00<00:00, 21852.20ex/s]
+validation
+100%|██████████| 782/782 [00:00<00:00, 29321.62ex/s]
+  0%|          | 0/978 [00:00<?, ?ex/s]  0%|          | 0/782 [00:00<?, ?ex/s]  0%|          | 0/978 [00:00<?, ?ex/s]100%|██████████| 782/782 [00:00<00:00, 29625.66ex/s]
+  0%|          | 0/978 [00:00<?, ?ex/s]100%|██████████| 978/978 [00:00<00:00, 29805.19ex/s]
+100%|██████████| 782/782 [00:00<00:00, 29673.37ex/s]
+100%|██████████| 978/978 [00:00<00:00, 29461.62ex/s]
+  0%|          | 0/978 [00:00<?, ?ex/s]  0%|          | 0/766 [00:00<?, ?ex/s]  0%|          | 0/766 [00:00<?, ?ex/s]100%|██████████| 978/978 [00:00<00:00, 29953.19ex/s]
+  0%|          | 0/766 [00:00<?, ?ex/s]100%|██████████| 978/978 [00:00<00:00, 29801.73ex/s]
+100%|██████████| 766/766 [00:00<00:00, 17874.42ex/s]
+test
+  0%|          | 0/766 [00:00<?, ?ex/s]100%|██████████| 766/766 [00:00<00:00, 19615.47ex/s]
+test
+  0%|          | 0/1953 [00:00<?, ?ex/s]100%|██████████| 766/766 [00:00<00:00, 19517.40ex/s]
+test
+  0%|          | 0/1953 [00:00<?, ?ex/s]100%|██████████| 766/766 [00:00<00:00, 18779.08ex/s]
+test
+  0%|          | 0/1953 [00:00<?, ?ex/s]  0%|          | 0/1953 [00:00<?, ?ex/s]100%|██████████| 1953/1953 [00:00<00:00, 28636.12ex/s]
+100%|██████████| 1953/1953 [00:00<00:00, 28674.61ex/s]
+  0%|          | 0/2443 [00:00<?, ?ex/s]100%|██████████| 1953/1953 [00:00<00:00, 29206.66ex/s]
+  0%|          | 0/2443 [00:00<?, ?ex/s]  0%|          | 0/2443 [00:00<?, ?ex/s]100%|██████████| 1953/1953 [00:00<00:00, 22730.42ex/s]
+  0%|          | 0/2443 [00:00<?, ?ex/s]100%|██████████| 2443/2443 [00:00<00:00, 28972.77ex/s]
+100%|██████████| 2443/2443 [00:00<00:00, 29120.16ex/s]
+  0%|          | 0/1521 [00:00<?, ?ex/s]100%|██████████| 2443/2443 [00:00<00:00, 29674.73ex/s]
+  0%|          | 0/1521 [00:00<?, ?ex/s]  0%|          | 0/1521 [00:00<?, ?ex/s]100%|██████████| 2443/2443 [00:00<00:00, 29303.79ex/s]
+  0%|          | 0/1521 [00:00<?, ?ex/s]100%|██████████| 1521/1521 [00:00<00:00, 29505.11ex/s]
+100%|██████████| 1521/1521 [00:00<00:00, 21841.97ex/s]
+100%|██████████| 1521/1521 [00:00<00:00, 19631.09ex/s]
+100%|██████████| 1521/1521 [00:00<00:00, 28849.71ex/s]
+05/13/2024 16:37:29 - INFO - utils.utils -   ***** arguments metrics *****
+05/13/2024 16:37:29 - INFO - utils.utils -     adafactor = False
+05/13/2024 16:37:29 - INFO - utils.utils -     adam_beta1 = 0.9
+05/13/2024 16:37:29 - INFO - utils.utils -     adam_beta2 = 0.999
+05/13/2024 16:37:29 - INFO - utils.utils -     adam_epsilon = 1e-08
+05/13/2024 16:37:29 - INFO - utils.utils -     adapter_config_name = meta-adapter
+05/13/2024 16:37:29 - INFO - utils.utils -     adapters = None
+05/13/2024 16:37:29 - INFO - utils.utils -     add_layer_norm_after_adapter = True
+05/13/2024 16:37:29 - INFO - utils.utils -     add_layer_norm_before_adapter = False
+05/13/2024 16:37:29 - INFO - utils.utils -     attention_dropout = None
+05/13/2024 16:37:29 - INFO - utils.utils -     cache_dir = None
+05/13/2024 16:37:29 - INFO - utils.utils -     compute_memory = False
+05/13/2024 16:37:29 - INFO - utils.utils -     compute_time = False
+05/13/2024 16:37:29 - INFO - utils.utils -     conditional_layer_norm = True
+05/13/2024 16:37:29 - INFO - utils.utils -     config_name = None
+05/13/2024 16:37:29 - INFO - utils.utils -     data_seed = 42
+05/13/2024 16:37:29 - INFO - utils.utils -     dataloader_drop_last = False
+05/13/2024 16:37:29 - INFO - utils.utils -     dataloader_num_workers = 0
+05/13/2024 16:37:29 - INFO - utils.utils -     debug = False
+05/13/2024 16:37:29 - INFO - utils.utils -     decoder_layerdrop = None
+05/13/2024 16:37:29 - INFO - utils.utils -     disable_tqdm = True
+05/13/2024 16:37:29 - INFO - utils.utils -     do_eval = True
+05/13/2024 16:37:29 - INFO - utils.utils -     do_predict = False
+05/13/2024 16:37:29 - INFO - utils.utils -     do_test = True
+05/13/2024 16:37:29 - INFO - utils.utils -     do_train = True
+05/13/2024 16:37:29 - INFO - utils.utils -     dropout = None
+05/13/2024 16:37:29 - INFO - utils.utils -     efficient_unique_hyper_net = True
+05/13/2024 16:37:29 - INFO - utils.utils -     encoder_layerdrop = None
+05/13/2024 16:37:29 - INFO - utils.utils -     eval_accumulation_steps = None
+05/13/2024 16:37:29 - INFO - utils.utils -     eval_beams = 1
+05/13/2024 16:37:29 - INFO - utils.utils -     eval_output_dir = None
+05/13/2024 16:37:29 - INFO - utils.utils -     eval_steps = 1000
+05/13/2024 16:37:29 - INFO - utils.utils -     eval_tasks = ['movieTrivia', 'movie', 'restaurant']
+05/13/2024 16:37:29 - INFO - utils.utils -     evaluate_during_training = False
+05/13/2024 16:37:29 - INFO - utils.utils -     fp16 = False
+05/13/2024 16:37:29 - INFO - utils.utils -     fp16_opt_level = O1
+05/13/2024 16:37:29 - INFO - utils.utils -     freeze_embeds = False
+05/13/2024 16:37:29 - INFO - utils.utils -     freeze_encoder = False
+05/13/2024 16:37:29 - INFO - utils.utils -     freeze_model = False
+05/13/2024 16:37:29 - INFO - utils.utils -     freeze_model_but_lm_head = False
+05/13/2024 16:37:29 - INFO - utils.utils -     freeze_model_but_task_embeddings = False
+05/13/2024 16:37:29 - INFO - utils.utils -     generate_classifier_weights = False
+05/13/2024 16:37:29 - INFO - utils.utils -     gradient_accumulation_steps = 1
+05/13/2024 16:37:29 - INFO - utils.utils -     greater_is_better = True
+05/13/2024 16:37:29 - INFO - utils.utils -     hidden_dim = 128
+05/13/2024 16:37:29 - INFO - utils.utils -     ignore_pad_token_for_loss = True
+05/13/2024 16:37:29 - INFO - utils.utils -     label_names = None
+05/13/2024 16:37:29 - INFO - utils.utils -     label_smoothing = 0.1
+05/13/2024 16:37:29 - INFO - utils.utils -     learning_rate = 0.0003
+05/13/2024 16:37:29 - INFO - utils.utils -     load_best_model_at_end = True
+05/13/2024 16:37:29 - INFO - utils.utils -     local_rank = 0
+05/13/2024 16:37:29 - INFO - utils.utils -     logging_dir = runs/May13_16-37-14_gpu-07
+05/13/2024 16:37:29 - INFO - utils.utils -     logging_first_step = True
+05/13/2024 16:37:29 - INFO - utils.utils -     logging_steps = 200
+05/13/2024 16:37:29 - INFO - utils.utils -     lr_scheduler = linear
+05/13/2024 16:37:29 - INFO - utils.utils -     max_grad_norm = 1.0
+05/13/2024 16:37:29 - INFO - utils.utils -     max_source_length = 128
+05/13/2024 16:37:29 - INFO - utils.utils -     max_steps = 65536
+05/13/2024 16:37:29 - INFO - utils.utils -     max_target_length = 128
+05/13/2024 16:37:29 - INFO - utils.utils -     metric_for_best_model = average_metrics
+05/13/2024 16:37:29 - INFO - utils.utils -     model_name_or_path = t5-base
+05/13/2024 16:37:29 - INFO - utils.utils -     n_test = -1
+05/13/2024 16:37:29 - INFO - utils.utils -     n_train = -1
+05/13/2024 16:37:29 - INFO - utils.utils -     n_val = -1
+05/13/2024 16:37:29 - INFO - utils.utils -     no_cuda = False
+05/13/2024 16:37:29 - INFO - utils.utils -     non_linearity = gelu_new
+05/13/2024 16:37:29 - INFO - utils.utils -     not_load_t5_checkpoint = False
+05/13/2024 16:37:29 - INFO - utils.utils -     num_train_epochs = 100
+05/13/2024 16:37:29 - INFO - utils.utils -     optimize_from_scratch = False
+05/13/2024 16:37:29 - INFO - utils.utils -     optimize_from_scratch_with_loading_model = False
+05/13/2024 16:37:29 - INFO - utils.utils -     output_dir = outputs/hyperformer++/
+05/13/2024 16:37:29 - INFO - utils.utils -     overwrite_output_dir = True
+05/13/2024 16:37:29 - INFO - utils.utils -     past_index = -1
+05/13/2024 16:37:29 - INFO - utils.utils -     per_device_eval_batch_size = 32
+05/13/2024 16:37:29 - INFO - utils.utils -     per_device_train_batch_size = 32
+05/13/2024 16:37:29 - INFO - utils.utils -     per_gpu_eval_batch_size = None
+05/13/2024 16:37:29 - INFO - utils.utils -     per_gpu_train_batch_size = None
+05/13/2024 16:37:29 - INFO - utils.utils -     predict_with_generate = True
+05/13/2024 16:37:29 - INFO - utils.utils -     prediction_loss_only = False
+05/13/2024 16:37:29 - INFO - utils.utils -     print_num_parameters = True
+05/13/2024 16:37:29 - INFO - utils.utils -     projected_task_embedding_dim = 64
+05/13/2024 16:37:29 - INFO - utils.utils -     reduction_factor = 32
+05/13/2024 16:37:29 - INFO - utils.utils -     remove_unused_columns = False
+05/13/2024 16:37:29 - INFO - utils.utils -     run_name = outputs/hyperformer++/
+05/13/2024 16:37:29 - INFO - utils.utils -     save_steps = 1000
+05/13/2024 16:37:29 - INFO - utils.utils -     save_total_limit = 1
+05/13/2024 16:37:29 - INFO - utils.utils -     seed = 42
+05/13/2024 16:37:29 - INFO - utils.utils -     split_validation_test = True
+05/13/2024 16:37:29 - INFO - utils.utils -     task_embedding_dim = 64
+05/13/2024 16:37:29 - INFO - utils.utils -     task_embeddings = None
+05/13/2024 16:37:29 - INFO - utils.utils -     task_hidden_dim = 128
+05/13/2024 16:37:29 - INFO - utils.utils -     tasks = ['movieTrivia', 'movie', 'restaurant']
+05/13/2024 16:37:29 - INFO - utils.utils -     temperature = 10
+05/13/2024 16:37:29 - INFO - utils.utils -     test_max_target_length = 128
+05/13/2024 16:37:29 - INFO - utils.utils -     tokenizer_name = t5-base
+05/13/2024 16:37:29 - INFO - utils.utils -     tpu_metrics_debug = False
+05/13/2024 16:37:29 - INFO - utils.utils -     tpu_num_cores = None
+05/13/2024 16:37:29 - INFO - utils.utils -     train_adapters = True
+05/13/2024 16:37:29 - INFO - utils.utils -     train_adapters_blocks = True
+05/13/2024 16:37:29 - INFO - utils.utils -     train_task_embeddings = False
+05/13/2024 16:37:29 - INFO - utils.utils -     unfreeze_layer_norms = True
+05/13/2024 16:37:29 - INFO - utils.utils -     unfreeze_lm_head = False
+05/13/2024 16:37:29 - INFO - utils.utils -     unfreeze_model = False
+05/13/2024 16:37:29 - INFO - utils.utils -     unique_hyper_net = False
+05/13/2024 16:37:29 - INFO - utils.utils -     unique_hyper_net_layer_norm = True
+05/13/2024 16:37:29 - INFO - utils.utils -     val_max_target_length = 128
+05/13/2024 16:37:29 - INFO - utils.utils -     warmup_steps = 500
+05/13/2024 16:37:29 - INFO - utils.utils -     weight_decay = 0.0
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -   ***** Running training *****
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Num examples = 22725
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Num Epochs = 371
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Instantaneous batch size per device = 32
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Total train batch size (w. parallel, distributed & accumulation) = 128
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Gradient Accumulation steps = 1
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Total optimization steps = 65536
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Continuing training from checkpoint, will skip to saved global_step
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Continuing training from epoch 370
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Continuing training from global step 65536
+05/13/2024 16:37:29 - INFO - third_party.trainers.t5_trainer -     Will skip the first 46 steps in the first epoch
+05/13/2024 16:37:36 - INFO - third_party.trainers.t5_trainer -   
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+{'epoch': 370.26553672316385}
+05/13/2024 16:37:44 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/13/2024 16:38:45 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 1900.2862548828125
+05/13/2024 16:38:45 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7168160944675268
+05/13/2024 16:38:45 - INFO - utils.utils -   config is reset to the initial values.
+05/13/2024 16:38:45 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/13/2024 16:39:52 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1181.02294921875
+05/13/2024 16:39:52 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8874824191279886
+05/13/2024 16:39:52 - INFO - utils.utils -   config is reset to the initial values.
+05/13/2024 16:39:52 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/13/2024 16:40:40 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1033.4874267578125
+05/13/2024 16:40:40 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.7981917985146916
+05/13/2024 16:40:40 - INFO - utils.utils -   config is reset to the initial values.
+05/13/2024 16:40:40 - INFO - utils.utils -   ***** val metrics *****
+05/13/2024 16:40:40 - INFO - utils.utils -     eval_average_metrics = 0.8008301040367357
+05/13/2024 16:40:40 - INFO - utils.utils -     movieTrivia_eval_loss = 1900.2862548828125
+05/13/2024 16:40:40 - INFO - utils.utils -     movieTrivia_eval_micro_f1_score = 0.7168160944675268
+05/13/2024 16:40:40 - INFO - utils.utils -     movie_eval_loss = 1181.02294921875
+05/13/2024 16:40:40 - INFO - utils.utils -     movie_eval_micro_f1_score = 0.8874824191279886
+05/13/2024 16:40:40 - INFO - utils.utils -     restaurant_eval_loss = 1033.4874267578125
+05/13/2024 16:40:40 - INFO - utils.utils -     restaurant_eval_micro_f1_score = 0.7981917985146916
+05/13/2024 16:40:40 - INFO - utils.utils -   using task specific params for movieTrivia: {'max_length': 128}
+05/13/2024 16:43:14 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_loss = 2030.7774658203125
+05/13/2024 16:43:14 - INFO - third_party.trainers.t5_trainer -     movieTrivia_eval_micro_f1_score = 0.7238045466422784
+05/13/2024 16:43:14 - INFO - utils.utils -   config is reset to the initial values.
+05/13/2024 16:43:14 - INFO - utils.utils -   using task specific params for movie: {'max_length': 128}
+05/13/2024 16:45:58 - INFO - third_party.trainers.t5_trainer -     movie_eval_loss = 1175.6954345703125
+05/13/2024 16:45:58 - INFO - third_party.trainers.t5_trainer -     movie_eval_micro_f1_score = 0.8782129170950558
+05/13/2024 16:45:58 - INFO - utils.utils -   config is reset to the initial values.
+05/13/2024 16:45:58 - INFO - utils.utils -   using task specific params for restaurant: {'max_length': 128}
+05/13/2024 16:47:32 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_loss = 1048.2664794921875
+05/13/2024 16:47:32 - INFO - third_party.trainers.t5_trainer -     restaurant_eval_micro_f1_score = 0.8109050562688224
+05/13/2024 16:47:32 - INFO - utils.utils -   config is reset to the initial values.
+05/13/2024 16:47:32 - INFO - utils.utils -   ***** test metrics *****
+05/13/2024 16:47:32 - INFO - utils.utils -     eval_average_metrics = 0.804307506668719
+05/13/2024 16:47:32 - INFO - utils.utils -     movieTrivia_eval_loss = 2030.7774658203125
+05/13/2024 16:47:32 - INFO - utils.utils -     movieTrivia_eval_micro_f1_score = 0.7238045466422784
+05/13/2024 16:47:32 - INFO - utils.utils -     movie_eval_loss = 1175.6954345703125
+05/13/2024 16:47:32 - INFO - utils.utils -     movie_eval_micro_f1_score = 0.8782129170950558
+05/13/2024 16:47:32 - INFO - utils.utils -     restaurant_eval_loss = 1048.2664794921875
+05/13/2024 16:47:32 - INFO - utils.utils -     restaurant_eval_micro_f1_score = 0.8109050562688224
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
